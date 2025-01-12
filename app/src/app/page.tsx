@@ -1,9 +1,19 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import { getEvents, getEvent, Event } from '@/lib/sanity';
+import { getEvents, getEvent, Event, Venue } from '@/lib/sanity';
 
-function EventComponent({ name }: Pick<Event, 'name'>) {
-  return <div>{name || 'no name'}</div>;
+type Test = Event['venue'];
+
+function EventComponent({
+  name,
+  venue,
+}: Pick<Event, 'name'> & { venue?: Pick<Venue, 'name'> | null }) {
+  return (
+    <div>
+      {name || 'no name'}
+      {(venue && ` - ${venue.name}`) || null}
+    </div>
+  );
 }
 
 // import { internalGroqTypeReferenceTo } from '@/types/sanity';
@@ -31,8 +41,15 @@ function EventComponent({ name }: Pick<Event, 'name'>) {
 export default async function Home() {
   const events = await getEvents();
   const event = await getEvent('b8259d1d-47ad-481a-943a-7bb4d670769d');
+
   return (
     <div className={styles.page}>
+      <div>{events.length}</div>
+      <div>
+        {events.map((e) => (
+          <div key={e._id}>{e.slug.current}</div>
+        ))}
+      </div>
       {event && <EventComponent {...event} />}
       {/* {JSON.stringify(event)} */}
       {/* {(event?.image && 'url' in event.image && (

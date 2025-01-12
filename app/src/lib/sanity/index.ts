@@ -1,5 +1,9 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+
 import { createClient } from '@sanity/client';
 import { defineQuery } from 'groq';
+import { map, mapValues } from 'lodash';
+import { type PartialOnUndefinedDeep, type ArrayValues } from 'type-fest';
 
 import {
   AllSanitySchemaTypes,
@@ -16,10 +20,40 @@ export type SchemaType<T extends SchemaTypes> = UndefinedToNull<
 export type UnionUndefinedToNull<T> = T extends undefined ? null : T;
 
 export type UndefinedToNull<T extends object> = {
-  [Prop in keyof T]-?: T[Prop] extends object
+  [Prop in keyof T]: T[Prop] extends object
     ? UndefinedToNull<T[Prop]>
     : UnionUndefinedToNull<T[Prop]>;
 };
+
+export type UnionNullToUndefined<T> = T extends null ? undefined : T;
+
+export type NullToUndefined<T extends object | object[]> = T extends object[]
+  ? NullToUndefined<ArrayValues<T>>[]
+  : PartialOnUndefinedDeep<{
+      [Prop in keyof T]: null extends T[Prop]
+        ?
+            | (NonNullable<T[Prop]> extends object | object[]
+                ? NullToUndefined<NonNullable<T[Prop]>>
+                : NonNullable<T[Prop]>)
+            | undefined
+        : T[Prop] extends object | object[]
+          ? NullToUndefined<T[Prop]>
+          : T[Prop];
+
+      // [Prop in keyof T]:
+      //   | (NonNullable<T[Prop]> extends object | object[]
+      //       ? NullToUndefined<NonNullable<T[Prop]>>
+      //       : NonNullable<T[Prop]>)
+      //   | (null extends T[Prop] ? undefined : null);
+
+      // [Prop in keyof T]: NonNullable<T[Prop]> extends object | object[]
+      //   ? null extends T[Prop]
+      //     ? NullToUndefined<NonNullable<T[Prop]>> | undefined
+      //     : NullToUndefined<NonNullable<T[Prop]>>
+      //   : null extends T[Prop]
+      //     ? NonNullable<T[Prop]> | undefined
+      //     : NonNullable<T[Prop]>;
+    }>;
 
 export type ExpandRefs<T extends object> = {
   [K in keyof T]: NonNullable<T[K]> extends {
@@ -34,7 +68,26 @@ export type ExpandRefs<T extends object> = {
       : string;
 };
 
+// type Test2 = PartialOnUndefinedDeep<{
+//   one: string;
+//   two: undefined | string;
+// }>;
+
 export type Event = SchemaType<'event'>;
+export type Venue = SchemaType<'venue'>;
+
+// type Test = NullToUndefined<{
+//   test: string | null;
+//   venue: { name: string | null } | null;
+//   another: number;
+// }>;
+
+// const test: Test = {
+//   venue: {
+//     name: 'test',
+//   },
+//   // another: 2,
+// };
 
 // NonNullable<NonNullable<T[K]>[typeof internalGroqTypeReferenceTo]>
 // Import using ESM URL imports in environments that supports it:
@@ -68,7 +121,15 @@ export const eventFullQuery = defineQuery(`
 `);
 
 export const eventsQuery = defineQuery(`
-  *[_type == "event"]{name, image ${IMAGE}}
+  *[_type == "event"]{
+    _id,
+    name,
+    slug,
+    venue->{
+      name
+    },
+    image ${IMAGE}
+  }
 `);
 
 // export const eventQuery = defineQuery(`
@@ -91,17 +152,32 @@ export const client = createClient({
   useCdn: false, // set to `false` to bypass the edge cache
 });
 
-// uses GROQ to query content: https://www.sanity.io/docs/groq
-export async function getEvents() {
-  const events = await client.fetch(eventsQuery);
-  return events;
+function nullToUndefined<T extends object | object[]>(
+  o: T
+): NullToUndefined<T> {
+  return ((Array.isArray(o) ? map : mapValues) as any)(o, (v: any) => {
+    if (v === null) return undefined;
+    if (typeof v === 'object') return nullToUndefined(v);
+    return v;
+  });
 }
 
-export async function getEvent(id: string) {
-  const event = await client.fetch(eventQuery, {
+async function fetch<T extends Parameters<typeof client.fetch>[0]>(
+  query: T,
+  params?: Parameters<typeof client.fetch>[1]
+) {
+  const res = await client.fetch(query, params);
+  return nullToUndefined(res);
+}
+
+export function getEvents() {
+  return fetch(eventsQuery);
+}
+
+export function getEvent(id: string) {
+  return fetch(eventQuery, {
     id,
   });
-  return event;
 }
 
 // export async function createPost(post: Post) {
