@@ -1,0 +1,10 @@
+{
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "stylelint.validate": ["css"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "css.lint.unknownAtRules": "ignore",
+  "[markdown]": {
+    "editor.formatOnSave": false
+  }
+}
