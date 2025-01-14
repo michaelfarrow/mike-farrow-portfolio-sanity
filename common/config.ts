@@ -10,7 +10,11 @@ export const config = {
     apiVersion: 'vX',
   },
   paths: {
-    app: production ? '' : 'http://localhost:3000',
-    studio: production ? '/studio' : 'http://localhost:3333',
+    app: production
+      ? 'https://mike-farrow-portfolio-app.vercel.app'
+      : 'http://localhost:3000',
+    studio: production
+      ? 'https://mike-farrow-portfolio-studio.vercel.app'
+      : 'http://localhost:3333',
   },
 };
