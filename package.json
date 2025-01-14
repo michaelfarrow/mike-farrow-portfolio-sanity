@@ -5,18 +5,13 @@
   "license": "UNLICENSED",
   "scripts": {
     "watch:schemas": "chokidar ./studio/schemaTypes --initial -c 'npm run generate:schema -w studio'",
-    "watch:queries": "chokidar ./common/sanity.json ./app/src/lib/sanity -c 'npm run generate:types -w studio'",
+    "watch:queries": "chokidar ./common/sanity.json ./app/src/lib/sanity/queries -c 'npm run generate:types -w studio'",
     "dev": "concurrently --names 'watch schemas,watch queries,studio,app' -c 'bgGreen.bold,bgRed.bold,bgBlue.bold,bgMagenta.bold' \"npm run watch:schemas\" \"npm run watch:queries\" \"npm run dev -w studio\" \"npm run dev -w app\" "
   },
   "workspaces": [
     "studio",
     "app"
   ],
-  "sanity": {
-    "projectId": "h0q0fht4",
-    "dataset": "production",
-    "apiVersion": "2024-01-11"
-  },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.1.2"

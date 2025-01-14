@@ -1,17 +1,30 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
+import { presentationTool } from 'sanity/presentation';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemaTypes';
-
-import { sanity } from '../package.json';
+import { resolve } from '@/presentation/resolve';
+import { defaultDocumentNode } from '@/defaultDocumentNode';
+import { config } from '@common/config';
 
 export default defineConfig({
-  ...sanity,
+  ...config.studio,
 
   name: 'default',
   title: 'Mike Farrow',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool({ defaultDocumentNode }),
+    visionTool(),
+    presentationTool({
+      resolve,
+      previewUrl: {
+        previewMode: {
+          enable: `${config.paths.app}/api/draft-mode/enable`,
+        },
+      },
+    }),
+  ],
 
   schema: {
     types: schemaTypes,

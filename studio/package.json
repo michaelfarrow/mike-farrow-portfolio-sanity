@@ -9,7 +9,7 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "generate:schema": "sanity schema extract --enforce-required-fields --path ../common/sanity.json",
+    "generate:schema": "sanity schema extract --path ../common/sanity.json",
     "generate:types": "sanity typegen generate",
     "generate:all": "npm run generate:schema && npm run generate:types"
   },
@@ -21,6 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanity": "^3.69.0",
+    "sanity-plugin-iframe-pane": "^3.1.6",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "@types/react": "^18.0.25",
     "eslint": "^9.9.0",
     "prettier": "^3.0.2",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

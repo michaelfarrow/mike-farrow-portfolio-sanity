@@ -26,6 +26,11 @@ export const eventType = defineType({
       hidden: ({ document }) => !document?.name,
     }),
     defineField({
+      name: 'text',
+      group: 'details',
+      type: 'string',
+    }),
+    defineField({
       name: 'eventType',
       group: 'details',
       type: 'string',

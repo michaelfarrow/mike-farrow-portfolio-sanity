@@ -12,7 +12,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@root/*": ["../*"],
+      "@common/*": ["../common/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
