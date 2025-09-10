@@ -1,0 +1,28 @@
+.rows {
+  background: var(--card-badge-positive-bg-color);
+  color: 1px solid var(--card-badge-positive-fg-color);
+  --card-icon-color: var(--card-badge-positive-fg-color);
+}
+
+.columns {
+  background: var(--card-badge-suggest-bg-color);
+  color: 1px solid var(--card-badge-suggest-fg-color);
+  --card-icon-color: var(--card-badge-suggest-fg-color);
+}
+
+.title > span::after {
+  content: ', ';
+}
+
+.title > span:last-child::after {
+  content: '';
+}
+
+.item {
+  margin-right: 1em;
+  padding-left: 0.2em;
+}
+
+.icon {
+  margin-right: 0.5em;
+}

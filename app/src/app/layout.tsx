@@ -1,11 +1,14 @@
+import { VisualEditing } from 'next-sanity/visual-editing';
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-
 import { draftMode } from 'next/headers';
-import { VisualEditing } from 'next-sanity';
-import { DisableDraftMode } from '@/components/DisableDraftMode';
-import { SanityLive } from '@/lib/sanity/live';
+
+import { SanityLive } from '@app/lib/sanity/live';
+
+import { DisableDraftMode } from '@app/components/DisableDraftMode';
+
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

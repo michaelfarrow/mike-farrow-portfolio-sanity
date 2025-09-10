@@ -1,32 +1,52 @@
-import { defineConfig } from 'sanity';
-import { structureTool } from 'sanity/structure';
-import { presentationTool } from 'sanity/presentation';
-import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './schemaTypes';
-import { resolve } from '@/presentation/resolve';
-import { defaultDocumentNode } from '@/defaultDocumentNode';
 import { config } from '@common/config';
+import { resolveDynamic } from '@studio/presentation/resolve-dynamic';
+import { resolve } from '@studio/presentation/resolve-studio';
+import { schemas } from '@studio/schemas';
+import '@studio/styles/global.css';
+
+import { googleMapsInput } from '@sanity/google-maps-input';
+import { visionTool } from '@sanity/vision';
+import { defineConfig } from 'sanity';
+import { markdownSchema } from 'sanity-plugin-markdown';
+import { defineDocuments, presentationTool } from 'sanity/presentation';
+import { structureTool } from 'sanity/structure';
 
 export default defineConfig({
   ...config.studio,
 
   name: 'default',
-  title: 'Mike Farrow',
+  title: config.title,
 
   plugins: [
-    structureTool({ defaultDocumentNode }),
+    structureTool(),
     visionTool(),
     presentationTool({
-      resolve,
+      resolve: {
+        locations: resolveDynamic(resolve, { link: { deep: true } }),
+        mainDocuments: defineDocuments(
+          Object.values(resolve).map((item) => item.document)
+        ),
+      },
       previewUrl: {
+        origin: config.url.app,
         previewMode: {
-          enable: `${config.paths.app}/api/draft-mode/enable`,
+          enable: `${config.url.app}/api/draft-mode/enable`,
         },
       },
     }),
+    googleMapsInput({
+      apiKey: config.google.maps.apiKey || '',
+      defaultLocale: 'en-GB',
+      defaultLocation: {
+        lat: 54.5,
+        lng: -4.5,
+      },
+      defaultZoom: 6,
+    }),
+    markdownSchema(),
   ],
 
   schema: {
-    types: schemaTypes,
+    types: schemas,
   },
 });

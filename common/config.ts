@@ -4,17 +4,23 @@ const production = env === 'production';
 export const config = {
   env,
   production,
+  title: 'Mike Farrow',
   studio: {
     projectId: 'h0q0fht4',
-    dataset: 'production',
+    dataset: process.env.SANITY_STUDIO_DATASET || 'development',
     apiVersion: 'vX',
   },
-  paths: {
+  url: {
     app: production
       ? 'https://mike-farrow-portfolio-app.vercel.app'
-      : 'http://localhost:3000',
+      : 'http://127.0.0.1:3000',
     studio: production
       ? 'https://mike-farrow-portfolio-studio.vercel.app'
-      : 'http://localhost:3333',
+      : 'http://127.0.0.1:3333',
+  },
+  google: {
+    maps: {
+      apiKey: process.env.SANITY_STUDIO_GOOGLE_MAPS_API_KEY,
+    },
   },
 };
