@@ -4,7 +4,8 @@
     "paths": {
       "@common/*": ["./common/*"],
       "@studio/*": ["./studio/*"],
-      "@app/*": ["./app/src/*"]
+      "@app/*": ["./app/src/*"],
+      "@astro/*": ["./astro/src/*"]
     }
   }
 }

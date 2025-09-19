@@ -4,7 +4,7 @@ import { resolve } from '@studio/presentation/resolve';
 
 import { hasSlug } from '@app/lib/document';
 import { createPage } from '@app/lib/page';
-import { getProjects } from '@app/lib/sanity/queries/project';
+import { getProject, getProjects } from '@app/lib/sanity/queries/project';
 
 const projects = createPage('projects', getProjects, {
   metadata: () => ({

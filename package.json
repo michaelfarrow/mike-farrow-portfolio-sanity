@@ -5,17 +5,20 @@
   "license": "UNLICENSED",
   "scripts": {
     "predev:app": "cp .env.local app/.env.local",
+    "predev:astro": "cp .env.local astro/.env.local",
     "predev:studio": "cp .env.local studio/.env.local",
     "watch:schemas": "chokidar ./studio/schemas --initial -c 'npm run generate:schema -w studio'",
     "watch:queries": "chokidar ./common/sanity.json ./app/src/lib/sanity/queries -c 'npm run generate:types -w studio'",
     "dev:common": "concurrently --names 'watch queries' \"npm run watch:queries\"",
     "dev:app": "concurrently --names 'main' \"npm run dev -w app\"",
+    "dev:astro": "concurrently --names 'main' \"npm run dev -w astro\"",
     "dev:studio": "concurrently --names 'main,watch schemas' \"npm run dev -w studio\" \"npm run watch:schemas\"",
-    "dev": "concurrently --prefix ' {name} ' -c 'bgGreen.bold,bgRed.bold,bgMagenta.bold' --names 'studio,app   ,common' \"npm run dev:studio\" \"npm run dev:app\" \"npm run dev:common\""
+    "dev": "concurrently --prefix ' {name} ' -c 'bgGreen.bold,bgRed.bold,bgMagenta.bold' --names 'studio,app   ,common' \"npm run dev:studio\" \"npm run dev:astro\" \"npm run dev:common\""
   },
   "workspaces": [
     "studio",
-    "app"
+    "app",
+    "astro"
   ],
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
