@@ -1,8 +1,4 @@
 import { config } from '@common/config';
-import { resolveDynamic } from '@studio/presentation/resolve-dynamic';
-import { resolve } from '@studio/presentation/resolve-studio';
-import { schemas } from '@studio/schemas';
-import '@studio/styles/global.css';
 
 import { googleMapsInput } from '@sanity/google-maps-input';
 import { visionTool } from '@sanity/vision';
@@ -11,11 +7,18 @@ import { markdownSchema } from 'sanity-plugin-markdown';
 import { defineDocuments, presentationTool } from 'sanity/presentation';
 import { structureTool } from 'sanity/structure';
 
+import { Logo } from '@studio/components/logo';
+import { resolveDynamic } from '@studio/presentation/resolve-dynamic';
+import { resolve } from '@studio/presentation/resolve-studio';
+import { schemas } from '@studio/schemas';
+import '@studio/styles/global.css';
+
 export default defineConfig({
   ...config.studio,
 
   name: 'default',
   title: config.title,
+  icon: Logo,
 
   plugins: [
     structureTool(),
