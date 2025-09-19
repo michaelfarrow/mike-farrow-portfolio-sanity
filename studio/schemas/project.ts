@@ -1,4 +1,9 @@
+import { camelCase } from 'change-case';
+
+import { defineArrayMember, defineField, defineType } from 'sanity';
+
 import { contentArrayField } from '@studio/schemas/common/fields/content-array';
+import { dateField } from '@studio/schemas/common/fields/date';
 import { imageField } from '@studio/schemas/common/fields/image';
 import { markdownField } from '@studio/schemas/common/fields/markdown';
 import { nameFields } from '@studio/schemas/common/fields/title';
@@ -8,9 +13,6 @@ import {
   IconProject,
   IconUnknown,
 } from '@studio/schemas/common/icons';
-import { camelCase } from 'change-case';
-
-import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const project = defineType({
   name: 'project',
@@ -34,9 +36,8 @@ export const project = defineType({
     ...nameFields({
       fieldset: 'details',
     }),
-    defineField({
+    dateField({
       name: 'date',
-      type: 'date',
       fieldset: 'details',
       validation: (rule) => rule.required(),
     }),

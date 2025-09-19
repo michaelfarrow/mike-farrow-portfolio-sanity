@@ -1,8 +1,9 @@
+import { defineField, defineType } from 'sanity';
+
+import { dateField } from '@studio/schemas/common/fields/date';
 import { imageField } from '@studio/schemas/common/fields/image';
 import { nameFields } from '@studio/schemas/common/fields/title';
 import { IconAlbum } from '@studio/schemas/common/icons';
-
-import { defineField, defineType } from 'sanity';
 
 export const album = defineType({
   name: 'album',
@@ -10,9 +11,8 @@ export const album = defineType({
   icon: IconAlbum,
   fields: [
     ...nameFields(),
-    defineField({
+    dateField({
       name: 'date',
-      type: 'date',
       validation: (rule) => rule.required(),
     }),
     defineField({

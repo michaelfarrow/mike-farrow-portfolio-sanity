@@ -4,6 +4,9 @@ export { PiUserCircleBold as IconContact } from 'react-icons/pi';
 export { PiUserCircleBold as IconIndividual } from 'react-icons/pi';
 export { PiBuildingBold as IconCompany } from 'react-icons/pi';
 export { PiGraduationCapBold as IconInstitution } from 'react-icons/pi';
+export { PiGraduationCapBold as IconEducation } from 'react-icons/pi';
+export { PiStar as IconExperience } from 'react-icons/pi';
+export { PiWrench as IconSkill } from 'react-icons/pi';
 
 export { PiLinkBold as IconLink } from 'react-icons/pi';
 export { PiBookBookmarkBold as IconProject } from 'react-icons/pi';
