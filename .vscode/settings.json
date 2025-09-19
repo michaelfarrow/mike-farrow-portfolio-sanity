@@ -4,6 +4,7 @@
   "stylelint.validate": ["css"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "css.lint.unknownAtRules": "ignore",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "[markdown]": {
     "editor.formatOnSave": false
   },
