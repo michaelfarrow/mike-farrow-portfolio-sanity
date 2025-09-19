@@ -5,6 +5,7 @@
       "@common/*": ["./common/*"],
       "@studio/*": ["./studio/*"],
       "@app/*": ["./app/src/*"]
-    }
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }

@@ -17,6 +17,14 @@
     "studio",
     "app"
   ],
+  "dependencies": {
+    "change-case": "^5.4.4",
+    "get-youtube-id": "^1.0.1",
+    "lodash": "^4.17.21",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "title-case": "^4.3.2"
+  },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/lodash": "^4.17.20",
@@ -27,14 +35,7 @@
     "concurrently": "^9.2.1",
     "eslint": "^9.35.0",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "change-case": "^5.4.4",
-    "get-youtube-id": "^1.0.1",
-    "lodash": "^4.17.21",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "title-case": "^4.3.2"
+    "typescript": "^5.9.2",
+    "typescript-plugin-css-modules": "^5.2.0"
   }
 }
