@@ -1,6 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-import { PartialOnUndefinedDeep } from 'type-fest';
-
+// import { PartialOnUndefinedDeep } from 'type-fest';
 import { sanityFetch } from '@app/lib/sanity/live';
 
 export type Query = Parameters<typeof sanityFetch>[0]['query'];

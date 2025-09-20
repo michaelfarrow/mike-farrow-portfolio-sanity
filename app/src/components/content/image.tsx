@@ -15,7 +15,7 @@ export function ContentImage({ image, half, ...rest }: ContentImageProps) {
       <SanityImage
         image={image}
         sizes={breakpointSizes({
-          breakpoints: { tablet: half ? '50vw' : undefined },
+          breakpoints: { mobile: '100vw', tablet: half ? '50vw' : undefined },
           max: true,
         })}
       />

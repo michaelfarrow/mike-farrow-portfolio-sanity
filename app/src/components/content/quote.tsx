@@ -1,7 +1,5 @@
 import { SanityQuote, SanityQuoteProps } from '@app/components/sanity/quote';
 
-export interface ContentQuoteProps extends SanityQuoteProps {}
-
-export function ContentQuote({ ...rest }: ContentQuoteProps) {
+export function ContentQuote({ ...rest }: SanityQuoteProps) {
   return <SanityQuote {...rest} />;
 }
