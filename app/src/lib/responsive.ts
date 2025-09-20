@@ -29,7 +29,7 @@ export function breakpointSizes(
 
   BREAKPOINTS_ORDERED.forEach((item) => {
     let found = breakpoints[item.name];
-    if (!found && item.name === 'desktop') found = '1vw';
+    if (!found && item.name === 'desktop') found = '100vw';
     if (!found) return;
     if (item.breakpoint) {
       sizes.push(`(max-width: ${item.breakpoint - 1}px) ${found}`);
