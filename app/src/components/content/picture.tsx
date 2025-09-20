@@ -8,12 +8,20 @@ import {
 
 export interface ContentPictureProps
   extends Omit<CaptionedProps, 'caption'>,
-    Pick<SanityPictureProps, 'image'> {}
+    Pick<SanityPictureProps, 'image'> {
+  half?: boolean;
+}
 
-export function ContentPicture({ image, ...rest }: ContentPictureProps) {
+export function ContentPicture({ image, half, ...rest }: ContentPictureProps) {
   return (
     <Captioned {...rest} caption={image.main?.caption}>
-      <SanityPicture image={image} sizes={breakpointSizes({ max: true })} />
+      <SanityPicture
+        image={image}
+        sizes={breakpointSizes({
+          breakpoints: { tablet: half ? '50vw' : undefined },
+          max: true,
+        })}
+      />
     </Captioned>
   );
 }

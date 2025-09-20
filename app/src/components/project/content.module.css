@@ -4,12 +4,17 @@
   gap: 20px;
 }
 
+.gridItem,
 .gridItemFull {
   grid-column: 1 / -1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .gridItem {
+    grid-column: auto;
+  }
+
+  .gridItemFull {
     grid-column: 1 / -1;
   }
 }

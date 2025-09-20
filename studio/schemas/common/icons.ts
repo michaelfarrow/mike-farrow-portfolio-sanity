@@ -16,6 +16,7 @@ export { PiImageSquareBold as IconImage } from 'react-icons/pi';
 export { PiImagesSquareBold as IconImages } from 'react-icons/pi';
 export { PiYoutubeLogoBold as IconVideo } from 'react-icons/pi';
 export { PiFileTextBold as IconDocumentText } from 'react-icons/pi';
+export { PiQuotes as IconQuote } from 'react-icons/pi';
 
 export { PiCodeBold as IconCode } from 'react-icons/pi';
 export { PiPaintBrush as IconDesign } from 'react-icons/pi';

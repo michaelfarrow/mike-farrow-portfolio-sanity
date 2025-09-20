@@ -5,12 +5,20 @@ import { SanityImage, SanityImageProps } from '@app/components/sanity/image';
 
 export interface ContentImageProps
   extends Omit<CaptionedProps, 'caption'>,
-    Pick<SanityImageProps, 'image'> {}
+    Pick<SanityImageProps, 'image'> {
+  half?: boolean;
+}
 
-export function ContentImage({ image, ...rest }: ContentImageProps) {
+export function ContentImage({ image, half, ...rest }: ContentImageProps) {
   return (
     <Captioned {...rest} caption={image.caption}>
-      <SanityImage image={image} sizes={breakpointSizes({ max: true })} />
+      <SanityImage
+        image={image}
+        sizes={breakpointSizes({
+          breakpoints: { tablet: half ? '50vw' : undefined },
+          max: true,
+        })}
+      />
     </Captioned>
   );
 }

@@ -3,7 +3,7 @@ import { PartialDeep } from 'type-fest';
 import {
   AllSanitySchemaTypes,
   internalGroqTypeReferenceTo,
-} from '@app/types/sanity';
+} from '@common/sanity.d';
 
 export type SchemaTypes = Extract<
   AllSanitySchemaTypes,

@@ -56,7 +56,7 @@ export function Array<T extends ArrayItem>({
                 textAlign: 'center',
               }}
             >
-              EMPTY {titleCase(capitalCase(item._type))}
+              UNHANDLED {titleCase(capitalCase(item._type))}
             </div>
           )
         );

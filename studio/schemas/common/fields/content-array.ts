@@ -6,6 +6,7 @@ import {
   responsiveImageField,
 } from '@studio/schemas/common/fields/image';
 import { markdownObjectField } from '@studio/schemas/common/fields/markdown-object';
+import { quoteField } from '@studio/schemas/common/fields/quote';
 import { videoField } from '@studio/schemas/common/fields/video';
 import {
   conditionalField,
@@ -65,9 +66,10 @@ export function contentArrayField({
             type: 'array',
             of: [
               ...conditionalFields(
-                conditionalField(text, () =>
-                  markdownObjectField({ name: 'md', title: 'Markdown' })
-                ),
+                conditionalField(text, () => [
+                  markdownObjectField({ name: 'md', title: 'Markdown' }),
+                  quoteField({ name: 'quote' }),
+                ]),
                 conditionalField(images, () => [
                   imageField({ name: 'image', required: true, caption: true }),
                   responsiveImageField({

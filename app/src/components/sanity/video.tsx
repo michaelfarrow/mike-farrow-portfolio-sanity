@@ -5,11 +5,11 @@ import type { CommonSchemaType } from '@app/types/content';
 
 import styles from './video.module.css';
 
-export type SanityVideoImage = CommonSchemaType<'video'>;
+export type SanityVideo = CommonSchemaType<'video'>;
 
 export interface SanityVideoProps
   extends React.ComponentPropsWithoutRef<'div'> {
-  video: SanityVideoImage;
+  video: SanityVideo;
   alt?: string;
 }
 

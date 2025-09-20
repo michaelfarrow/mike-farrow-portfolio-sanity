@@ -6,6 +6,7 @@ import {
   responsiveImageQuery,
 } from '@app/lib/sanity/queries/common/image';
 import { linkQuery } from '@app/lib/sanity/queries/common/link';
+import { quoteQuery } from '@app/lib/sanity/queries/common/quote';
 import { videoQuery } from '@app/lib/sanity/queries/common/video';
 import { createQuery } from '@app/lib/sanity/query';
 
@@ -24,6 +25,7 @@ export const projectContentQuery = `
   _type == "image" => ${imageQuery},
   _type == "responsiveImage" => ${responsiveImageQuery},
   _type == "video" => ${videoQuery},
+  _type == "quote" => ${quoteQuery},
   _type == "richText" => {
     ...
   },

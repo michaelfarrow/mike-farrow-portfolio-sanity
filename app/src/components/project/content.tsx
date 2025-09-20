@@ -9,6 +9,7 @@ import { memo } from '@app/lib/react';
 import { ContentImage } from '@app/components/content/image';
 import { Markdown } from '@app/components/content/markdown';
 import { ContentPicture } from '@app/components/content/picture';
+import { ContentQuote } from '@app/components/content/quote';
 import { ContentVideo } from '@app/components/content/video';
 import {
   Array,
@@ -27,10 +28,12 @@ const ProjectContentItem = memo(
     block,
     SortableChild,
     className,
+    full,
     ...rest
   }: React.ComponentPropsWithoutRef<'div'> & {
     block: ContentItem;
     SortableChild: SortableChild;
+    full: boolean;
   }) {
     return (
       <div {...rest} className={clsx(className, styles.handle)}>
@@ -50,10 +53,21 @@ const ProjectContentItem = memo(
                 md: (block) =>
                   cc(block.content?.length, <Markdown value={block.content} />),
                 responsiveImage: (block) =>
-                  cc(block.main?.asset?.url, <ContentPicture image={block} />),
+                  cc(
+                    block.main?.asset?.url,
+                    <ContentPicture image={block} half={!full} />
+                  ),
                 image: (block) =>
-                  cc(block.asset?.url, <ContentImage image={block} />),
+                  cc(
+                    block.asset?.url,
+                    <ContentImage image={block} half={!full} />
+                  ),
                 video: (block) => cc(block.url, <ContentVideo video={block} />),
+                quote: (block) =>
+                  cc(
+                    block.quote || block.attribution,
+                    <ContentQuote quote={block} />
+                  ),
               }}
             />
           )}
@@ -95,6 +109,7 @@ export const ProjectContent = memo(
                 block={item}
                 SortableChild={SortableChild}
                 data-sanity-drag-flow='horizontal'
+                full={stegaClean(item.span) === 'full'}
                 // data-sanity-drag-flow={
                 //   stegaClean(item.span) === 'full ? 'horizontal' : 'vertical'
                 // }
