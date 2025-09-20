@@ -9,6 +9,11 @@
 /**/*/favicon*
 /**/*/manifest.webmanifest
 
+
+!/common/**/*/apple-touch-icon.png
+!/common/**/*/favicon*
+!/common/**/*/manifest.webmanifest
+
 # Dependencies
 /node_modules
 /.pnp
