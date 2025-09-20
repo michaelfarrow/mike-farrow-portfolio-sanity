@@ -20,23 +20,26 @@ const BREAKPOINTS_ORDERED = sortBy(
 
 export function breakpointSizes(
   options: {
-    max?: boolean;
+    max?: boolean | number;
     breakpoints?: { [k in BREAKPOINT_NAME]?: string };
   } = {}
 ) {
   const sizes: string[] = [];
-  const breakpoints = { desktop: '100vw', ...options.breakpoints };
+  const breakpoints = { ...options.breakpoints };
 
   BREAKPOINTS_ORDERED.forEach((item) => {
-    const found = breakpoints[item.name];
+    let found = breakpoints[item.name];
+    if (!found && item.name === 'desktop') found = '1vw';
     if (!found) return;
     if (item.breakpoint) {
       sizes.push(`(max-width: ${item.breakpoint - 1}px) ${found}`);
       return;
     }
     if (options.max) {
+      const max =
+        typeof options.max === 'number' ? options.max : BREAKPOINT_MAX;
       sizes.push(`(max-width: ${BREAKPOINT_MAX - 1}px) ${found}`);
-      sizes.push(`${BREAKPOINT_MAX}px`);
+      sizes.push(`${max}px`);
       return;
     }
     sizes.push(found);

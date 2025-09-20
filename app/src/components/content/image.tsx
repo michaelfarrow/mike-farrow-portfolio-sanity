@@ -1,4 +1,4 @@
-import { breakpointSizes } from '@app/lib/responsive';
+import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
 
 import { Captioned, CaptionedProps } from '@app/components/content/captioned';
 import { SanityImage, SanityImageProps } from '@app/components/sanity/image';
@@ -15,8 +15,8 @@ export function ContentImage({ image, half, ...rest }: ContentImageProps) {
       <SanityImage
         image={image}
         sizes={breakpointSizes({
-          breakpoints: { mobile: '100vw', tablet: half ? '50vw' : undefined },
-          max: true,
+          breakpoints: { mobile: '100vw', desktop: half ? '50vw' : '100vw' },
+          max: BREAKPOINT_MAX / (half ? 2 : 1),
         })}
       />
     </Captioned>
