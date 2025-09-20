@@ -1,3 +1,5 @@
+'use client';
+
 import { stegaClean } from 'next-sanity';
 import { imageLoader } from 'next-sanity/image';
 

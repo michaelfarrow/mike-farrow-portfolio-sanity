@@ -5,6 +5,7 @@ import {
   imageQuery,
   responsiveImageQuery,
 } from '@app/lib/sanity/queries/common/image';
+import { linkQuery } from '@app/lib/sanity/queries/common/link';
 import { videoQuery } from '@app/lib/sanity/queries/common/video';
 import { createQuery } from '@app/lib/sanity/query';
 
@@ -61,7 +62,8 @@ export const projectQuery = defineQuery(`
         _key,
         ...(@->{
           _id,
-          name
+          name,
+          link-> ${linkQuery}
         })
       }
     },

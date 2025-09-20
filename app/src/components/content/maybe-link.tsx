@@ -1,4 +1,6 @@
-export interface MaybeLinkProps extends React.ComponentProps<'a'> {
+import { ComponentPropsWithoutRef } from 'react';
+
+export interface MaybeLinkProps extends ComponentPropsWithoutRef<'a'> {
   name?: string;
   shortName?: string;
   url?: string;

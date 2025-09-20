@@ -6,6 +6,7 @@ import { useStegaValue } from '@app/hooks/stega';
 import type { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';
 
+import { MaybeLink } from '@app/components/content/maybe-link';
 import { Sortable, SortableChild } from '@app/components/sanity/sortable';
 
 type Project = NonNullable<Awaited<ReturnType<typeof getProject>>>;
@@ -35,7 +36,9 @@ const ProjectAttribution = memo(
                 const { key, ...rest } = props(contact);
                 return (
                   <li key={key} {...rest}>
-                    {stegaClean(contact.name)}
+                    <MaybeLink {...contact.link} target='_blank'>
+                      {stegaClean(contact.name)}
+                    </MaybeLink>
                   </li>
                 );
               });

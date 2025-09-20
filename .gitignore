@@ -3,6 +3,12 @@
 /common/sanity.json
 /common/sanity.d.ts
 
+# Common
+
+/**/*/apple-touch-icon.png
+/**/*/favicon*
+/**/*/manifest.webmanifest
+
 # Dependencies
 /node_modules
 /.pnp

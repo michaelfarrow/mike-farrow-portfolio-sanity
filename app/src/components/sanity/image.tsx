@@ -1,3 +1,5 @@
+'use client';
+
 import { imageLoader } from 'next-sanity/image';
 
 import type { CommonSchemaType } from '@app/types/content';
@@ -62,8 +64,6 @@ export function SanityImage({ image, alt, ratio, ...rest }: SanityImageProps) {
   if (!props) return null;
   return (
     <Image
-      // placeholder='blur'
-      // blurDataURL={image.asset?.metadata?.lqip}
       {...rest}
       {...props}
       alt={alt || image.alt || ''}
@@ -71,3 +71,6 @@ export function SanityImage({ image, alt, ratio, ...rest }: SanityImageProps) {
     />
   );
 }
+
+// placeholder='blur'
+// blurDataURL={image.asset?.metadata?.lqip}

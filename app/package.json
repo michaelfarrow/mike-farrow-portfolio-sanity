@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "next": "^15.5.2",
-    "next-sanity": "^10.1.2",
+    "next": "^15.5.3",
+    "next-sanity": "^11.1.1",
     "num2fraction": "^1.2.2"
   },
   "devDependencies": {

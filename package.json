@@ -4,14 +4,15 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "predev:app": "cp .env.local app/.env.local",
-    "predev:studio": "cp .env.local studio/.env.local",
+    "predev:app": "cp .env.local app/.env.local && cp -r common/static/favicon* app/src/app",
+    "predev:studio": "cp .env.local studio/.env.local && cp -r common/static/* studio/static",
     "watch:schemas": "chokidar ./studio/schemas --initial -c 'npm run generate:schema -w studio'",
     "watch:queries": "chokidar ./common/sanity.json ./app/src/lib/sanity/queries -c 'npm run generate:types -w studio'",
     "dev:common": "concurrently --names 'watch queries' \"npm run watch:queries\"",
     "dev:app": "concurrently --names 'main' \"npm run dev -w app\"",
     "dev:studio": "concurrently --names 'main,watch schemas' \"npm run dev -w studio\" \"npm run watch:schemas\"",
-    "dev": "concurrently --prefix ' {name} ' -c 'bgGreen.bold,bgRed.bold,bgMagenta.bold' --names 'studio,app   ,common' \"npm run dev:studio\" \"npm run dev:app\" \"npm run dev:common\""
+    "dev": "concurrently --prefix ' {name} ' -c 'bgGreen.bold,bgRed.bold,bgMagenta.bold' --names 'studio,app   ,common' \"npm run dev:studio\" \"npm run dev:app\" \"npm run dev:common\"",
+    "generate:favicons": "npm create favicon common/assets/logo.svg common/static -- --overwrite --no-warn"
   },
   "workspaces": [
     "studio",
