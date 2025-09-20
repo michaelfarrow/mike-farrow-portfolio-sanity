@@ -1,4 +1,6 @@
-import { FieldOptions } from '@studio/schemas/common/fields/field';
+import { ArrayDefinition, defineArrayMember, defineField } from 'sanity';
+
+import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import {
   imageField,
   responsiveImageField,
@@ -11,19 +13,10 @@ import {
 } from '@studio/schemas/common/utils';
 import { ContentRowPreview } from '@studio/schemas/previews/content-row';
 
-import { defineArrayMember, defineField } from 'sanity';
-
 // import {
 //   externalLinkAnnotation,
 //   internalLinkAnnotation,
 // } from '@studio/schemas/common/blocks/annotations/link';
-
-interface ContentArrayOptions extends FieldOptions {
-  text?: boolean;
-  images?: boolean;
-  videos?: boolean;
-  columns?: boolean;
-}
 
 export function contentArrayField({
   text,
@@ -31,7 +24,16 @@ export function contentArrayField({
   videos,
   columns,
   ...rest
-}: ContentArrayOptions): any {
+}: CustomFieldOptions<
+  ArrayDefinition,
+  'of',
+  {
+    text?: boolean;
+    images?: boolean;
+    videos?: boolean;
+    columns?: boolean;
+  }
+>) {
   return defineField({
     ...rest,
     type: 'array',

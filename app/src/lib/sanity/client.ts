@@ -1,5 +1,6 @@
-import { config } from '@common/config';
 import { createClient } from '@sanity/client';
+
+import { config } from '@common/config';
 
 export const client = createClient({
   ...config.studio,

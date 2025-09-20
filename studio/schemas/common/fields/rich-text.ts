@@ -1,12 +1,12 @@
-import { FieldOptions } from '@studio/schemas/common/fields/field';
+import { ObjectDefinition, defineArrayMember, defineField } from 'sanity';
+
+import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { IconDocumentText } from '@studio/schemas/common/icons';
 import { RichTextPreview } from '@studio/schemas/previews/rich-text';
 
-import { defineArrayMember, defineField } from 'sanity';
-
-export function richTextField(options: FieldOptions) {
-  const { ...rest } = options;
-
+export function richTextField({
+  ...rest
+}: CustomFieldOptions<ObjectDefinition, 'fields' | 'preview' | 'components'>) {
   return defineField({
     ...rest,
     type: 'object',

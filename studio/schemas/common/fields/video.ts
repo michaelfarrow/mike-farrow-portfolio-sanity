@@ -1,18 +1,22 @@
-import { FieldOptions } from '@studio/schemas/common/fields/field';
+import getYouTubeID from 'get-youtube-id';
+
+import { ObjectDefinition, defineField } from 'sanity';
+
+import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { imageField } from '@studio/schemas/common/fields/image';
 import { IconVideo } from '@studio/schemas/common/icons';
 import { DocumentPreview } from '@studio/schemas/previews/document';
-import getYouTubeID from 'get-youtube-id';
 
-import { defineField } from 'sanity';
-
-interface VideoFieldOptions extends FieldOptions {
-  caption?: boolean;
-}
-
-export function videoField(options: VideoFieldOptions) {
-  const { caption, ...rest } = options;
-
+export function videoField({
+  caption,
+  ...rest
+}: CustomFieldOptions<
+  ObjectDefinition,
+  'fields' | 'preview' | 'components',
+  {
+    caption?: boolean;
+  }
+>) {
   return defineField({
     ...rest,
     type: 'object',

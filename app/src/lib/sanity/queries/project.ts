@@ -9,11 +9,12 @@ import { videoQuery } from '@app/lib/sanity/queries/common/video';
 import { createQuery } from '@app/lib/sanity/query';
 
 export const projectsQuery = defineQuery(`
-  *[_type == "project"] {
+  *[_type == "project"] | order(date desc)  {
     _id,
     slug,
     name,
-    description
+    description,
+    date
   }
 `);
 

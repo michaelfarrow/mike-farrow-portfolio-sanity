@@ -1,20 +1,31 @@
-import { FieldOptions } from '@studio/schemas/common/fields/field';
-import { IconImage, IconImages } from '@studio/schemas/common/icons';
-import { DocumentPreview } from '@studio/schemas/previews/document';
 import { titleCase } from 'title-case';
 
-import { defineArrayMember, defineField } from 'sanity';
+import {
+  ImageDefinition,
+  ObjectDefinition,
+  defineArrayMember,
+  defineField,
+} from 'sanity';
 
-interface ImageFieldOptions extends FieldOptions {
-  decorative?: boolean;
-  required?: boolean;
-  caption?: boolean;
-  fields?: ReturnType<typeof defineField>[];
-}
+import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
+import { IconImage, IconImages } from '@studio/schemas/common/icons';
+import { DocumentPreview } from '@studio/schemas/previews/document';
 
-export function imageField(options: ImageFieldOptions) {
-  const { decorative, required, caption, fields, ...rest } = options;
-
+export function imageField({
+  decorative,
+  required,
+  caption,
+  fields,
+  ...rest
+}: CustomFieldOptions<
+  ImageDefinition,
+  'fieldsets' | 'options' | 'validation',
+  {
+    decorative?: boolean;
+    required?: boolean;
+    caption?: boolean;
+  }
+>) {
   return defineField({
     ...rest,
     type: 'image',
@@ -68,7 +79,8 @@ export function imageField(options: ImageFieldOptions) {
   });
 }
 
-interface ResponsiveImageFieldOptions extends FieldOptions {
+interface ResponsiveImageFieldOptions
+  extends Omit<ObjectDefinition, 'type' | 'fields' | 'preview' | 'components'> {
   caption?: boolean;
   required?: boolean;
 }

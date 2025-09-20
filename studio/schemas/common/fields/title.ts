@@ -1,19 +1,25 @@
-import { FieldOptions } from '@studio/schemas/common/fields/field';
 import { SetOptional } from 'type-fest';
 
-import { defineField } from 'sanity';
+import { StringDefinition, defineField } from 'sanity';
 
-interface TitleFieldOptions extends SetOptional<FieldOptions, 'name'> {
-  slug?: boolean;
-}
+import {
+  type CustomFieldOptions,
+  extendValidation,
+} from '@studio/schemas/common/fields/field';
+
+export type TitleFieldsOptions = SetOptional<
+  CustomFieldOptions<StringDefinition, null, { slug?: boolean }>,
+  'name'
+>;
 
 export function titleFields({
   slug,
   name,
-  fieldset,
   group,
+  fieldset,
+  validation,
   ...rest
-}: TitleFieldOptions = {}) {
+}: TitleFieldsOptions) {
   const common = {
     fieldset,
     group,
@@ -25,7 +31,7 @@ export function titleFields({
       ...common,
       type: 'string',
       name: name || 'title',
-      validation: (rule) => rule.required(),
+      validation: extendValidation(validation, (rule) => rule.required()),
     }),
     ...(slug !== false
       ? [
@@ -42,7 +48,7 @@ export function titleFields({
   ];
 }
 
-export const nameFields = (options?: Omit<TitleFieldOptions, 'name'>) =>
+export const nameFields = (options?: Omit<TitleFieldsOptions, 'name'>) =>
   titleFields({
     ...options,
     name: 'name',

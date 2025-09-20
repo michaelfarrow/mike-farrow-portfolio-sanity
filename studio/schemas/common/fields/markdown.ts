@@ -1,11 +1,12 @@
-import { FieldOptions } from '@studio/schemas/common/fields/field';
+import { defineField } from 'sanity';
+import { MarkdownDefinition } from 'sanity-plugin-markdown';
+
+import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { MarkdownInput } from '@studio/schemas/inputs/markdown';
 
-import { defineField } from 'sanity';
-
-export function markdownField(options: FieldOptions) {
-  const { ...rest } = options;
-
+export function markdownField({
+  ...rest
+}: CustomFieldOptions<MarkdownDefinition, 'components'>) {
   return defineField({
     ...rest,
     type: 'markdown',

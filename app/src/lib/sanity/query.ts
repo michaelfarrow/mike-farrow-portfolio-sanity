@@ -16,9 +16,7 @@ type NullsToUndefined<T> = T extends null
           : NullsToUndefined<T[K]>;
       };
 
-function nullsToUndefined<T>(
-  obj: T
-): PartialOnUndefinedDeep<NullsToUndefined<T>, { recurseIntoArrays: true }> {
+function nullsToUndefined<T>(obj: T): NullsToUndefined<T> {
   if (obj === null) {
     return undefined as any;
   }
