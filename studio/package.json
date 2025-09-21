@@ -30,5 +30,8 @@
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.52.0"
   }
 }
