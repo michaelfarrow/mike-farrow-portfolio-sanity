@@ -31,7 +31,9 @@ export function SanityVideo({
         className={styles.iframe}
         title={alt || video.alt || 'YouTube Video'}
         src={embedUrl}
-        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+        referrerPolicy='strict-origin-when-cross-origin'
+        allowFullScreen
       />
     </div>
   );
