@@ -36,6 +36,20 @@ export function Picture({
 }: PictureProps) {
   if (!images.length) return null;
 
+  if (images.length === 1) {
+    return (
+      <Image
+        {...images[0]}
+        alt={alt}
+        quality={quality}
+        loader={loader}
+        sizes={sizes}
+        onImageLoaded={onImageLoaded}
+        backupSrc
+      />
+    );
+  }
+
   const defaultImage =
     images.find(({ max }) => !max) || images[images.length - 1];
 
