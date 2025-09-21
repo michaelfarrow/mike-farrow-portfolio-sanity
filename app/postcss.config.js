@@ -14,11 +14,11 @@ const BREAKPOINTS_MAX_ORDERED = Object.entries(BREAKPOINTS_MAX)
 BREAKPOINTS_MAX_ORDERED.forEach((item, i) => {
   const previous = BREAKPOINTS_MAX_ORDERED[i - 1];
   if (previous) {
-    breakpoints[item.name] = previous.breakpoint;
+    breakpoints[item.name] = `${previous.breakpoint}px`;
   }
 });
 
-breakpoints['max'] = BREAKPOINT_MAX;
+breakpoints['max'] = `${BREAKPOINTS_MAX}px`;
 
 export const plugins = [
   [
