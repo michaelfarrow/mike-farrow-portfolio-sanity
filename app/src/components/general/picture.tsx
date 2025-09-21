@@ -28,7 +28,7 @@ export function Picture({
   className,
   images,
   alt,
-  quality,
+  quality = IMAGE_DEFAULT_QUALITY,
   loader,
   sizes,
   onImageLoaded,
@@ -44,7 +44,7 @@ export function Picture({
 
     return getImageProps({
       alt: '',
-      quality: quality || IMAGE_DEFAULT_QUALITY,
+      quality,
       loader,
       sizes,
       src,
@@ -78,6 +78,7 @@ export function Picture({
         loader={loader}
         sizes={sizes}
         onImageLoaded={onImageLoaded}
+        backupSrc
       />
     </picture>
   );

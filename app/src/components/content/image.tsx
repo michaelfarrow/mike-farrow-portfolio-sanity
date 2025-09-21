@@ -14,10 +14,11 @@ export function ContentImage({ image, half, ...rest }: ContentImageProps) {
     <Captioned {...rest} caption={image.caption}>
       <SanityImage
         image={image}
-        sizes={breakpointSizes({
-          breakpoints: { mobile: '100vw', desktop: half ? '50vw' : '100vw' },
-          max: BREAKPOINT_MAX / (half ? 2 : 1),
-        })}
+        sizes={breakpointSizes(
+          { max: 'mobile', size: '100vw' },
+          { max: 'desktop', size: half ? '50vw' : '100vw' },
+          BREAKPOINT_MAX / (half ? 2 : 1)
+        )}
       />
     </Captioned>
   );

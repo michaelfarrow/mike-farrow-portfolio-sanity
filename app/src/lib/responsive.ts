@@ -1,57 +1,30 @@
-import { sortBy } from 'lodash';
+import breakpoints from '@app/config/breakpoints.json';
 
-export const BREAKPOINT_MAX = 1500;
+export const BREAKPOINTS_MAX = breakpoints;
 
-export const BREAKPOINTS = {
-  mobile: 768,
-  tablet: 1200,
-  desktop: null,
-};
+export const BREAKPOINT_MAX = Math.max(...Object.values(BREAKPOINTS_MAX)) || 0;
 
-type BREAKPOINT_NAME = keyof typeof BREAKPOINTS | 'desktop';
+export type BREAKPOINT_NAME = keyof typeof BREAKPOINTS_MAX;
 
-const BREAKPOINTS_ORDERED = sortBy(
-  Object.entries(BREAKPOINTS).map(([name, breakpoint]) => ({
-    name: name as BREAKPOINT_NAME,
-    breakpoint,
-  })),
-  ({ breakpoint }) => breakpoint
-);
-
-export function breakpointSizes(
-  options: {
-    max?: boolean | number;
-    breakpoints?: { [k in BREAKPOINT_NAME]?: string };
-  } = {}
-) {
-  const sizes: string[] = [];
-  const breakpoints = { ...options.breakpoints };
-
-  BREAKPOINTS_ORDERED.forEach((item) => {
-    let found = breakpoints[item.name];
-    if (!found && item.name === 'desktop') found = '100vw';
-    if (!found) return;
-    if (item.breakpoint) {
-      sizes.push(`(max-width: ${item.breakpoint - 1}px) ${found}`);
-      return;
-    }
-    if (options.max) {
-      const max =
-        typeof options.max === 'number' ? options.max : BREAKPOINT_MAX;
-      sizes.push(`(max-width: ${BREAKPOINT_MAX - 1}px) ${found}`);
-      sizes.push(`${max}px`);
-      return;
-    }
-    sizes.push(found);
-  });
-
-  return sizes.join(', ');
+export function breakpointSize(size: string | number) {
+  return typeof size === 'number' ? `${size}px` : size;
 }
 
-// console.log(
-//   breakpointSizes({
-//     breakpoints: { mobile: '100vw', desktop: '50vw' },
-//     max: true,
-//   })
-// );
-// console.log('');
+export function breakpointSizes(
+  ...sizes: (
+    | number
+    | string
+    | { max: BREAKPOINT_NAME; size: number | string }
+  )[]
+) {
+  if (!sizes.length) return '100vw';
+  return sizes
+    .map((item) => {
+      if (typeof item === 'object' && 'size' in item) {
+        return `(max-width: ${breakpointSize(BREAKPOINTS_MAX[item.max] - 1)}) ${breakpointSize(item.size)}`;
+      } else {
+        return `${breakpointSize(item)}`;
+      }
+    })
+    .join(', ');
+}

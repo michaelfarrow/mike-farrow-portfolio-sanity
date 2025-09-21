@@ -5,7 +5,7 @@ import { imageLoader } from 'next-sanity/image';
 
 import type { CommonSchemaType } from '@app/types/content';
 
-import { BREAKPOINTS } from '@app/lib/responsive';
+import { BREAKPOINTS_MAX } from '@app/lib/responsive';
 
 import { Picture, PictureProps } from '@app/components/general/picture';
 import { getSanityImageProps } from '@app/components/sanity/image';
@@ -38,7 +38,7 @@ export function SanityPicture({ image, alt, ...rest }: SanityPictureProps) {
         return (
           (props && {
             ...props,
-            max: breakpoint && BREAKPOINTS[stegaClean(breakpoint)],
+            max: breakpoint && BREAKPOINTS_MAX[stegaClean(breakpoint)],
           }) ||
           null
         );

@@ -1,12 +1,14 @@
 {
   "files.eol": "\n",
   "editor.formatOnSave": true,
-  "stylelint.validate": ["css"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "css.lint.unknownAtRules": "ignore",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "[markdown]": {
     "editor.formatOnSave": false
+  },
+  "emmet.includeLanguages": {
+    "postcss": "css"
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }

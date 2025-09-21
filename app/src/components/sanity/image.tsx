@@ -68,6 +68,7 @@ export function SanityImage({ image, alt, ratio, ...rest }: SanityImageProps) {
       {...props}
       alt={alt || image.alt || ''}
       loader={imageLoader}
+      backupSrc
     />
   );
 }

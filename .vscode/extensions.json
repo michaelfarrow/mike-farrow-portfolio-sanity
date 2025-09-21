@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "ricard.postcss",
     "dbaeumer.vscode-eslint",
-    "sanity-io.vscode-sanity"
+    "sanity-io.vscode-sanity",
+    "vunguyentuan.vscode-postcss"
   ]
 }

@@ -9,6 +9,7 @@ import { default as NextImage, ImageProps as NextImageProps } from 'next/image';
 import { useIsMaybePresentation } from '@app/hooks/sanity';
 import { useStegaValue } from '@app/hooks/stega';
 import { useTimeout } from '@app/hooks/timeout';
+import { BREAKPOINTS_MAX } from '@app/lib/responsive';
 
 import styles from './image.module.css';
 
@@ -16,13 +17,18 @@ export const IMAGE_DEFAULT_QUALITY = 75;
 
 export interface ImageProps extends NextImageProps {
   onImageLoaded?: () => void;
+  backupSrc?: boolean;
+  backupSrcSize?: number;
 }
 
 export function Image({
   className,
   alt,
   onImageLoaded,
-  quality,
+  quality = IMAGE_DEFAULT_QUALITY,
+  overrideSrc,
+  backupSrc,
+  backupSrcSize = BREAKPOINTS_MAX.tablet,
   ...rest
 }: ImageProps) {
   const image = useRef<HTMLImageElement>(null);
@@ -48,9 +54,21 @@ export function Image({
   return (
     <NextImage
       {...rest}
+      overrideSrc={
+        overrideSrc ||
+        (backupSrc &&
+          rest.loader &&
+          typeof rest.src == 'string' &&
+          rest.loader({
+            src: rest.src,
+            width: backupSrcSize,
+            quality: quality && Number(quality),
+          })) ||
+        undefined
+      }
       loading={isPresentation ? 'eager' : 'lazy'}
       alt={useStegaValue(alt)}
-      quality={quality || IMAGE_DEFAULT_QUALITY}
+      quality={quality}
       className={clsx(
         styles.image,
         (isPresentation || loaded) && styles.loaded,
