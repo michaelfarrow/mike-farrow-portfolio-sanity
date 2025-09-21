@@ -6,7 +6,7 @@ import { defineCliConfig } from 'sanity/cli';
 export default defineCliConfig({
   api: config.studio,
 
-  autoUpdates: false,
+  deployment: { autoUpdates: false },
 
   vite: {
     plugins: [tsconfigPaths()],
