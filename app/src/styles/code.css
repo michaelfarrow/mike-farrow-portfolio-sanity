@@ -454,3 +454,13 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
   content: '';
   box-sizing: border-box;
 }
+
+pre[class*='language-shell-session'],
+code[class*='language-shell-session'] {
+  background: black;
+  color: white;
+
+  .token {
+    color: white;
+  }
+}
