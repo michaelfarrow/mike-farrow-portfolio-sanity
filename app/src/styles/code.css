@@ -30,6 +30,8 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
+  position: relative;
+  z-index: 0;
   background: hsl(230, 1%, 98%);
   color: hsl(230, 8%, 24%);
   font-family:
@@ -431,4 +433,24 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
 /* Fill colour of the handle */
 .prism-previewer-easing.prism-previewer-easing circle {
   fill: transparent;
+}
+
+/* Highlight */
+
+.refractor-marker {
+  position: relative;
+  display: inline;
+  /* background: rgba(249, 233, 148, 075); */
+}
+
+.refractor-marker::before {
+  background: rgba(249, 233, 148, 075);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  content: '';
+  box-sizing: border-box;
 }

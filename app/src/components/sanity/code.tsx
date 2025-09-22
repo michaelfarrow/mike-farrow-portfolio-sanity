@@ -28,11 +28,11 @@ export interface SanityCodeProps extends React.ComponentPropsWithoutRef<'div'> {
 }
 
 export function SanityCode({
-  code: { code, filename, language, highlightedLines },
+  code: { code, filename, language = 'typescript', highlightedLines },
   className,
   ...rest
 }: SanityCodeProps) {
-  if (!language || !code) return null;
+  if (!code) return null;
   return (
     <div {...rest} className={clsx(className)}>
       {(filename && <p>{filename}</p>) || null}
