@@ -464,3 +464,8 @@ code[class*='language-shell-session'] {
     color: white;
   }
 }
+
+pre[class*='language-shell-session']::selection,
+pre[class*='language-shell-session']::-moz-selection {
+  color: black;
+}
