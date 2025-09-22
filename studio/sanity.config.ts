@@ -1,5 +1,6 @@
 import { config } from '@common/config';
 
+import { codeInput } from '@sanity/code-input';
 import { googleMapsInput } from '@sanity/google-maps-input';
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
@@ -46,6 +47,7 @@ export default defineConfig({
       },
       defaultZoom: 6,
     }),
+    codeInput(),
     markdownSchema(),
   ],
 

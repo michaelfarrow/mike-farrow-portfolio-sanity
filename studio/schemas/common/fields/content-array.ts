@@ -1,5 +1,6 @@
 import { ArrayDefinition, defineArrayMember, defineField } from 'sanity';
 
+import { codeField } from '@studio/schemas/common/fields/code';
 import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import {
   imageField,
@@ -69,6 +70,7 @@ export function contentArrayField({
                 conditionalField(text, () => [
                   markdownObjectField({ name: 'md', title: 'Markdown' }),
                   quoteField({ name: 'quote' }),
+                  codeField({ name: 'code' }),
                 ]),
                 conditionalField(images, () => [
                   imageField({ name: 'image', required: true, caption: true }),

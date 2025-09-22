@@ -17,6 +17,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/code-input": "^6.0.1",
     "@sanity/google-maps-input": "^4.2.0",
     "@sanity/vision": "4.7.0",
     "easymde": "^2.20.0",

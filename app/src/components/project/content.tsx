@@ -6,6 +6,7 @@ import { stegaClean } from 'next-sanity';
 import { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';
 
+import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
 import { Markdown } from '@app/components/content/markdown';
 import { ContentPicture } from '@app/components/content/picture';
@@ -50,6 +51,8 @@ const ProjectContentItem = memo(
                 );
               }}
               components={{
+                code: (block) =>
+                  cc(block.code?.length, <ContentCode code={block} />),
                 md: (block) =>
                   cc(block.content?.length, <Markdown value={block.content} />),
                 responsiveImage: (block) =>

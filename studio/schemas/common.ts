@@ -1,5 +1,6 @@
 import { defineType } from 'sanity';
 
+import { codeField } from '@studio/schemas/common/fields/code';
 import {
   imageField,
   responsiveImageField,
@@ -16,5 +17,6 @@ export const common = defineType({
     responsiveImageField({ name: 'responsiveImage', caption: true }),
     videoField({ name: 'video', caption: true }),
     quoteField({ name: 'quote' }),
+    codeField({ name: 'code' }),
   ],
 });
