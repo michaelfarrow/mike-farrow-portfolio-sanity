@@ -18,6 +18,7 @@ export function codeField({
         { title: 'Javascript', value: 'javascript' },
         { title: 'HTML', value: 'html' },
         { title: 'CSS', value: 'css' },
+        { title: 'Arduino', value: 'arduino' },
       ],
       withFilename: true,
     },

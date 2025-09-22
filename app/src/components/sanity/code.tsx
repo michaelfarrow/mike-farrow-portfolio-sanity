@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Refractor, registerLanguage } from 'react-refractor';
+import arduino from 'refractor/arduino';
 import bash from 'refractor/bash';
 import css from 'refractor/css';
 import js from 'refractor/jsx';
@@ -9,6 +10,7 @@ import ts from 'refractor/tsx';
 
 import type { CommonSchemaType } from '@app/types/content';
 
+registerLanguage(arduino);
 registerLanguage(bash);
 registerLanguage(css);
 registerLanguage(js);
