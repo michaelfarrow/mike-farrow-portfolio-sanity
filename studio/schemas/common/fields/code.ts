@@ -14,8 +14,8 @@ export function codeField({
       languageAlternatives: [
         { title: 'Shell Session', value: 'shell-session' },
         { title: 'Bash', value: 'bash' },
-        { title: 'Typescript', value: 'typescript' },
-        { title: 'Javascript', value: 'javascript' },
+        { title: 'Typescript', value: 'typescript', mode: 'tsx' },
+        { title: 'Javascript', value: 'javascript', mode: 'jsx' },
         { title: 'HTML', value: 'html' },
         { title: 'CSS', value: 'css' },
         { title: 'Arduino', value: 'arduino' },

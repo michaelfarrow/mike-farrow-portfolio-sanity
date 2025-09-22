@@ -35,6 +35,7 @@ export function SanityCode({
   ...rest
 }: SanityCodeProps) {
   if (!code) return null;
+
   return (
     <div {...rest} className={clsx(className)}>
       {(filename && <p>{filename}</p>) || null}
