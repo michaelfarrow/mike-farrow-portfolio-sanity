@@ -3,12 +3,14 @@ import { SanityVideo, SanityVideoProps } from '@app/components/sanity/video';
 
 export interface ContentVideoProps
   extends Omit<CaptionedProps, 'caption'>,
-    Pick<SanityVideoProps, 'video'> {}
+    Pick<SanityVideoProps, 'video'> {
+  sizes?: string;
+}
 
-export function ContentVideo({ video, ...rest }: ContentVideoProps) {
+export function ContentVideo({ video, sizes, ...rest }: ContentVideoProps) {
   return (
     <Captioned {...rest} caption={video.caption}>
-      <SanityVideo video={video} />
+      <SanityVideo video={video} sizes={sizes} native />
     </Captioned>
   );
 }

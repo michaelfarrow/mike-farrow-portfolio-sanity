@@ -1,21 +1,26 @@
+import clsx from 'clsx';
 import getYouTubeID from 'get-youtube-id';
 
 import type { CommonSchemaType } from '@app/types/content';
 
-import { Video } from '@app/components/general/video';
+import { Video, VideoProps } from '@app/components/general/video';
+import { SanityImage } from '@app/components/sanity/image';
+
+import styles from './video.module.css';
 
 export type SanityVideo = CommonSchemaType<'video'>;
 
-export interface SanityVideoProps
-  extends React.ComponentPropsWithoutRef<'div'> {
+export interface SanityVideoProps extends Omit<VideoProps, 'src' | 'title'> {
   video: SanityVideo;
   alt?: string;
+  sizes?: string;
 }
 
 export function SanityVideo({
   video,
   className,
   alt,
+  sizes,
   ...rest
 }: SanityVideoProps) {
   const id = getYouTubeID(video.url || '');
@@ -25,16 +30,20 @@ export function SanityVideo({
   const embedUrl = `https://www.youtube.com/embed/${id}`;
 
   return (
-    <Video src={embedUrl} title={alt || video.alt} />
-    // <div {...rest} className={clsx(styles.video, className)}>
-    //   <iframe
-    //     className={styles.iframe}
-    //     title={alt || video.alt || 'YouTube Video'}
-    //     src={embedUrl}
-    //     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-    //     referrerPolicy='strict-origin-when-cross-origin'
-    //     allowFullScreen
-    //   />
-    // </div>
+    <Video
+      {...rest}
+      src={embedUrl}
+      title={alt || video.alt}
+      poster={({ playing }) =>
+        (video.poster && (
+          <SanityImage
+            className={clsx(styles.poster, playing && styles.posterPlaying)}
+            image={video.poster}
+            sizes={sizes}
+          />
+        )) ||
+        null
+      }
+    />
   );
 }

@@ -1,6 +1,6 @@
 export interface ConditionalProps<T> {
   value?: T;
-  children: (value: NonNullable<T>) => React.JSX.Element;
+  children: (value: NonNullable<T>) => React.JSX.Element | null | undefined;
   numerical?: boolean;
 }
 

@@ -5,6 +5,7 @@ import { stegaClean } from 'next-sanity';
 
 import { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';
+import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
 
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
@@ -36,6 +37,12 @@ const ProjectContentItem = memo(
     SortableChild: SortableChild;
     full: boolean;
   }) {
+    const sizes = breakpointSizes(
+      { max: 'mobile', size: '100vw' },
+      { max: 'desktop', size: full ? '100vw' : '50vw' },
+      BREAKPOINT_MAX / (full ? 1 : 2)
+    );
+
     return (
       <div {...rest} className={clsx(className, styles.handle)}>
         <SortableChild of={block} path='content' items={block.content}>
@@ -58,14 +65,15 @@ const ProjectContentItem = memo(
                 responsiveImage: (block) =>
                   cc(
                     block.main?.asset?.url,
-                    <ContentPicture image={block} half={!full} />
+                    <ContentPicture image={block} sizes={sizes} />
                   ),
                 image: (block) =>
                   cc(
                     block.asset?.url,
-                    <ContentImage image={block} half={!full} />
+                    <ContentImage image={block} sizes={sizes} />
                   ),
-                video: (block) => cc(block.url, <ContentVideo video={block} />),
+                video: (block) =>
+                  cc(block.url, <ContentVideo video={block} sizes={sizes} />),
                 quote: (block) =>
                   cc(
                     block.quote || block.attribution,

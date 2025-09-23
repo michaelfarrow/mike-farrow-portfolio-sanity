@@ -75,12 +75,18 @@ importers:
       num2fraction:
         specifier: ^1.2.2
         version: 1.2.2
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.1.1)
       react-player:
         specifier: ^3.3.3
         version: 3.3.3(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react-refractor:
         specifier: ^4.0.0
         version: 4.0.0(react@19.1.1)
+      react-timing-hooks:
+        specifier: ^5.1.0
+        version: 5.1.0(react@19.1.1)
       refractor:
         specifier: ^5.0.0
         version: 5.0.0
@@ -5361,6 +5367,11 @@ packages:
       easymde: '>= 2.0.0 < 3.0.0'
       react: '>=16.8.2'
       react-dom: '>=16.8.2'
+
+  react-timing-hooks@5.1.0:
+    resolution: {integrity: sha512-PY2tLdQZLyJ1ptNGjsWGTRL+fTw+OOddeKFTtAgFFlTHuuRoDZRRNskziPjX/NyeEXRZEsERMehI6vjjNsU9sQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   react@19.1.1:
     resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
@@ -12694,6 +12705,10 @@ snapshots:
       easymde: 2.20.0
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
+
+  react-timing-hooks@5.1.0(react@19.1.1):
+    dependencies:
+      react: 19.1.1
 
   react@19.1.1: {}
 
