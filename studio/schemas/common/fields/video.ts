@@ -7,32 +7,30 @@ import { imageField } from '@studio/schemas/common/fields/image';
 import { IconVideo } from '@studio/schemas/common/icons';
 import { DocumentPreview } from '@studio/schemas/previews/document';
 
-export function videoField({
-  caption,
-  ...rest
-}: CustomFieldOptions<
+export type VideoFieldDefinition = CustomFieldOptions<
   ObjectDefinition,
   'fields' | 'preview' | 'components',
   {
     caption?: boolean;
+    field?: ReturnType<typeof defineField>;
   }
->) {
+>;
+
+export function videoField({ caption, field, ...rest }: VideoFieldDefinition) {
   return defineField({
     ...rest,
     type: 'object',
     icon: IconVideo,
     fields: [
-      defineField({
-        name: 'url',
-        type: 'url',
-        validation: (rule) =>
-          rule
-            .required()
-            .custom(
-              (value) =>
-                (getYouTubeID(value || '') && true) || 'Invalid YouTube url'
-            ),
-      }),
+      field ||
+        defineField({
+          name: 'file',
+          type: 'file',
+          options: {
+            accept: 'video/mp4',
+          },
+          validation: (rule) => rule.required().assetRequired(),
+        }),
       imageField({
         name: 'poster',
         decorative: true,
@@ -63,5 +61,24 @@ export function videoField({
     components: {
       preview: DocumentPreview,
     },
+  });
+}
+
+export function remoteVideoField({
+  ...rest
+}: CustomFieldOptions<VideoFieldDefinition, 'field'>) {
+  return videoField({
+    ...rest,
+    field: defineField({
+      name: 'url',
+      type: 'url',
+      validation: (rule) =>
+        rule
+          .required()
+          .custom(
+            (value) =>
+              (getYouTubeID(value || '') && true) || 'Invalid YouTube url'
+          ),
+    }),
   });
 }

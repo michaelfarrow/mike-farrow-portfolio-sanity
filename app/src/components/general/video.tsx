@@ -1,17 +1,28 @@
 'use client';
 
 import clsx from 'clsx';
-import { PiPause as PauseIcon, PiPlay as PlayIcon } from 'react-icons/pi';
+import {
+  PiPause as PauseIcon,
+  PiPlay as PlayIcon,
+  PiSpinnerGap as SpinnerIcon,
+} from 'react-icons/pi';
 import ReactPlayer from 'react-player';
 import { useTimeout } from 'react-timing-hooks';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  ReactEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { EventBus } from '@app/lib/events';
 import { memo } from '@app/lib/react';
 import { styleWithVars } from '@app/lib/style';
 
 import { Conditional } from '@app/components/general/conditional';
+import VideoProgress from '@app/components/general/video-progress';
 
 import styles from './video.module.css';
 
@@ -67,9 +78,9 @@ export function Video({
   //   setState((prevState) => ({ ...prevState, playing: false }));
   // };
 
-  const handlePause = () => {
+  const handlePause = useCallback(() => {
     setPlaying(false);
-  };
+  }, [setPlaying]);
 
   const handleEnded = () => {
     setPlaying(false);
@@ -87,20 +98,22 @@ export function Video({
     setDuration(player.duration);
   };
 
-  const handleTimeUpdate = () => {
+  const handleTimeUpdate: ReactEventHandler<HTMLVideoElement> = () => {
     const player = playerRef.current;
     if (!player || seeking) return;
     if (!player.duration) return;
+    if (!playing) return;
     setProgress(player.currentTime);
+    setDuration(player.duration);
   };
 
-  const handleSeeking = () => {
-    setSeeking(true);
-  };
+  // const handleSeeking = () => {
+  //   setSeeking(true);
+  // };
 
-  const handleSeeked = () => {
-    setSeeking(false);
-  };
+  // const handleSeeked = () => {
+  //   setSeeking(false);
+  // };
 
   const handleSeek = (t: number) => {
     if (playerRef.current) playerRef.current.currentTime = duration * t;
@@ -151,7 +164,7 @@ export function Video({
       })}
       className={clsx(
         styles.video,
-        playing ? styles.playing : styles.paused,
+        playing ? styles.playing : progress ? styles.paused : styles.stopped,
         interactionTimeout !== undefined || controlsInteracting
           ? styles.interacting
           : null,
@@ -167,7 +180,7 @@ export function Video({
         controls={native}
         width={undefined}
         height={undefined}
-        title={'title'}
+        title={title}
         playing={playing}
         onPause={handlePause}
         onEnded={handleEnded}
@@ -204,9 +217,6 @@ export function Video({
             <Conditional value={poster}>
               {(poster) => poster({ playing })}
             </Conditional>
-            {/* <div className={styles.posterCover}>
-          
-        </div> */}
           </div>
           <button
             className={styles.button}
@@ -216,10 +226,22 @@ export function Video({
           >
             <div className={styles.icon}>
               <PlayIcon className={styles.play} />
-              <PauseIcon className={styles.pause} />
+              {playing && !progress ? (
+                <SpinnerIcon className={styles.spinner} />
+              ) : (
+                <PauseIcon className={styles.pause} />
+              )}
             </div>
             <span>{playing ? 'Pause' : 'Play'}</span>
           </button>
+          <VideoProgress
+            className={styles.progress}
+            progress={progress}
+            duration={duration}
+            onSeek={handleSeek}
+            onMouseEnter={onControlEnter}
+            onMouseLeave={onControlLeave}
+          />
         </>
       )) ||
         null}

@@ -6,7 +6,10 @@ import {
   responsiveImageField,
 } from '@studio/schemas/common/fields/image';
 import { quoteField } from '@studio/schemas/common/fields/quote';
-import { videoField } from '@studio/schemas/common/fields/video';
+import {
+  remoteVideoField,
+  videoField,
+} from '@studio/schemas/common/fields/video';
 
 export const common = defineType({
   name: 'common',
@@ -16,6 +19,7 @@ export const common = defineType({
     imageField({ name: 'decorativeImage', decorative: true }),
     responsiveImageField({ name: 'responsiveImage', caption: true }),
     videoField({ name: 'video', caption: true }),
+    remoteVideoField({ name: 'remoteVideo', caption: true }),
     quoteField({ name: 'quote' }),
     codeField({ name: 'code' }),
   ],

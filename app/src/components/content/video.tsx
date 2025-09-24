@@ -10,7 +10,7 @@ export interface ContentVideoProps
 export function ContentVideo({ video, sizes, ...rest }: ContentVideoProps) {
   return (
     <Captioned {...rest} caption={video.caption}>
-      <SanityVideo video={video} sizes={sizes} native />
+      <SanityVideo video={video} sizes={sizes} />
     </Captioned>
   );
 }

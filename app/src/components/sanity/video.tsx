@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import getYouTubeID from 'get-youtube-id';
 
 import type { CommonSchemaType } from '@app/types/content';
 
@@ -8,10 +7,11 @@ import { SanityImage } from '@app/components/sanity/image';
 
 import styles from './video.module.css';
 
+export type SanityRemoteVideo = CommonSchemaType<'remoteVideo'>;
 export type SanityVideo = CommonSchemaType<'video'>;
 
 export interface SanityVideoProps extends Omit<VideoProps, 'src' | 'title'> {
-  video: SanityVideo;
+  video: SanityVideo | SanityRemoteVideo;
   alt?: string;
   sizes?: string;
 }
@@ -23,16 +23,19 @@ export function SanityVideo({
   sizes,
   ...rest
 }: SanityVideoProps) {
-  const id = getYouTubeID(video.url || '');
+  const src =
+    'file' in video
+      ? video.file?.asset?.url
+      : 'url' in video
+        ? video.url
+        : undefined;
 
-  if (!id) return null;
-
-  const embedUrl = `https://www.youtube.com/embed/${id}`;
+  if (!src) return;
 
   return (
     <Video
       {...rest}
-      src={embedUrl}
+      src={src}
       title={alt || video.alt}
       poster={({ playing }) =>
         (video.poster && (
@@ -44,6 +47,7 @@ export function SanityVideo({
         )) ||
         null
       }
+      native={'url' in video}
     />
   );
 }

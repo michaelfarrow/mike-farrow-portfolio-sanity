@@ -8,7 +8,10 @@ import {
 } from '@studio/schemas/common/fields/image';
 import { markdownObjectField } from '@studio/schemas/common/fields/markdown-object';
 import { quoteField } from '@studio/schemas/common/fields/quote';
-import { videoField } from '@studio/schemas/common/fields/video';
+import {
+  remoteVideoField,
+  videoField,
+} from '@studio/schemas/common/fields/video';
 import {
   conditionalField,
   conditionalFields,
@@ -80,9 +83,10 @@ export function contentArrayField({
                     caption: true,
                   }),
                 ]),
-                conditionalField(videos, () =>
-                  videoField({ name: 'video', caption: true })
-                )
+                conditionalField(videos, () => [
+                  videoField({ name: 'video' }),
+                  remoteVideoField({ name: 'remoteVideo', caption: true }),
+                ])
               ),
             ],
           }),

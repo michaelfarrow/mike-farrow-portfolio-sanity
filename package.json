@@ -7,6 +7,7 @@
     "prebuild:all": "pnpm run generate:schema && pnpm run generate:types",
     "prebuild:app": "pnpm run prebuild:all && pnpm run generate:app-assets",
     "prebuild:studio": "pnpm run prebuild:all && pnpm run generate:studio-assets",
+    "build": "pnpm run \"/^build:.*/\"",
     "build:app": "pnpm run --filter app build",
     "build:studio": "pnpm run --filter studio build",
     "predev:app": "cp .env.local app/.env.local && pnpm run generate:app-assets",

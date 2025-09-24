@@ -7,15 +7,12 @@
   overflow: hidden;
 }
 
-.interacting {
-}
-
 .inner {
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -0.25%;
+  left: -0.25%;
+  width: 100.5%;
+  height: 100.5%;
   border: 0;
 }
 
@@ -58,17 +55,14 @@
   bottom: -2px;
   border: 0;
   background-color: black;
-  /* transition-property: opacity; */
-  transition-duration: 0s;
-  transition-delay: 0s;
+  transition-property: opacity;
+  transition-duration: 250ms;
   overflow: hidden;
   pointer-events: none;
 }
 
 .playing .poster {
   opacity: 0;
-  transition-delay: 0.5s;
-  transition-duration: 0.5s;
 }
 
 .icon {
@@ -84,7 +78,8 @@
 }
 
 .play,
-.pause {
+.pause,
+.spinner {
   position: absolute;
   top: 0;
   left: 0;
@@ -92,6 +87,19 @@
   height: 100%;
   transition-property: transform, opacity;
   transition-duration: 250ms;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.spinner {
+  animation: spin 0.5s infinite linear;
 }
 
 .pause {
@@ -122,4 +130,19 @@
 .paused .button:hover .play,
 .stopped .button:hover .play {
   transform: scale(1.2);
+}
+
+.progress {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  opacity: 0;
+}
+
+.paused.interacting .progress,
+.playing.interacting .progress {
+  opacity: 1;
 }

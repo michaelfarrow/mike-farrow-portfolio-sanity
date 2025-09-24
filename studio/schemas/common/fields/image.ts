@@ -37,7 +37,9 @@ export function imageField({
       hotspot: true,
       metadata: ['blurhash', 'lqip', 'palette', 'image', 'exif', 'location'],
     },
-    validation: required ? (rule) => rule.required() : undefined,
+    validation: required
+      ? (rule) => rule.required().assetRequired()
+      : undefined,
     fields:
       (!decorative && [
         defineField({

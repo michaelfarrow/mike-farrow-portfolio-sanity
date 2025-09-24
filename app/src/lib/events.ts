@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 type AddRemoveEventListener = (
   type: string,
   listener: (event: CustomEvent) => void

@@ -73,6 +73,8 @@ const ProjectContentItem = memo(
                     <ContentImage image={block} sizes={sizes} />
                   ),
                 video: (block) =>
+                  cc(block.file, <ContentVideo video={block} sizes={sizes} />),
+                remoteVideo: (block) =>
                   cc(block.url, <ContentVideo video={block} sizes={sizes} />),
                 quote: (block) =>
                   cc(
