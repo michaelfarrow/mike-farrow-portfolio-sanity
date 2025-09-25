@@ -12,10 +12,10 @@ export const config = {
   },
   url: {
     app: production
-      ? 'https://mike-farrow-portfolio-app.vercel.app'
+      ? 'https://mike-farrow-portfolio-sanity-app.vercel.app'
       : 'http://127.0.0.1:3000',
     studio: production
-      ? 'https://mike-farrow-portfolio-studio.vercel.app'
+      ? 'https://mike-farrow-portfolio-sanity-studio.vercel.app'
       : 'http://127.0.0.1:3333',
   },
   google: {
