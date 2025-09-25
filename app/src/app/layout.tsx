@@ -8,7 +8,7 @@ import { config } from '@common/config';
 
 import { SanityLive } from '@app/lib/sanity/live';
 
-import { DisableDraftMode } from '@app/components/DisableDraftMode';
+import { DisableDraftMode } from '@app/components/disable-draft-mode';
 
 import '@app/styles/code.css';
 import '@app/styles/globals.css';
@@ -32,12 +32,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const draftModeEnabled = (await draftMode()).isEnabled;
+
   return (
-    <html lang='en'>
+    <html lang='en' className={(draftModeEnabled && 'draft-mode') || undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         <SanityLive />
-        {(await draftMode()).isEnabled && (
+        {draftModeEnabled && (
           <>
             <DisableDraftMode />
             <VisualEditing />

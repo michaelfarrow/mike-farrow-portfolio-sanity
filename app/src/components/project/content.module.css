@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   gap: 20px;
 }
 
@@ -16,6 +16,17 @@
 
   .gridItemFull {
     grid-column: 1 / -1;
+  }
+}
+
+.gridItemContent {
+  position: sticky;
+  top: 0;
+}
+
+:global(.draft-mode) {
+  .gridItemContent {
+    position: static;
   }
 }
 
