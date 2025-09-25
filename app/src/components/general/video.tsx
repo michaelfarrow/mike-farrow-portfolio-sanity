@@ -56,7 +56,7 @@ export function Video({
   const playerRef = useRef<HTMLVideoElement | null>(null);
 
   const [playing, setPlaying] = useState(false);
-  const [seeking, setSeeking] = useState(false);
+  // const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState(0);
   const [progress, setProgress] = useState(0);
   const [controlsInteracting, setControlsInteracting] = useState(false);
@@ -100,7 +100,8 @@ export function Video({
 
   const handleTimeUpdate: ReactEventHandler<HTMLVideoElement> = () => {
     const player = playerRef.current;
-    if (!player || seeking) return;
+    if (!player) return;
+    // if (seeking) return;
     if (!player.duration) return;
     if (!playing) return;
     setProgress(player.currentTime);
@@ -194,21 +195,21 @@ export function Video({
           vimeo: {
             color: 'ffffff',
           },
-          spotify: {
-            preferVideo: true,
-          },
-          tiktok: {
-            fullscreen_button: true,
-            progress_bar: true,
-            play_button: true,
-            volume_control: true,
-            timestamp: false,
-            music_info: false,
-            description: false,
-            rel: false,
-            native_context_menu: true,
-            closed_caption: false,
-          },
+          // spotify: {
+          //   preferVideo: true,
+          // },
+          // tiktok: {
+          //   fullscreen_button: true,
+          //   progress_bar: true,
+          //   play_button: true,
+          //   volume_control: true,
+          //   timestamp: false,
+          //   music_info: false,
+          //   description: false,
+          //   rel: false,
+          //   native_context_menu: true,
+          //   closed_caption: false,
+          // },
         }}
       />
       {(!native && (

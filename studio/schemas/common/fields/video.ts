@@ -1,5 +1,3 @@
-import getYouTubeID from 'get-youtube-id';
-
 import { ObjectDefinition, defineField } from 'sanity';
 
 import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
@@ -15,6 +13,13 @@ export type VideoFieldDefinition = CustomFieldOptions<
     field?: ReturnType<typeof defineField>;
   }
 >;
+
+const SUPPORTED = {
+  youTube:
+    /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|live\/|v\/)?)([\w-]+)(\S+)?$/,
+  vimeo:
+    /^(?:http|https)?:?\/?\/?(?:www\.)?(?:player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/,
+};
 
 export function videoField({ caption, field, ...rest }: VideoFieldDefinition) {
   return defineField({
@@ -73,12 +78,19 @@ export function remoteVideoField({
       name: 'url',
       type: 'url',
       validation: (rule) =>
-        rule
-          .required()
-          .custom(
-            (value) =>
-              (getYouTubeID(value || '') && true) || 'Invalid YouTube url'
-          ),
+        rule.required().custom((value) => {
+          let valid = false;
+          for (const regex of Object.values(SUPPORTED)) {
+            if (regex.test(value || '')) {
+              valid = true;
+              break;
+            }
+          }
+          return (
+            valid ||
+            `Invalid video url, must be one of: ${Object.keys(SUPPORTED).join(', ')}`
+          );
+        }),
     }),
   });
 }

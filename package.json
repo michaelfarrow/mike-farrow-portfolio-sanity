@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "change-case": "^5.4.4",
-    "get-youtube-id": "^1.0.1",
     "lodash": "^4.17.21",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
