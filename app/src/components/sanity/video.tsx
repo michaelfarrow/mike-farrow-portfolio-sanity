@@ -16,13 +16,7 @@ export interface SanityVideoProps extends Omit<VideoProps, 'src' | 'title'> {
   sizes?: string;
 }
 
-export function SanityVideo({
-  video,
-  className,
-  alt,
-  sizes,
-  ...rest
-}: SanityVideoProps) {
+export function SanityVideo({ video, alt, sizes, ...rest }: SanityVideoProps) {
   const src =
     'file' in video
       ? video.file?.asset?.url
@@ -39,11 +33,13 @@ export function SanityVideo({
       title={alt || video.alt}
       poster={({ playing }) =>
         (video.poster && (
-          <SanityImage
-            className={clsx(styles.poster, playing && styles.posterPlaying)}
-            image={video.poster}
-            sizes={sizes}
-          />
+          <div className={clsx(styles.poster, playing && styles.posterPlaying)}>
+            <SanityImage
+              className={styles.posterImage}
+              image={video.poster}
+              sizes={sizes}
+            />
+          </div>
         )) ||
         null
       }
