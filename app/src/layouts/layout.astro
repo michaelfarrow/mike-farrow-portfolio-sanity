@@ -26,6 +26,21 @@ const { title, description } = Astro.props;
     <meta name='generator' content={Astro.generator} />
     {(description && <meta name='description' content={description} />) || null}
     <title>{(title && `${title} - `) || ''}{config.title}</title>
+    <script is:inline>
+      function isMaybePreviewIframe() {
+        return window.self !== window.top;
+      }
+      function isMaybePreviewWindow() {
+        return Boolean(window.opener);
+      }
+      function isMaybePresentation() {
+        return isMaybePreviewIframe() || isMaybePreviewWindow();
+      }
+
+      if (isMaybePresentation()) {
+        document.documentElement.classList.add('sanity--presentation');
+      }
+    </script>
   </head>
   <body>
     <slot />
@@ -38,5 +53,6 @@ const { title, description } = Astro.props;
   body {
     margin: 0;
     padding: 2em;
+    background-color: white;
   }
 </style>

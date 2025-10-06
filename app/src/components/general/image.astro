@@ -59,7 +59,12 @@ const {
     opacity: 0;
   }
 
-  img[data-loaded] {
+  :global(html.sanity--presentation) img {
+    transition-duration: 0s;
+  }
+
+  img[data-loaded],
+  :global(html.sanity--presentation) img {
     opacity: 1;
   }
 </style>
