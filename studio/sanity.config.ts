@@ -31,12 +31,14 @@ export default defineConfig({
           Object.values(resolve).map((item) => item.document)
         ),
       },
-      previewUrl: {
-        origin: config.url.app,
-        previewMode: {
-          enable: `${config.url.app}/api/draft-mode/enable`,
-        },
-      },
+      previewUrl: config.url.app,
+      // previewUrl: {
+      //   origin: config.url.app,
+      //   previewMode: {
+      //     enable: `${config.url.app}/api/draft-mode/enable`,
+      //   },
+      // },
+      allowOrigins: ['http://localhost:*'],
     }),
     googleMapsInput({
       apiKey: config.google.maps.apiKey || '',

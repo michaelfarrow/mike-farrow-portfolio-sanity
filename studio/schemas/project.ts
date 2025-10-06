@@ -127,6 +127,18 @@ export const project = defineType({
       initialValue: false,
     }),
   ],
+  orderings: [
+    {
+      title: 'Latest',
+      name: 'fromDateDesc',
+      by: [{ field: 'date', direction: 'desc' }],
+    },
+    {
+      title: 'Oldest',
+      name: 'fromDateAsc',
+      by: [{ field: 'date', direction: 'asc' }],
+    },
+  ],
   preview: {
     select: {
       title: 'name',

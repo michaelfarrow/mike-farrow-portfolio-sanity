@@ -1,0 +1,69 @@
+---
+import _ from 'lodash';
+
+import { getImgProps } from '@app/lib/image';
+import Image, {
+  QUALITY_DEFAULT,
+  type Props as ImageProps,
+} from '@app/components/general/image.astro';
+import type { AstroReactElement } from '@app/types';
+
+const { orderBy } = _;
+
+export type PictureImage = {
+  src: string;
+  width: number;
+  height: number;
+  max?: number;
+};
+
+export interface Props
+  extends AstroReactElement<'picture'>,
+    Pick<ImageProps, 'alt' | 'loader'> {
+  images: PictureImage[];
+  sizes?: string;
+}
+
+const { class: className, images, alt, loader, sizes, ...rest } = Astro.props;
+
+const defaultImage =
+  images.find(({ max }) => !max) || images[images.length - 1];
+
+const imageProps = (image: PictureImage) => {
+  const { src, width, height } = image;
+
+  return getImgProps({
+    quality: QUALITY_DEFAULT,
+    loader,
+    sizes,
+    src,
+    width,
+    height,
+  });
+};
+
+//backupSrc
+---
+
+{
+  images.length === 1 ? (
+    <Image {...images[0]} class={className} {alt} {loader} {sizes} />
+  ) : (
+    <picture class:list={[className]} {...rest}>
+      {orderBy(images, 'max', 'asc').map(({ max, ...image }) => {
+        const { srcSet, width, height } = imageProps(image);
+
+        return (
+          <source
+            {sizes}
+            {width}
+            {height}
+            media={max ? `(max-width: ${max - 1}px)` : undefined}
+            srcset={srcSet}
+          />
+        );
+      })}
+      <Image {...defaultImage} {alt} {loader} {sizes} />
+    </picture>
+  )
+}

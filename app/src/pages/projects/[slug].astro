@@ -1,0 +1,119 @@
+---
+import { stegaClean } from '@sanity/client/stega';
+
+import Layout from '@app/layouts/layout.astro';
+
+import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
+import { getProject, getProjects } from '@app/lib/sanity/queries/project';
+import { default as ContentCode } from '@app/components/content/code.astro';
+import { default as ContentImage } from '@app/components/content/image.astro';
+import { default as ContentMarkdown } from '@app/components/content/markdown.astro';
+import { default as ContentPicture } from '@app/components/content/picture.astro';
+import { default as ContentQuote } from '@app/components/content/quote.astro';
+import { default as ContentVideo } from '@app/components/content/video.astro';
+import Wrapper from '@app/components/content/wrapper.astro';
+import Markdown from '@app/components/general/markdown.astro';
+import ProjectAttributions from '@app/components/project/attributions.astro';
+import Array from '@app/components/sanity/array.astro';
+import SanityImage from '@app/components/sanity/image.astro';
+
+export const getStaticPaths = async () => {
+  return (await getProjects()).data.map((project) => ({
+    params: { slug: project.slug?.current },
+  }));
+};
+
+const { slug } = Astro.params;
+if (!slug) throw Error('404');
+
+const { data: project } = await getProject({ slug });
+if (!project) throw Error('404');
+
+const { name, description, descriptionLong, thumbnail } = project;
+---
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50px;
+  }
+
+  .gridItem,
+  .gridItemFull {
+    grid-column: 1 / -1;
+  }
+
+  @media screen and (min-width: $tablet) {
+    .gridItem {
+      grid-column: auto;
+    }
+
+    .gridItemFull {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .gridItemContent {
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+  }
+</style>
+<Layout title={project.name} description={project.description}>
+  <div style={{ maxWidth: 1500, margin: 'auto' }}>
+    <div>
+      <a href='/'>← Back to projects</a>
+    </div>
+    <div>{name ? <h1>{name}</h1> : null}</div>
+    <div>{description ? <p>{description}</p> : null}</div>
+    <div>
+      {descriptionLong ? <Markdown value={descriptionLong} /> : null}
+    </div>
+    {
+      thumbnail ? (
+        <SanityImage
+          image={thumbnail}
+          sizes='(max-width: 200px) 100vw, 200px'
+          ratio={1}
+          style={{
+            maxWidth: '200px',
+          }}
+        />
+      ) : null
+    }
+    <div class='grid'>
+      {
+        project.content?.map((item) => {
+          const full = stegaClean(item.span) === 'full';
+          const sizes = breakpointSizes(
+            { max: 'mobile', size: '100vw' },
+            { max: 'desktop', size: full ? '100vw' : '50vw' },
+            BREAKPOINT_MAX / (full ? 1 : 2)
+          );
+
+          return (
+            <div class:list={['gridItem', full && 'gridItemFull']}>
+              <div class='gridItemContent'>
+                <Array
+                  value={item.content || []}
+                  components={{
+                    image: ContentImage,
+                    responsiveImage: ContentPicture,
+                    md: ContentMarkdown,
+                    code: ContentCode,
+                    quote: ContentQuote,
+                    remoteVideo: ContentVideo,
+                  }}
+                  props={{ sizes }}
+                  wrapper={Wrapper}
+                />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+    <ProjectAttributions project={project} />
+  </div>
+</Layout>

@@ -1,0 +1,94 @@
+---
+import imageUrlBuilder from '@sanity/image-url';
+import { sanityClient } from 'sanity:client';
+
+import { sanityImageCroppedSize } from '@app/lib/image';
+import GeneralImage, {
+  type ImageLoader,
+  type Props as ImageProps,
+} from '@app/components/general/image.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityImage = CommonSchemaType<'image'>;
+
+export interface Props
+  extends Omit<ImageProps, 'loader' | 'src' | 'width' | 'height'> {
+  image: SanityImage;
+  alt?: string;
+  ratio?: number;
+}
+
+const { image, alt, ratio, ...rest } = Astro.props;
+
+export function getSanityImageProps(
+  image: SanityImage,
+  options?: { ratio?: number }
+) {
+  const builder = imageUrlBuilder(sanityClient);
+
+  const url = image.asset?.url;
+
+  const croppedSize = sanityImageCroppedSize(image);
+
+  const ratioSize = options?.ratio
+    ? {
+        width: 1000,
+        height: Math.round(1000 * options.ratio),
+      }
+    : null;
+
+  if (url && croppedSize.width && croppedSize.height) {
+    return {
+      src: ratioSize
+        ? builder
+            .image(image)
+            .width(ratioSize.width)
+            .height(ratioSize.height)
+            .url()
+        : builder.image(image).url(),
+      width: ratioSize ? ratioSize?.width : croppedSize.width,
+      height: ratioSize ? ratioSize.height : croppedSize.height,
+    };
+  }
+
+  return null;
+}
+
+export const sanityImageLoader: ImageLoader = ({ src, width, quality }) => {
+  const url = new URL(src);
+  // url.searchParams.set('auto', 'format');
+  url.searchParams.set('fm', 'webp');
+  if (!url.searchParams.has('fit')) {
+    url.searchParams.set('fit', url.searchParams.has('h') ? 'min' : 'max');
+  }
+  if (url.searchParams.has('h') && url.searchParams.has('w')) {
+    const originalHeight = parseInt(url.searchParams.get('h')!, 10);
+    const originalWidth = parseInt(url.searchParams.get('w')!, 10);
+    url.searchParams.set(
+      'h',
+      Math.round((originalHeight / originalWidth) * width).toString()
+    );
+  }
+  url.searchParams.set('w', width.toString());
+  if (quality) {
+    url.searchParams.set('q', quality.toString());
+  }
+  return url.href;
+};
+
+const imageProps = getSanityImageProps(image, { ratio });
+---
+
+{
+  (imageProps && (
+    <GeneralImage
+      {...rest}
+      alt={alt || image.alt}
+      loader={sanityImageLoader}
+      src={imageProps.src}
+      width={imageProps.width}
+      height={imageProps.height}
+    />
+  )) ||
+    null
+}

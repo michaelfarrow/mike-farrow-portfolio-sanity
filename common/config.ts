@@ -9,11 +9,12 @@ export const config = {
     projectId: 'h0q0fht4',
     dataset: process.env.SANITY_STUDIO_DATASET || 'development',
     apiVersion: 'vX',
+    useCdn: true,
   },
   url: {
     app: production
-      ? 'https://mike-farrow-portfolio-sanity-app.vercel.app'
-      : 'http://127.0.0.1:3000',
+      ? 'https://mike-farrow-portfolio-app.vercel.app'
+      : 'http://127.0.0.1:4321',
     studio: production
       ? 'https://mike-farrow-portfolio-sanity-studio.vercel.app'
       : 'http://127.0.0.1:3333',

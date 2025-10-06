@@ -1,0 +1,26 @@
+---
+import { resolve } from '@studio/presentation/resolve';
+
+import Layout from '@app/layouts/layout.astro';
+
+import { hasSlug } from '@app/lib/document';
+import { getProjects } from '@app/lib/sanity/queries/project';
+
+const { data: projects } = await getProjects();
+---
+
+<Layout>
+  <h1>Astro</h1>
+  <ul>
+    {
+      projects.map((project) => {
+        if (!hasSlug(project)) return null;
+        return (
+          <li>
+            <a href={resolve.project(project)}>{project.name}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Layout>

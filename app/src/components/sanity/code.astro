@@ -1,0 +1,33 @@
+---
+import GeneralCode, {
+  type Props as GeneralCodeProps,
+} from '@app/components/general/code.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityCode = CommonSchemaType<'code'>;
+
+export interface Props extends Omit<GeneralCodeProps, 'code' | 'language'> {
+  code: SanityCode;
+}
+
+const MAP: Record<string, string> = {
+  javascript: 'jsx',
+  typescript: 'tsx',
+  'shell-session': 'shellsession',
+};
+
+const {
+  code: { language = 'typescript', code, highlightedLines },
+} = Astro.props;
+---
+
+<GeneralCode
+  code={code
+    ?.split(/\r?\n/)
+    .map(
+      (line, i) =>
+        `${line}${highlightedLines?.includes(i + 1) ? ' // [!code highlight]' : ''}`
+    )
+    .join('\n')}
+  language={(language && MAP[language]) || language}
+/>

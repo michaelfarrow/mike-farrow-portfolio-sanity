@@ -1,4 +1,4 @@
-import { ObjectDefinition, defineField } from 'sanity';
+import { defineField, ObjectDefinition } from 'sanity';
 
 import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { imageField } from '@studio/schemas/common/fields/image';
@@ -14,7 +14,7 @@ export type VideoFieldDefinition = CustomFieldOptions<
   }
 >;
 
-const SUPPORTED = {
+export const SUPPORTED_VIDEO_TYPES = {
   youTube:
     /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|live\/|v\/)?)([\w-]+)(\S+)?$/,
   vimeo:
@@ -45,6 +45,12 @@ export function videoField({ caption, field, ...rest }: VideoFieldDefinition) {
         title: 'Alternative Text',
         type: 'string',
         validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'ratio',
+        type: 'string',
+        description:
+          'If unspecified, ratio will be either the ratio of the poster image if supplied, or 16:9',
       }),
       ...(caption
         ? [
@@ -80,7 +86,7 @@ export function remoteVideoField({
       validation: (rule) =>
         rule.required().custom((value) => {
           let valid = false;
-          for (const regex of Object.values(SUPPORTED)) {
+          for (const regex of Object.values(SUPPORTED_VIDEO_TYPES)) {
             if (regex.test(value || '')) {
               valid = true;
               break;
@@ -88,7 +94,7 @@ export function remoteVideoField({
           }
           return (
             valid ||
-            `Invalid video url, must be one of: ${Object.keys(SUPPORTED).join(', ')}`
+            `Invalid video url, must be one of: ${Object.keys(SUPPORTED_VIDEO_TYPES).join(', ')}`
           );
         }),
     }),

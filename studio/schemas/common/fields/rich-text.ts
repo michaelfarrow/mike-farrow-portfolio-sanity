@@ -1,4 +1,4 @@
-import { ObjectDefinition, defineArrayMember, defineField } from 'sanity';
+import { defineArrayMember, defineField, ObjectDefinition } from 'sanity';
 
 import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { IconDocumentText } from '@studio/schemas/common/icons';

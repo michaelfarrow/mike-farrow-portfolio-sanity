@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+import { hasSlot } from '@app/lib/astro';
+
+export interface Props extends HTMLAttributes<'div'> {
+  cite?: string;
+}
+
+const { cite, ...rest } = Astro.props;
+---
+
+<div {...rest}>
+  <blockquote {cite}>
+    <slot />
+  </blockquote>
+  {
+    (await hasSlot(Astro.slots, 'attribution')) && (
+      <p>
+        —
+        <slot name='attribution' />
+      </p>
+    )
+  }
+</div>

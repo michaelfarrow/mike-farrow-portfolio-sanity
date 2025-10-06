@@ -1,0 +1,12 @@
+---
+import { default as GeneralMarkdown } from '@app/components/general/markdown.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityMarkdown = CommonSchemaType<'markdown'>;
+
+export interface Props extends SanityMarkdown {}
+
+const props = Astro.props;
+---
+
+<GeneralMarkdown value={props.content} />

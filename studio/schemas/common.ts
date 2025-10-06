@@ -5,6 +5,7 @@ import {
   imageField,
   responsiveImageField,
 } from '@studio/schemas/common/fields/image';
+import { markdownObjectField } from '@studio/schemas/common/fields/markdown-object';
 import { quoteField } from '@studio/schemas/common/fields/quote';
 import {
   remoteVideoField,
@@ -20,6 +21,7 @@ export const common = defineType({
     responsiveImageField({ name: 'responsiveImage', caption: true }),
     videoField({ name: 'video', caption: true }),
     remoteVideoField({ name: 'remoteVideo', caption: true }),
+    markdownObjectField({ name: 'markdown' }),
     quoteField({ name: 'quote' }),
     codeField({ name: 'code' }),
   ],

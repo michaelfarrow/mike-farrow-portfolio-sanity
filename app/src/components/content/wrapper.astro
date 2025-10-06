@@ -1,0 +1,16 @@
+---
+import type { ArrayItem } from '@app/components/sanity/array.astro';
+
+export interface Props {
+  item: ArrayItem;
+}
+---
+
+<style>
+  .item:not(:last-child) {
+    margin-bottom: 50px;
+  }
+</style>
+<div class='item'>
+  <slot />
+</div>

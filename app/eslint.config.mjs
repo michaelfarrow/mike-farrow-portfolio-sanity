@@ -1,16 +1,30 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, URL } from 'node:url';
+import { includeIgnoreFile } from '@eslint/compat';
+import eslint from '@eslint/js';
+import pluginAstro from 'eslint-plugin-astro';
+import pluginReact from 'eslint-plugin-react';
+import { defineConfig } from 'eslint/config';
+import tsEslint from 'typescript-eslint';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url));
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
-];
+const eslintConfig = defineConfig(
+  includeIgnoreFile(gitignorePath, 'Imported .gitignore patterns'),
+  { ...eslint.configs.recommended, files: ['**/*.ts', '**/*.tsx'] },
+  pluginAstro.configs.recommended,
+  tsEslint.configs.strict.map((config) => ({
+    ...config,
+    files: ['**/*.ts', '**/*.tsx'],
+  })),
+  { ...pluginReact.configs.flat.recommended, files: ['**/*.tsx'] },
+  pluginReact.configs.flat['jsx-runtime'],
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  }
+);
 
 export default eslintConfig;

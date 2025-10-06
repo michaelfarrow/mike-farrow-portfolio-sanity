@@ -3,7 +3,7 @@ import { unflatten } from 'flat';
 import { mapKeys } from 'lodash';
 import { titleCase } from 'title-case';
 
-import { PathResolver, resolve as pathResolve } from './resolve';
+import { resolve as pathResolve, PathResolver } from './resolve';
 
 export type TypeResolver = ReturnType<ReturnType<typeof createTypeResolver>>;
 

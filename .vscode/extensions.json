@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "sanity-io.vscode-sanity",
-    "vunguyentuan.vscode-postcss"
+    "vunguyentuan.vscode-postcss",
+    "astro-build.astro-vscode"
   ]
 }

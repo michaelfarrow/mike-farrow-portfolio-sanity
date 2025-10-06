@@ -1,0 +1,39 @@
+---
+import type { Merge } from 'type-fest';
+
+export type ArrayItem = {
+  _key: string;
+  _type: string;
+};
+
+export type Props<T extends ArrayItem = ArrayItem, P extends object = {}> = {
+  value: T[];
+  props?: P;
+  components: {
+    [K in T['_type']]?: (props: Merge<Extract<T, { _type: K }>, P>) => any;
+  };
+  wrapper?: (props: { item: T }) => any;
+};
+
+const { value, components = {}, wrapper, props = {} } = Astro.props as Props;
+
+const _components: Record<string, ((props: any) => any) | undefined> =
+  components;
+---
+
+{
+  value.map((item) => {
+    const Component = _components[item._type];
+    const Wrapper = wrapper;
+
+    if (Component) {
+      const rendered = <Component {...(item as any)} {...props} />;
+
+      if (Wrapper) {
+        return <Wrapper item={item}>{rendered}</Wrapper>;
+      }
+
+      return rendered;
+    }
+  })
+}

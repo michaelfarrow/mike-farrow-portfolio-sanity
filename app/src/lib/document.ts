@@ -1,4 +1,4 @@
-import { SetRequiredDeep } from 'type-fest';
+import type { SetRequiredDeep } from 'type-fest';
 
 export type DocumentWithSlug = { slug?: { current?: string } };
 

@@ -7,6 +7,9 @@
   "[markdown]": {
     "editor.formatOnSave": false
   },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "emmet.includeLanguages": {
     "postcss": "css"
   },
@@ -16,6 +19,7 @@
     "javascript",
     "javascriptreact",
     "html",
+    "astro",
     "typescript",
     "typescriptreact"
   ]

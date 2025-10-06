@@ -1,0 +1,32 @@
+---
+import Markdown from '@app/components/general/markdown.astro';
+import MaybeLink from '@app/components/general/maybe-link.astro';
+import GeneralQuote, {
+  type Props as QuoteProps,
+} from '@app/components/general/quote.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityQuote = CommonSchemaType<'quote'>;
+
+export interface Props extends Omit<QuoteProps, 'cite' | ''> {
+  quote: SanityQuote;
+}
+
+const {
+  quote: { quote, attribution, link },
+  ...rest
+} = Astro.props;
+---
+
+<GeneralQuote cite={link?.url} {...rest}>
+  <Markdown value={quote} />
+  {
+    attribution && (
+      <Fragment slot='attribution'>
+        <MaybeLink {...link} target='_blank'>
+          {attribution}
+        </MaybeLink>
+      </Fragment>
+    )
+  }
+</GeneralQuote>

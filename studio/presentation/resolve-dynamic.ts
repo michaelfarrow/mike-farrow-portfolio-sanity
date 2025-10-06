@@ -1,12 +1,13 @@
-import { resolveDynamicQuery } from '@studio/lib/queries/resolve-dynamic';
-import { TypeResolver } from '@studio/presentation/resolve-studio';
-import { SchemaType } from '@studio/schemas';
 import { uniqBy } from 'lodash';
-import { Observable, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { type ClientReturn } from '@sanity/client';
 import { getDraftId } from 'sanity';
 import { DocumentLocationResolver } from 'sanity/presentation';
+
+import { resolveDynamicQuery } from '@studio/lib/queries/resolve-dynamic';
+import { TypeResolver } from '@studio/presentation/resolve-studio';
+import { SchemaType } from '@studio/schemas';
 
 export function resolveDynamic(
   resolve: { [key in SchemaType]?: TypeResolver },
@@ -29,7 +30,7 @@ export function resolveDynamic(
     const doc$ = context.documentStore.listenQuery(
       query,
       { id, draftId: getDraftId(id), deep: Boolean(typeConfig?.deep) },
-      { perspective: 'previewDrafts' }
+      { perspective: 'drafts' }
     ) as Observable<ClientReturn<typeof resolveDynamicQuery>>;
 
     return doc$.pipe(

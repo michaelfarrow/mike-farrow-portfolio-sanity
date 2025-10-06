@@ -1,0 +1,14 @@
+---
+import SanityImage from '@app/components/sanity/image.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityImageType = CommonSchemaType<'image'>;
+
+export interface Props extends SanityImageType {
+  sizes?: string;
+}
+
+const { sizes = '100vw', ...rest } = Astro.props;
+---
+
+<SanityImage image={rest} {sizes} />

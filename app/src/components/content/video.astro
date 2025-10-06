@@ -1,0 +1,26 @@
+---
+import { decodeStegaValue } from '@app/lib/sanity/stega';
+import SanityVideo from '@app/components/sanity/video.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityVideoType = CommonSchemaType<'remoteVideo'>;
+
+export interface Props extends SanityVideoType {
+  sizes?: string;
+}
+
+const { sizes = '100vw', ratio, ...rest } = Astro.props;
+---
+
+<style>
+  .content-video {
+    border-radius: 20px;
+  }
+</style>
+
+<SanityVideo
+  class='content-video'
+  data-sanity={decodeStegaValue(rest.alt)}
+  video={rest}
+  {sizes}
+/>

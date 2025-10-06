@@ -1,0 +1,13 @@
+---
+import { decodeStegaValue } from '@app/lib/sanity/stega';
+import SanityCode from '@app/components/sanity/code.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityCodeType = CommonSchemaType<'code'>;
+
+export interface Props extends SanityCodeType {}
+
+const { ...rest } = Astro.props;
+---
+
+<SanityCode data-sanity={decodeStegaValue(rest.code)} code={rest} />

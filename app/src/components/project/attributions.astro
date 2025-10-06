@@ -1,0 +1,33 @@
+---
+import type { getProject } from '@app/lib/sanity/queries/project';
+import MaybeLink from '@app/components/general/maybe-link.astro';
+
+export interface Props {
+  project: NonNullable<Awaited<ReturnType<typeof getProject>>['data']>;
+}
+
+const { project } = Astro.props;
+---
+
+{
+  project.attributions?.map((attribution) => {
+    return (
+      <div>
+        <h3>{attribution.name}</h3>
+        <ul>
+          {attribution.contacts?.map((contact) => {
+            return (
+              <li>
+                <MaybeLink
+                  {...contact.link}
+                  name={contact.name}
+                  target='_blank'
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  })
+}

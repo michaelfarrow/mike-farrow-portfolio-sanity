@@ -1,0 +1,38 @@
+---
+import {
+  transformerNotationDiff,
+  transformerNotationHighlight,
+} from '@shikijs/transformers';
+import type { CodeLanguage } from 'astro';
+import { Code as AstroCode } from 'astro:components';
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'div'> {
+  code?: string;
+  language?: string;
+}
+
+const { class: className, code, language, ...rest } = Astro.props;
+---
+
+<style>
+  .code :global(.line.highlighted) {
+    background: rgba(249, 233, 148, 075);
+  }
+</style>
+{
+  (code && (
+    <div class:list={['code', className]} {...rest}>
+      <AstroCode
+        {code}
+        lang={language as CodeLanguage}
+        theme='github-light'
+        transformers={[
+          transformerNotationHighlight(),
+          transformerNotationDiff(),
+        ]}
+      />
+    </div>
+  )) ||
+    null
+}

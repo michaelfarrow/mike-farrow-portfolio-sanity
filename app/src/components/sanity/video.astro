@@ -1,0 +1,57 @@
+---
+import { stegaClean } from '@sanity/client/stega';
+
+import { sanityImageCroppedSize } from '@app/lib/image';
+import GeneralVideo, {
+  type Props as VideoProps,
+} from '@app/components/general/video.astro';
+import Image from '@app/components/sanity/image.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityVideo = CommonSchemaType<'remoteVideo'>;
+
+export interface Props extends Omit<VideoProps, 'url' | 'ratio'> {
+  video: SanityVideo;
+  sizes?: string;
+}
+
+const {
+  video: { url, alt, ratio, poster },
+  sizes,
+  ...rest
+} = Astro.props;
+
+const croppedSize = poster && sanityImageCroppedSize(poster);
+
+const parsedRatio = ratio?.match(/(\d+)\s*[/:]\s*(\d+)/);
+const finalRatio = parsedRatio
+  ? Number(parsedRatio[1]) / Number(parsedRatio[2])
+  : croppedSize?.width && croppedSize.height
+    ? croppedSize.width / croppedSize.height
+    : undefined;
+---
+
+<style>
+  .poster-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+{
+  url && (
+    <GeneralVideo
+      url={url}
+      ratio={finalRatio}
+      title={stegaClean(alt)}
+      {...rest}
+    >
+      {poster && (
+        <Image decorative class='poster-image' image={poster} {sizes} />
+      )}
+    </GeneralVideo>
+  )
+}

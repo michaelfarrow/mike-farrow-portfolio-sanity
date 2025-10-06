@@ -1,0 +1,12 @@
+---
+import SanityQuote from '@app/components/sanity/quote.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityQuoteType = CommonSchemaType<'quote'>;
+
+export interface Props extends SanityQuoteType {}
+
+const { ...rest } = Astro.props;
+---
+
+<SanityQuote quote={rest} />

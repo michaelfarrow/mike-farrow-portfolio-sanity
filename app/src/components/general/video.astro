@@ -1,0 +1,198 @@
+---
+import { Vimeo, YouTube } from 'astro-embed';
+import type { HTMLAttributes } from 'astro/types';
+import IconPlay from 'phosphor-astro/Play.astro';
+
+import { SUPPORTED_VIDEO_TYPES } from '@studio/schemas/common/fields/video';
+
+import { hasSlot } from '@app/lib/astro';
+
+function playerParams(params: Record<string, number | string | boolean>) {
+  return Object.entries(params)
+    .map(
+      ([key, val]) =>
+        `${key}=${typeof val === 'boolean' ? Number(val) : String(val)}`
+    )
+    .join('&');
+}
+
+const SUPPORTED: Record<
+  keyof typeof SUPPORTED_VIDEO_TYPES,
+  {
+    regex: RegExp;
+    component: (_props: {
+      id: string;
+      class?: string;
+      params?: string;
+      playlabel?: string;
+    }) => any;
+    params?: string;
+  }
+> = {
+  youTube: {
+    regex: SUPPORTED_VIDEO_TYPES.youTube,
+    component: YouTube,
+    params: playerParams({ color: 'white' }),
+  },
+  vimeo: {
+    regex: SUPPORTED_VIDEO_TYPES.vimeo,
+    component: Vimeo,
+    params: playerParams({ badge: false, color: 'ffffff' }),
+  },
+};
+
+export interface Props extends HTMLAttributes<'div'> {
+  url: string;
+  ratio?: number;
+  title?: string;
+}
+
+const { class: className, url, title, ratio = 16 / 9, ...rest } = Astro.props;
+
+const type = Object.values(SUPPORTED).find((type) => type.regex.test(url));
+const Component = type && type.component;
+const params = type && type.params;
+
+const hasPoster = await hasSlot(Astro.slots, 'default');
+---
+
+<style define:vars={{ ratio }}>
+  .video {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .player {
+    max-width: none;
+  }
+
+  .player::after {
+    padding-bottom: calc(100% / var(--ratio));
+  }
+
+  .player :global(.ltv-playbtn),
+  .player :global(.lty-playbtn) {
+    opacity: 0;
+  }
+
+  .player.ltv-activated,
+  .player.lyt-activated,
+  .player.player--has-poster {
+    background-image: none !important;
+  }
+
+  .poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-color: black;
+    transition-property: opacity;
+    transition-duration: 250ms;
+    overflow: 1;
+  }
+
+  .player.ltv-activated ~ .poster,
+  .player.lyt-activated ~ .poster {
+    opacity: 0;
+  }
+
+  .poster-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    pointer-events: none;
+    transition-property: opacity;
+    transition-duration: 250ms;
+  }
+
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 15px 15px 60px 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .icon-wrapper {
+    transition-property: transform;
+    transition-duration: 250ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .player.ltv-activated ~ .button,
+  .player.lyt-activated ~ .button {
+    opacity: 0;
+  }
+
+  .video:hover .icon-wrapper {
+    transform: scale(1.2);
+  }
+
+  .player.ltv-activated ~ .icon-wrapper,
+  .player.lyt-activated ~ .icon-wrapper {
+    transform: scale(2);
+  }
+
+  .button-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 70px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 1));
+  }
+</style>
+
+{
+  Component && (
+    <div class:list={['video', className]} {...rest} title=''>
+      <Component
+        class:list={['player', hasPoster && 'player--has-poster']}
+        id={url}
+        {params}
+      />
+      {hasPoster && (
+        <div class='poster'>
+          <div class='poster-inner'>
+            <slot />
+          </div>
+        </div>
+      )}
+      <div class='button'>
+        {title && <p class='title'>{title}</p>}
+        <div class='icon-wrapper'>
+          <IconPlay class='button-icon' />
+        </div>
+      </div>
+    </div>
+  )
+}

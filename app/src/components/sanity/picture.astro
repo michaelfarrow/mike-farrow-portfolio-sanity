@@ -1,0 +1,53 @@
+---
+import { stegaClean } from '@sanity/client/stega';
+
+import { BREAKPOINTS_MAX } from '@app/lib/responsive';
+import GeneralPicture, {
+  type Props as PictureProps,
+} from '@app/components/general/picture.astro';
+import {
+  getSanityImageProps,
+  sanityImageLoader,
+} from '@app/components/sanity/image.astro';
+import type { CommonSchemaType } from '@app/types/content';
+
+export type SanityPicture = CommonSchemaType<'responsiveImage'>;
+
+export interface Props extends Omit<PictureProps, 'loader' | 'images'> {
+  picture: SanityPicture;
+}
+
+const { picture, ...rest } = Astro.props;
+
+const images = [
+  (picture.main && { source: picture.main, breakpoint: undefined }) ||
+    undefined,
+  ...(picture?.alternative || [])
+    .filter((altImage) => !!altImage)
+    .map((altImage) => ({
+      source: altImage.image,
+      breakpoint: altImage.breakpoint,
+    })),
+]
+  .filter((image) => !!image)
+  .map((image) => {
+    const { source, breakpoint } = image;
+
+    if (source) {
+      const props = getSanityImageProps(source);
+
+      return (
+        (props && {
+          ...props,
+          max: breakpoint && BREAKPOINTS_MAX[stegaClean(breakpoint)],
+        }) ||
+        null
+      );
+    }
+
+    return null;
+  })
+  .filter((image) => !!image);
+---
+
+<GeneralPicture loader={sanityImageLoader} {...rest} images={images} />

@@ -18,7 +18,7 @@
     "dev:app": "concurrently --names 'main' \"pnpm run --filter app dev\"",
     "dev:studio": "concurrently --names 'main,watch schemas' \"pnpm run --filter studio dev\" \"pnpm run watch:schemas\"",
     "dev": "concurrently --prefix ' {name} ' -c 'bgGreen.bold,bgRed.bold,bgMagenta.bold' --names 'studio,app   ,common' \"pnpm run dev:studio\" \"pnpm run dev:app\" \"pnpm run dev:common\"",
-    "generate:app-assets": "cp -r common/static/favicon* app/src/app",
+    "generate:app-assets": "cp -r common/static/favicon* app/public",
     "generate:studio-assets": "cp -r common/static/* studio/static",
     "generate:schema": "pnpm run --filter studio generate:schema",
     "generate:types": "pnpm run --filter studio generate:types",
@@ -32,7 +32,7 @@
     "title-case": "^4.3.2"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@ianvs/prettier-plugin-sort-imports": "github:ianvs/prettier-plugin-sort-imports",
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.3.1",
     "@types/react": "^19.1.12",

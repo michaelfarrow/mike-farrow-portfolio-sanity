@@ -1,1 +1,0 @@
-import '@common/sanity.d';
