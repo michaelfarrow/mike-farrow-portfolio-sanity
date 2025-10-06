@@ -13,7 +13,7 @@ export const config = {
   },
   url: {
     app: production
-      ? 'https://mike-farrow-portfolio-app.vercel.app'
+      ? 'https://mike-farrow-portfolio-sanity-astro-preview.vercel.app'
       : 'http://127.0.0.1:4321',
     studio: production
       ? 'https://mike-farrow-portfolio-sanity-studio.vercel.app'
