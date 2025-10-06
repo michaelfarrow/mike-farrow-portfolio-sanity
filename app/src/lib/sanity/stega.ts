@@ -1,9 +1,10 @@
 // import { stegaClean } from '@sanity/client/stega';
-import { vercelStegaDecode } from '@vercel/stega';
 
 // import { mapValues } from 'lodash';
 
-import { config } from '@common/config';
+import { vercelStegaDecode } from '@vercel/stega';
+
+import { config } from '@app/config';
 
 export { stegaClean } from '@sanity/client/stega';
 

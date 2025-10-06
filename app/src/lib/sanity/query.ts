@@ -1,11 +1,7 @@
-import type { SanityClient } from '@sanity/client';
 import { type QueryParams } from 'sanity';
-import { sanityClient } from 'sanity:client';
 
+import { sanityClient } from '@app/lib/sanity/client';
 import type { NullsToUndefined } from '@app/types';
-
-/** Get our types working, there may be a better way of doing this... */
-const client = sanityClient as unknown as SanityClient;
 
 const visualEditingEnabled =
   import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
@@ -41,7 +37,7 @@ export async function fetch<T extends Query>(query: T, params?: Params) {
 
   const perspective = visualEditingEnabled ? 'drafts' : 'published';
 
-  const { result, resultSourceMap } = await client.fetch(query, params, {
+  const { result, resultSourceMap } = await sanityClient.fetch(query, params, {
     filterResponse: false,
     perspective,
     useCdn: perspective === 'published',

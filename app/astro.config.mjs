@@ -5,8 +5,8 @@ import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 
-import { config } from '../common/config';
 import { plugins as postCssPlugins } from './postcss.config.mjs';
+import { config } from './src/config';
 
 const { PUBLIC_SANITY_VISUAL_EDITING_ENABLED } = loadEnv(
   process.env.NODE_ENV || 'development',
@@ -14,20 +14,14 @@ const { PUBLIC_SANITY_VISUAL_EDITING_ENABLED } = loadEnv(
   ''
 );
 
-const visualEditingEnabled = PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
+const visualEditingEnabled =
+  process.env.NODE_ENV === 'production' &&
+  PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
 
 export default defineConfig({
   output: visualEditingEnabled ? 'server' : 'static',
   adapter: visualEditingEnabled ? astro() : undefined,
-  integrations: [
-    sanity({
-      ...config.studio,
-      stega: {
-        studioUrl: config.url.studio,
-      },
-    }),
-    react(),
-  ],
+  integrations: [sanity(config.studio), react()],
   vite: {
     css: {
       transformer: 'postcss',

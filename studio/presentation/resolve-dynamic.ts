@@ -52,7 +52,10 @@ export function resolveDynamic(
           })
           .filter((item) => !!item);
 
-        const locations = [...mainLocations, ...references];
+        const locations = uniqBy(
+          [...mainLocations, ...references],
+          (location) => location.href
+        );
 
         if (!locations.length) return null;
 
