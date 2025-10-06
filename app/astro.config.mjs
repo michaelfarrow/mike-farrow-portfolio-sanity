@@ -1,6 +1,6 @@
 // @ts-check
 import react from '@astrojs/react';
-import vercelServerless from '@astrojs/vercel/serverless';
+import astro from '@astrojs/vercel';
 import sanity from '@sanity/astro';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
@@ -18,7 +18,7 @@ const visualEditingEnabled = SANITY_VISUAL_EDITING_ENABLED === 'true';
 
 export default defineConfig({
   output: visualEditingEnabled ? 'server' : 'static',
-  adapter: visualEditingEnabled ? vercelServerless({}) : undefined,
+  adapter: visualEditingEnabled ? astro({ isr: true }) : undefined,
   integrations: [
     sanity({
       ...config.studio,
