@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && npm run lint && PUBLIC_SANITY_VISUAL_EDITING_ENABLED=false astro build",
+    "build": "astro check && npm run lint && SANITY_VISUAL_EDITING_ENABLED=false astro build",
     "lint": "eslint",
     "preview": "astro preview",
     "astro": "astro"
