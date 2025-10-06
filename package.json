@@ -23,5 +23,9 @@
     "generate:schema": "pnpm run --filter studio generate:schema",
     "generate:types": "pnpm run --filter studio generate:types",
     "generate:favicons": "pnpm create favicon common/assets/logo.svg common/static -- --overwrite --no-warn"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.1"
   }
 }
