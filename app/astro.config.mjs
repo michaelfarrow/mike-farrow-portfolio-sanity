@@ -18,7 +18,7 @@ const visualEditingEnabled = SANITY_VISUAL_EDITING_ENABLED === 'true';
 
 export default defineConfig({
   output: visualEditingEnabled ? 'server' : 'static',
-  adapter: visualEditingEnabled ? astro({ isr: true }) : undefined,
+  adapter: visualEditingEnabled ? astro() : undefined,
   integrations: [
     sanity({
       ...config.studio,
