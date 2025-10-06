@@ -21,16 +21,30 @@
     "@sanity/code-input": "^6.0.1",
     "@sanity/google-maps-input": "^4.2.0",
     "@sanity/vision": "4.7.0",
+    "change-case": "^5.4.4",
     "easymde": "^2.20.0",
     "flat": "^6.0.1",
+    "lodash": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "sanity": "^4.8.0",
     "sanity-plugin-markdown": "^6.0.0",
-    "styled-components": "^6.1.19"
+    "styled-components": "^6.1.19",
+    "title-case": "^4.3.2"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/lodash": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:",
+    "typescript-plugin-css-modules": "catalog:",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
