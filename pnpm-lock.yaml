@@ -59,12 +59,15 @@ importers:
       '@astrojs/react':
         specifier: ^4.3.1
         version: 4.4.0(@types/node@24.7.0)(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(jiti@2.6.1)(less@4.4.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)(stylus@0.62.0)(yaml@2.8.1)
+      '@astrojs/vercel':
+        specifier: ^8.2.8
+        version: 8.2.8(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(react@19.2.0)(rollup@4.52.4)
       '@astropub/md':
         specifier: ^1.0.0
         version: 1.0.0(@astrojs/markdown-remark@6.3.7)
       '@sanity/astro':
         specifier: ^3.2.10
-        version: 3.2.10(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.12.0)(@sanity/types@4.10.2(@types/react@19.2.0))(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(react-dom@19.2.0(react@19.2.0))(react-is@19.2.0)(react@19.2.0)(sanity@4.10.2(@emotion/is-prop-valid@1.2.2)(@portabletext/sanity-bridge@1.1.13(@sanity/schema@4.10.2(@types/react@19.2.0))(@sanity/types@4.10.2(@types/react@19.2.0)))(@types/node@24.7.0)(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(immer@10.1.3)(jiti@2.6.1)(less@4.4.1)(postcss@8.5.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)
+        version: 3.2.10(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.12.0)(@sanity/types@4.10.2(@types/react@19.2.0))(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(react-dom@19.2.0(react@19.2.0))(react-is@19.2.0)(react@19.2.0)(sanity@4.10.2(@emotion/is-prop-valid@1.2.2)(@portabletext/sanity-bridge@1.1.13(@sanity/schema@4.10.2(@types/react@19.2.0))(@sanity/types@4.10.2(@types/react@19.2.0)))(@types/node@24.7.0)(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(immer@10.1.3)(jiti@2.6.1)(less@4.4.1)(postcss@8.5.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)
       '@sanity/client':
         specifier: ^7.11.2
         version: 7.12.0(debug@4.4.3)
@@ -76,10 +79,10 @@ importers:
         version: 3.13.0
       astro:
         specifier: ^5.13.9
-        version: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+        version: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
       astro-embed:
         specifier: ^0.9.1
-        version: 0.9.1(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+        version: 0.9.1(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -371,6 +374,11 @@ packages:
   '@astrojs/telemetry@3.3.0':
     resolution: {integrity: sha512-UFBgfeldP06qu6khs/yY+q1cDAaArM2/7AEIqQ9Cuvf7B1hNLq0xDrZkct+QoIGyjq56y8IaE2I3CTvG99mlhQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
+
+  '@astrojs/vercel@8.2.8':
+    resolution: {integrity: sha512-Bp5kHSoHoMHNWy0CIWNOfcSsOaU3fL31BbGGb6Hu05oeRWE+s24z5zS641DJwPndat7Wag+x1d2PNbraQeag+w==}
+    peerDependencies:
+      astro: ^5.0.0
 
   '@astrojs/yaml2ts@0.2.2':
     resolution: {integrity: sha512-GOfvSr5Nqy2z5XiwqTouBBpy5FyI6DEe+/g/Mk5am9SjILN1S5fOEvYK0GuWHg98yS/dobP4m8qyqw/URW35fQ==}
@@ -1717,6 +1725,11 @@ packages:
   '@lezer/php@1.0.5':
     resolution: {integrity: sha512-W7asp9DhM6q0W6DYNwIkLSKOvxlXRrif+UXBMxzsJUuqmhE7oVU+gS3THO4S/Puh7Xzgm858UNaFi6dxTP8dJA==}
 
+  '@mapbox/node-pre-gyp@2.0.0':
+    resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   '@marijn/find-cluster-break@1.0.2':
     resolution: {integrity: sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==}
 
@@ -2709,8 +2722,55 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
+  '@vercel/analytics@1.5.0':
+    resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
+    peerDependencies:
+      '@remix-run/react': ^2
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+
   '@vercel/edge@1.2.2':
     resolution: {integrity: sha512-1+y+f6rk0Yc9ss9bRDgz/gdpLimwoRteKHhrcgHvEpjbP1nyT3ByqEMWm2BTcpIO5UtDmIFXc8zdq4LR190PDA==}
+
+  '@vercel/functions@2.2.13':
+    resolution: {integrity: sha512-14ArBSIIcOBx9nrEgaJb4Bw+en1gl6eSoJWh8qjifLl5G3E4dRXCFOT8HP+w66vb9Wqyd1lAQBrmRhRwOj9X9A==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@aws-sdk/credential-provider-web-identity': '*'
+    peerDependenciesMeta:
+      '@aws-sdk/credential-provider-web-identity':
+        optional: true
+
+  '@vercel/nft@0.30.2':
+    resolution: {integrity: sha512-pquXF3XZFg/T3TBor08rUhIGgOhdSilbn7WQLVP/aVSSO+25Rs4H/m3nxNDQ2x3znX7Z3yYjryN8xaLwypcwQg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  '@vercel/oidc@2.0.2':
+    resolution: {integrity: sha512-59PBFx3T+k5hLTEWa3ggiMpGRz1OVvl9eN8SUai+A43IsqiOuAe7qPBf+cray/Fj6mkgnxm/D7IAtjc8zSHi7g==}
+    engines: {node: '>= 18'}
+
+  '@vercel/routing-utils@5.1.1':
+    resolution: {integrity: sha512-EyOik06V2fPXAbKY087BM7DMOQOJK+9mubwwox1TkDi21tMeJcMYwsXwepm6ZmyZ5u0j1TpJW172fP4MbzaCcg==}
 
   '@vercel/stega@0.1.2':
     resolution: {integrity: sha512-P7mafQXjkrsoyTRppnt0N21udKS9wUmLXHRyP9saLXLHw32j/FgUJ3FscSWgvSqRs4cj7wKZtwqJEvWJ2jbGmA==}
@@ -2756,9 +2816,18 @@ packages:
       xstate:
         optional: true
 
+  abbrev@3.0.1:
+    resolution: {integrity: sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg==}
+    engines: {node: ^18.17.0 || >=20.5.0}
+
   abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
     engines: {node: '>=6.5'}
+
+  acorn-import-attributes@1.9.5:
+    resolution: {integrity: sha512-n02Vykv5uA3eHGM/Z2dQrcD56kL8TyDb2p1+0P83PClMnC/nc+anbQRhIOWnSq4Ke/KvDPrY3C9hDtC/A3eHnQ==}
+    peerDependencies:
+      acorn: ^8
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2930,6 +2999,9 @@ packages:
   async-mutex@0.5.0:
     resolution: {integrity: sha512-1A94B18jkJ3DYq284ohPxoXbfTA5HsQ7/Mf4DEhcyLx3Bz27Rh59iScbB6EPiP+B+joue6YCxcMXSbFC1tZKwA==}
 
+  async-sema@3.1.1:
+    resolution: {integrity: sha512-tLRNUXati5MFePdAk8dw7Qt7DpxPB60ofAgn8WRhW6a2rcimZnYBP9oxHiv0OHy+Wz7kPMG+t4LGdt31+4EmGg==}
+
   async@3.2.6:
     resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
 
@@ -3005,6 +3077,9 @@ packages:
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
+
+  bindings@1.5.0:
+    resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
@@ -3279,6 +3354,10 @@ packages:
   configstore@5.0.1:
     resolution: {integrity: sha512-aMKprgk5YhBNyH25hj8wGt2+D52Sw1DRRIzqBwLp2Ya9mFmY8KPvvtvmna8SxVR9JMZ4kzMD68N22vlaRpkeFA==}
     engines: {node: '>=8'}
+
+  consola@3.4.2:
+    resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
+    engines: {node: ^14.18.0 || >=16.10.0}
 
   console-table-printer@2.14.6:
     resolution: {integrity: sha512-MCBl5HNVaFuuHW6FGbL/4fB7N/ormCy+tQ+sxTrF6QtSbSNETvPuOVbkJBhzDgYhvjWGrTma4eYJa37ZuoQsPw==}
@@ -5183,6 +5262,10 @@ packages:
       encoding:
         optional: true
 
+  node-gyp-build@4.8.4:
+    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
+    hasBin: true
+
   node-html-parser@6.1.13:
     resolution: {integrity: sha512-qIsTMOY4C/dAa5Q5vsobRpOOvPfC4pB61UVW2uSwZNUp0QU/jCekTal1vMmbO0DgdHeLUJpv/ARmDqErVxA3Sg==}
 
@@ -5191,6 +5274,11 @@ packages:
 
   node-releases@2.0.23:
     resolution: {integrity: sha512-cCmFDMSm26S6tQSDpBCg/NR8NENrVPhAJSf+XbxBG4rPFaaonlEoE9wHQmun+cls499TQGSb7ZyPBRlzgKfpeg==}
+
+  nopt@8.1.0:
+    resolution: {integrity: sha512-ieGu42u/Qsa4TFktmaKEwM6MQH0pOWnaB3htzh0JRtx84+Mebc0cbZYN5bC+6WTZ4+77xrL9Pn5m7CV6VIkV7A==}
+    engines: {node: ^18.17.0 || >=20.5.0}
+    hasBin: true
 
   normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
@@ -5423,6 +5511,9 @@ packages:
 
   path-sort@0.1.0:
     resolution: {integrity: sha512-70MSq7edKtbODYKkqXYzSMQxtYMjDgP3K6D15Fu4KUvpyBPlxDWPvv8JI9GjNDF2K5baPHFEtlg818dOmf2ifg==}
+
+  path-to-regexp@6.1.0:
+    resolution: {integrity: sha512-h9DqehX3zZZDCEm+xbfU0ZmwCGFCAAraPJWMXJ4+v32NjZJilVg3k1TcKsRgIb8IQ/izZSaydDc1OhJCZvs2Dw==}
 
   path-to-regexp@6.3.0:
     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
@@ -7414,50 +7505,50 @@ snapshots:
 
   '@asamuzakjp/nwsapi@2.3.9': {}
 
-  '@astro-community/astro-embed-baseline-status@0.2.0(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astro-community/astro-embed-baseline-status@0.2.0(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
 
-  '@astro-community/astro-embed-bluesky@0.1.3(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astro-community/astro-embed-bluesky@0.1.3(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@atproto/api': 0.13.35
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
       ts-pattern: 5.8.0
 
-  '@astro-community/astro-embed-integration@0.8.1(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astro-community/astro-embed-integration@0.8.1(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
-      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
       '@astro-community/astro-embed-link-preview': 0.2.2
-      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      '@astro-community/astro-embed-youtube': 0.5.7(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-youtube': 0.5.7(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
       '@types/unist': 2.0.11
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
-      astro-auto-import: 0.4.5(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro-auto-import: 0.4.5(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
       unist-util-select: 4.0.3
 
   '@astro-community/astro-embed-link-preview@0.2.2':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
 
-  '@astro-community/astro-embed-twitter@0.5.8(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astro-community/astro-embed-twitter@0.5.8(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
 
   '@astro-community/astro-embed-utils@0.1.3':
     dependencies:
       linkedom: 0.14.26
 
-  '@astro-community/astro-embed-vimeo@0.3.10(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astro-community/astro-embed-vimeo@0.3.10(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.3
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
 
-  '@astro-community/astro-embed-youtube@0.5.7(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astro-community/astro-embed-youtube@0.5.7(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
       lite-youtube-embed: 0.3.3
 
   '@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3)':
@@ -7565,6 +7656,29 @@ snapshots:
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
+
+  '@astrojs/vercel@8.2.8(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(react@19.2.0)(rollup@4.52.4)':
+    dependencies:
+      '@astrojs/internal-helpers': 0.7.3
+      '@vercel/analytics': 1.5.0(react@19.2.0)
+      '@vercel/functions': 2.2.13
+      '@vercel/nft': 0.30.2(rollup@4.52.4)
+      '@vercel/routing-utils': 5.1.1
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      esbuild: 0.25.10
+      tinyglobby: 0.2.15
+    transitivePeerDependencies:
+      - '@aws-sdk/credential-provider-web-identity'
+      - '@remix-run/react'
+      - '@sveltejs/kit'
+      - encoding
+      - next
+      - react
+      - rollup
+      - supports-color
+      - svelte
+      - vue
+      - vue-router
 
   '@astrojs/yaml2ts@0.2.2':
     dependencies:
@@ -9069,6 +9183,19 @@ snapshots:
       '@lezer/highlight': 1.2.1
       '@lezer/lr': 1.4.2
 
+  '@mapbox/node-pre-gyp@2.0.0':
+    dependencies:
+      consola: 3.4.2
+      detect-libc: 2.1.2
+      https-proxy-agent: 7.0.6
+      node-fetch: 2.7.0
+      nopt: 8.1.0
+      semver: 7.7.2
+      tar: 7.5.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
   '@marijn/find-cluster-break@1.0.2': {}
 
   '@mux/mux-data-google-ima@0.2.8':
@@ -9432,11 +9559,11 @@ snapshots:
 
   '@sanity/asset-utils@2.3.0': {}
 
-  '@sanity/astro@3.2.10(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.12.0)(@sanity/types@4.10.2(@types/react@19.2.0))(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(react-dom@19.2.0(react@19.2.0))(react-is@19.2.0)(react@19.2.0)(sanity@4.10.2(@emotion/is-prop-valid@1.2.2)(@portabletext/sanity-bridge@1.1.13(@sanity/schema@4.10.2(@types/react@19.2.0))(@sanity/types@4.10.2(@types/react@19.2.0)))(@types/node@24.7.0)(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(immer@10.1.3)(jiti@2.6.1)(less@4.4.1)(postcss@8.5.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)':
+  '@sanity/astro@3.2.10(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.12.0)(@sanity/types@4.10.2(@types/react@19.2.0))(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(react-dom@19.2.0(react@19.2.0))(react-is@19.2.0)(react@19.2.0)(sanity@4.10.2(@emotion/is-prop-valid@1.2.2)(@portabletext/sanity-bridge@1.1.13(@sanity/schema@4.10.2(@types/react@19.2.0))(@sanity/types@4.10.2(@types/react@19.2.0)))(@types/node@24.7.0)(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(immer@10.1.3)(jiti@2.6.1)(less@4.4.1)(postcss@8.5.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)':
     dependencies:
       '@sanity/client': 7.12.0(debug@4.4.3)
       '@sanity/visual-editing': 2.15.4(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.12.0)(@sanity/types@4.10.2(@types/react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react-is@19.2.0)(react@19.2.0)(sanity@4.10.2(@emotion/is-prop-valid@1.2.2)(@portabletext/sanity-bridge@1.1.13(@sanity/schema@4.10.2(@types/react@19.2.0))(@sanity/types@4.10.2(@types/react@19.2.0)))(@types/node@24.7.0)(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(immer@10.1.3)(jiti@2.6.1)(less@4.4.1)(postcss@8.5.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))(styled-components@6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
       history: 5.3.0
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -10437,7 +10564,46 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
+  '@vercel/analytics@1.5.0(react@19.2.0)':
+    optionalDependencies:
+      react: 19.2.0
+
   '@vercel/edge@1.2.2': {}
+
+  '@vercel/functions@2.2.13':
+    dependencies:
+      '@vercel/oidc': 2.0.2
+
+  '@vercel/nft@0.30.2(rollup@4.52.4)':
+    dependencies:
+      '@mapbox/node-pre-gyp': 2.0.0
+      '@rollup/pluginutils': 5.3.0(rollup@4.52.4)
+      acorn: 8.15.0
+      acorn-import-attributes: 1.9.5(acorn@8.15.0)
+      async-sema: 3.1.1
+      bindings: 1.5.0
+      estree-walker: 2.0.2
+      glob: 10.4.5
+      graceful-fs: 4.2.11
+      node-gyp-build: 4.8.4
+      picomatch: 4.0.3
+      resolve-from: 5.0.0
+    transitivePeerDependencies:
+      - encoding
+      - rollup
+      - supports-color
+
+  '@vercel/oidc@2.0.2':
+    dependencies:
+      '@types/ms': 2.1.0
+      ms: 2.1.3
+
+  '@vercel/routing-utils@5.1.1':
+    dependencies:
+      path-to-regexp: 6.1.0
+      path-to-regexp-updated: path-to-regexp@6.3.0
+    optionalDependencies:
+      ajv: 6.12.6
 
   '@vercel/stega@0.1.2': {}
 
@@ -10525,9 +10691,15 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
+  abbrev@3.0.1: {}
+
   abort-controller@3.0.0:
     dependencies:
       event-target-shim: 5.0.1
+
+  acorn-import-attributes@1.9.5(acorn@8.15.0):
+    dependencies:
+      acorn: 8.15.0
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
@@ -10689,22 +10861,22 @@ snapshots:
 
   ast-types-flow@0.0.8: {}
 
-  astro-auto-import@0.4.5(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)):
+  astro-auto-import@0.4.5(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
       '@types/node': 18.19.129
       acorn: 8.15.0
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
 
-  astro-embed@0.9.1(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)):
+  astro-embed@0.9.1(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
-      '@astro-community/astro-embed-baseline-status': 0.2.0(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      '@astro-community/astro-embed-integration': 0.8.1(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-baseline-status': 0.2.0(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-bluesky': 0.1.3(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-integration': 0.8.1(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
       '@astro-community/astro-embed-link-preview': 0.2.2
-      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      '@astro-community/astro-embed-youtube': 0.5.7(astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
-      astro: 5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
+      '@astro-community/astro-embed-twitter': 0.5.8(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-vimeo': 0.3.10(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      '@astro-community/astro-embed-youtube': 0.5.7(astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1))
+      astro: 5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1)
 
   astro-eslint-parser@1.2.2:
     dependencies:
@@ -10723,7 +10895,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.14.1(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.14.1(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(less@4.4.1)(rollup@4.52.4)(sass@1.93.2)(stylus@0.62.0)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.3
@@ -10777,7 +10949,7 @@ snapshots:
       ultrahtml: 1.6.0
       unifont: 0.5.2
       unist-util-visit: 5.0.0
-      unstorage: 1.17.1
+      unstorage: 1.17.1(@vercel/functions@2.2.13)
       vfile: 6.0.3
       vite: 6.3.6(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(sass@1.93.2)(stylus@0.62.0)(yaml@2.8.1)
       vitefu: 1.1.1(vite@6.3.6(@types/node@24.7.0)(jiti@2.6.1)(less@4.4.1)(sass@1.93.2)(stylus@0.62.0)(yaml@2.8.1))
@@ -10835,6 +11007,8 @@ snapshots:
   async-mutex@0.5.0:
     dependencies:
       tslib: 2.8.1
+
+  async-sema@3.1.1: {}
 
   async@3.2.6: {}
 
@@ -10897,6 +11071,10 @@ snapshots:
       require-from-string: 2.0.2
 
   binary-extensions@2.3.0: {}
+
+  bindings@1.5.0:
+    dependencies:
+      file-uri-to-path: 1.0.0
 
   bl@4.1.0:
     dependencies:
@@ -11185,6 +11363,8 @@ snapshots:
       write-file-atomic: 3.0.3
       xdg-basedir: 4.0.0
 
+  consola@3.4.2: {}
+
   console-table-printer@2.14.6:
     dependencies:
       simple-wcswidth: 1.1.2
@@ -11389,8 +11569,7 @@ snapshots:
   detect-libc@1.0.3:
     optional: true
 
-  detect-libc@2.1.2:
-    optional: true
+  detect-libc@2.1.2: {}
 
   detect-node-es@1.1.0: {}
 
@@ -13510,6 +13689,8 @@ snapshots:
     dependencies:
       whatwg-url: 5.0.0
 
+  node-gyp-build@4.8.4: {}
+
   node-html-parser@6.1.13:
     dependencies:
       css-select: 5.2.2
@@ -13518,6 +13699,10 @@ snapshots:
   node-mock-http@1.0.3: {}
 
   node-releases@2.0.23: {}
+
+  nopt@8.1.0:
+    dependencies:
+      abbrev: 3.0.1
 
   normalize-package-data@2.5.0:
     dependencies:
@@ -13790,6 +13975,8 @@ snapshots:
       minipass: 7.1.2
 
   path-sort@0.1.0: {}
+
+  path-to-regexp@6.1.0: {}
 
   path-to-regexp@6.3.0: {}
 
@@ -15438,7 +15625,7 @@ snapshots:
 
   universalify@0.2.0: {}
 
-  unstorage@1.17.1:
+  unstorage@1.17.1(@vercel/functions@2.2.13):
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
@@ -15448,6 +15635,8 @@ snapshots:
       node-fetch-native: 1.6.7
       ofetch: 1.4.1
       ufo: 1.6.1
+    optionalDependencies:
+      '@vercel/functions': 2.2.13
 
   update-browserslist-db@1.1.3(browserslist@4.26.3):
     dependencies:
