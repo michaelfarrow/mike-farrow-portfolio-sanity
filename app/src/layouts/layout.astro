@@ -4,7 +4,7 @@ import { VisualEditing } from '@sanity/astro/visual-editing';
 import { config } from '@common/config';
 
 const visualEditingEnabled =
-  import.meta.env.SANITY_VISUAL_EDITING_ENABLED == 'true';
+  import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == 'true';
 
 export interface Props {
   title?: string;
@@ -44,7 +44,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <slot />
-    <VisualEditing enabled={true} />
+    <VisualEditing enabled={visualEditingEnabled} />
   </body>
 </html>
 

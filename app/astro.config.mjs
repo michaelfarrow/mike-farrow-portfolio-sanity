@@ -8,13 +8,13 @@ import { loadEnv } from 'vite';
 import { config } from '../common/config';
 import { plugins as postCssPlugins } from './postcss.config.mjs';
 
-const { SANITY_VISUAL_EDITING_ENABLED } = loadEnv(
+const { PUBLIC_SANITY_VISUAL_EDITING_ENABLED } = loadEnv(
   process.env.NODE_ENV || 'development',
   process.cwd(),
   ''
 );
 
-const visualEditingEnabled = SANITY_VISUAL_EDITING_ENABLED === 'true';
+const visualEditingEnabled = PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
 
 export default defineConfig({
   output: visualEditingEnabled ? 'server' : 'static',

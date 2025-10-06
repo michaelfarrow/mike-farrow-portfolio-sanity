@@ -8,7 +8,7 @@ import type { NullsToUndefined } from '@app/types';
 const client = sanityClient as unknown as SanityClient;
 
 const visualEditingEnabled =
-  import.meta.env.SANITY_VISUAL_EDITING_ENABLED === 'true';
+  import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED === 'true';
 const token = import.meta.env.SANITY_STUDIO_API_READ_TOKEN;
 
 export type Query = string;
