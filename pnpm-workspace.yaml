@@ -1,4 +1,0 @@
-packages:
-  - 'studio'
-  - 'app'
-neverBuiltDependencies: []
