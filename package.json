@@ -20,6 +20,7 @@
     "dev": "concurrently --prefix ' {name} ' -c 'bgGreen.bold,bgRed.bold,bgMagenta.bold' --names 'studio,app   ,common' \"pnpm run dev:studio\" \"pnpm run dev:app\" \"pnpm run dev:common\"",
     "generate:app-assets": "cp -r common/static/favicon* app/public",
     "generate:studio-assets": "cp -r common/static/* studio/static",
+    "generate:vercel-app": "cp -r app/.vercel .",
     "generate:schema": "pnpm run --filter studio generate:schema",
     "generate:types": "pnpm run --filter studio generate:types",
     "generate:favicons": "pnpm create favicon common/assets/logo.svg common/static -- --overwrite --no-warn"
