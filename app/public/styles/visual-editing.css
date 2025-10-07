@@ -1,0 +1,1243 @@
+.hqlGaz {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.hqlGaz[data-as='ul'],
+.hqlGaz[data-as='ol'] {
+  list-style: none;
+}
+.hqlGaz:not([hidden]) {
+  display: block;
+}
+.fIhVzz {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.fIhVzz[data-as='ul'],
+.fIhVzz[data-as='ol'] {
+  list-style: none;
+}
+.fIhVzz:not([hidden]) {
+  display: block;
+}
+.dmNKSi {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0.5rem;
+}
+.dmNKSi[data-as='ul'],
+.dmNKSi[data-as='ol'] {
+  list-style: none;
+}
+.dmNKSi:not([hidden]) {
+  display: block;
+}
+.dNxawx {
+  position: relative;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    'Liberation Sans',
+    Helvetica,
+    Arial,
+    system-ui,
+    sans-serif;
+  font-weight: 400;
+  padding: 1px 0;
+  margin: 0;
+  font-size: 0.625rem;
+  line-height: calc(15 / 10);
+  letter-spacing: 0;
+  transform: translateY(0.25rem);
+  color: var(--card-fg-color);
+}
+.dNxawx:before {
+  content: '';
+  display: block;
+  height: 0;
+}
+.dNxawx:after {
+  content: '';
+  display: block;
+  height: 0;
+}
+.dNxawx > code,
+.dNxawx > span {
+  display: block;
+}
+.dNxawx:not([hidden]) {
+  display: block;
+}
+.dNxawx:before {
+  margin-top: calc(-0.5rem - 1px);
+}
+.dNxawx:after {
+  margin-bottom: -1px;
+}
+.dNxawx svg:not([data-sanity-icon]) {
+  font-size: calc(11 / 16 * 1rem);
+  margin: -0.125rem;
+}
+.dNxawx [data-sanity-icon] {
+  font-size: calc(17 / 16 * 1rem);
+  margin: -0.3125rem;
+}
+.dNxawx code {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
+  border-radius: 1px;
+  background-color: var(--card-code-bg-color);
+  color: var(--card-code-fg-color);
+}
+.dNxawx a {
+  text-decoration: none;
+  border-radius: 1px;
+  color: var(--card-link-color);
+  outline: none;
+}
+@media (hover: hover) {
+  .dNxawx a:hover {
+    text-decoration: underline;
+  }
+}
+.dNxawx a:focus {
+  box-shadow:
+    0 0 0 1px var(--card-bg-color),
+    0 0 0 3px var(--card-focus-ring-color);
+}
+.dNxawx a:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+.dNxawx strong {
+  font-weight: 700;
+}
+.dNxawx svg {
+  display: inline;
+}
+.dNxawx [data-sanity-icon] {
+  vertical-align: baseline;
+  color: var(--card-icon-color);
+}
+.dNxawx [data-sanity-icon] path {
+  vector-effect: non-scaling-stroke !important;
+}
+.eoFnPm {
+  position: relative;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    'Liberation Sans',
+    Helvetica,
+    Arial,
+    system-ui,
+    sans-serif;
+  font-weight: 500;
+  padding: 1px 0;
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: calc(19 / 13);
+  letter-spacing: 0;
+  transform: translateY(0.3125rem);
+  color: var(--card-fg-color);
+}
+.eoFnPm:before {
+  content: '';
+  display: block;
+  height: 0;
+}
+.eoFnPm:after {
+  content: '';
+  display: block;
+  height: 0;
+}
+.eoFnPm > code,
+.eoFnPm > span {
+  display: block;
+}
+.eoFnPm:not([hidden]) {
+  display: block;
+}
+.eoFnPm:before {
+  margin-top: calc(-0.625rem - 1px);
+}
+.eoFnPm:after {
+  margin-bottom: -1px;
+}
+.eoFnPm svg:not([data-sanity-icon]) {
+  font-size: calc(15 / 16 * 1rem);
+  margin: -0.1875rem;
+}
+.eoFnPm [data-sanity-icon] {
+  font-size: calc(21 / 16 * 1rem);
+  margin: -0.375rem;
+}
+.eoFnPm code {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
+  border-radius: 1px;
+  background-color: var(--card-code-bg-color);
+  color: var(--card-code-fg-color);
+}
+.eoFnPm a {
+  text-decoration: none;
+  border-radius: 1px;
+  color: var(--card-link-color);
+  outline: none;
+}
+@media (hover: hover) {
+  .eoFnPm a:hover {
+    text-decoration: underline;
+  }
+}
+.eoFnPm a:focus {
+  box-shadow:
+    0 0 0 1px var(--card-bg-color),
+    0 0 0 3px var(--card-focus-ring-color);
+}
+.eoFnPm a:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+.eoFnPm strong {
+  font-weight: 700;
+}
+.eoFnPm svg {
+  display: inline;
+}
+.eoFnPm [data-sanity-icon] {
+  vertical-align: baseline;
+  color: var(--card-icon-color);
+}
+.eoFnPm [data-sanity-icon] path {
+  vector-effect: non-scaling-stroke !important;
+}
+.hNYPgQ {
+  min-width: 0;
+  min-height: 0;
+  flex-direction: row;
+}
+.hNYPgQ.hNYPgQ:not([hidden]) {
+  display: flex;
+}
+.cuTUzs {
+  min-width: 0;
+  min-height: 0;
+  gap: 0.25rem;
+  flex-direction: row;
+}
+.cuTUzs.cuTUzs:not([hidden]) {
+  display: flex;
+}
+.jVLtXq {
+  min-width: 0;
+  min-height: 0;
+  gap: 0.5rem;
+  flex-direction: row;
+}
+.jVLtXq.jVLtXq:not([hidden]) {
+  display: flex;
+}
+.dzbAvX {
+  border-radius: 0;
+  color-scheme: light;
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #721fe5;
+  --card-avatar-gray-bg-color: #727892;
+  --card-avatar-gray-fg-color: #ffffff;
+  --card-avatar-blue-bg-color: #556bfc;
+  --card-avatar-blue-fg-color: #ffffff;
+  --card-avatar-purple-bg-color: #8f57ef;
+  --card-avatar-purple-fg-color: #ffffff;
+  --card-avatar-magenta-bg-color: #e72767;
+  --card-avatar-magenta-fg-color: #ffffff;
+  --card-avatar-red-bg-color: #ef4434;
+  --card-avatar-red-fg-color: #ffffff;
+  --card-avatar-orange-bg-color: #fa6412;
+  --card-avatar-orange-fg-color: #ffffff;
+  --card-avatar-yellow-bg-color: #d28a12;
+  --card-avatar-yellow-fg-color: #ffffff;
+  --card-avatar-green-bg-color: #0db97a;
+  --card-avatar-green-fg-color: #ffffff;
+  --card-avatar-cyan-bg-color: #0db8be;
+  --card-avatar-cyan-fg-color: #ffffff;
+  --card-bg-color: #ffffff;
+  --card-border-color: #e3e4e8;
+  --card-badge-default-bg-color: #eeeef1;
+  --card-badge-default-dot-color: #6b718a;
+  --card-badge-default-fg-color: #4c536a;
+  --card-badge-default-icon-color: #6b718a;
+  --card-badge-neutral-bg-color: #eeeef1;
+  --card-badge-neutral-dot-color: #6b718a;
+  --card-badge-neutral-fg-color: #4c536a;
+  --card-badge-neutral-icon-color: #6b718a;
+  --card-badge-primary-bg-color: #e5edff;
+  --card-badge-primary-dot-color: #4d64fc;
+  --card-badge-primary-fg-color: #3b3fe7;
+  --card-badge-primary-icon-color: #4d64fc;
+  --card-badge-suggest-bg-color: #f1ebff;
+  --card-badge-suggest-dot-color: #8751ef;
+  --card-badge-suggest-fg-color: #6c1ee5;
+  --card-badge-suggest-icon-color: #8751ef;
+  --card-badge-positive-bg-color: #d4fcee;
+  --card-badge-positive-dot-color: #0db773;
+  --card-badge-positive-fg-color: #0d784b;
+  --card-badge-positive-icon-color: #0db773;
+  --card-badge-caution-bg-color: #fcf4ca;
+  --card-badge-caution-dot-color: #d08412;
+  --card-badge-caution-fg-color: #945612;
+  --card-badge-caution-icon-color: #d08412;
+  --card-badge-critical-bg-color: #ffe7e5;
+  --card-badge-critical-dot-color: #ef3f30;
+  --card-badge-critical-fg-color: #cc2518;
+  --card-badge-critical-icon-color: #ef3f30;
+  --card-code-bg-color: #f6f6f8;
+  --card-code-fg-color: #515870;
+  --card-fg-color: #252837;
+  --card-icon-color: #515870;
+  --card-kbd-bg-color: #ffffff;
+  --card-kbd-border-color: #e3e4e8;
+  --card-kbd-fg-color: #515870;
+  --card-link-fg-color: #4043e7;
+  --card-muted-bg-color: #f6f6f8;
+  --card-muted-fg-color: #515870;
+  --card-skeleton-color-from: #eeeef1;
+  --card-skeleton-color-to: #f7f7f8;
+  --card-bg2-color: #f6f6f8;
+  --card-link-color: #4043e7;
+  --card-hairline-soft-color: #e3e4e8;
+  --card-hairline-hard-color: #e3e4e8;
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
+}
+.dzbAvX[data-as='button'] {
+  -webkit-font-smoothing: inherit;
+  appearance: none;
+  outline: none;
+  font: inherit;
+  text-align: inherit;
+  border: 0;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: stretch;
+}
+.dzbAvX[data-as='a'] {
+  outline: none;
+  text-decoration: none;
+}
+.dzbAvX[data-as='pre'] {
+  font: inherit;
+}
+.dzbAvX[data-as='button'] {
+  --card-focus-ring-box-shadow: none;
+  cursor: default;
+  box-shadow: var(--card-focus-ring-box-shadow);
+}
+.dzbAvX[data-as='button']:disabled {
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #e3e4e8;
+  --card-avatar-gray-bg-color: #eeeef1;
+  --card-avatar-gray-fg-color: #ffffff;
+  --card-avatar-blue-bg-color: #eeeef1;
+  --card-avatar-blue-fg-color: #ffffff;
+  --card-avatar-purple-bg-color: #eeeef1;
+  --card-avatar-purple-fg-color: #ffffff;
+  --card-avatar-magenta-bg-color: #eeeef1;
+  --card-avatar-magenta-fg-color: #ffffff;
+  --card-avatar-red-bg-color: #eeeef1;
+  --card-avatar-red-fg-color: #ffffff;
+  --card-avatar-orange-bg-color: #eeeef1;
+  --card-avatar-orange-fg-color: #ffffff;
+  --card-avatar-yellow-bg-color: #eeeef1;
+  --card-avatar-yellow-fg-color: #ffffff;
+  --card-avatar-green-bg-color: #eeeef1;
+  --card-avatar-green-fg-color: #ffffff;
+  --card-avatar-cyan-bg-color: #eeeef1;
+  --card-avatar-cyan-fg-color: #ffffff;
+  --card-bg-color: #ffffff;
+  --card-border-color: #eeeef1;
+  --card-badge-default-bg-color: #f6f6f8;
+  --card-badge-default-dot-color: #dbdce2;
+  --card-badge-default-fg-color: #dbdce2;
+  --card-badge-default-icon-color: #dbdce2;
+  --card-badge-neutral-bg-color: #f6f6f8;
+  --card-badge-neutral-dot-color: #dbdce2;
+  --card-badge-neutral-fg-color: #dbdce2;
+  --card-badge-neutral-icon-color: #dbdce2;
+  --card-badge-primary-bg-color: #f6f6f8;
+  --card-badge-primary-dot-color: #dbdce2;
+  --card-badge-primary-fg-color: #dbdce2;
+  --card-badge-primary-icon-color: #dbdce2;
+  --card-badge-suggest-bg-color: #f6f6f8;
+  --card-badge-suggest-dot-color: #dbdce2;
+  --card-badge-suggest-fg-color: #dbdce2;
+  --card-badge-suggest-icon-color: #dbdce2;
+  --card-badge-positive-bg-color: #f6f6f8;
+  --card-badge-positive-dot-color: #dbdce2;
+  --card-badge-positive-fg-color: #dbdce2;
+  --card-badge-positive-icon-color: #dbdce2;
+  --card-badge-caution-bg-color: #f6f6f8;
+  --card-badge-caution-dot-color: #dbdce2;
+  --card-badge-caution-fg-color: #dbdce2;
+  --card-badge-caution-icon-color: #dbdce2;
+  --card-badge-critical-bg-color: #f6f6f8;
+  --card-badge-critical-dot-color: #dbdce2;
+  --card-badge-critical-fg-color: #dbdce2;
+  --card-badge-critical-icon-color: #dbdce2;
+  --card-code-bg-color: #f6f6f8;
+  --card-code-fg-color: #e3e4e8;
+  --card-fg-color: #e3e4e8;
+  --card-icon-color: #e3e4e8;
+  --card-kbd-bg-color: #ffffff;
+  --card-kbd-border-color: #eeeef1;
+  --card-kbd-fg-color: #e3e4e8;
+  --card-link-fg-color: #e3e4e8;
+  --card-muted-bg-color: #fbfbfc;
+  --card-muted-fg-color: #e3e4e8;
+  --card-skeleton-color-from: #eeeef1;
+  --card-skeleton-color-to: #f7f7f8;
+  --card-bg2-color: #fbfbfc;
+  --card-link-color: #e3e4e8;
+  --card-hairline-soft-color: #eeeef1;
+  --card-hairline-hard-color: #eeeef1;
+}
+.dzbAvX[data-as='button']:not(:disabled)[data-pressed] {
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #7a59b1;
+  --card-avatar-gray-bg-color: #6b718a;
+  --card-avatar-gray-fg-color: #ffffff;
+  --card-avatar-blue-bg-color: #5064ee;
+  --card-avatar-blue-fg-color: #ffffff;
+  --card-avatar-purple-bg-color: #8652e2;
+  --card-avatar-purple-fg-color: #ffffff;
+  --card-avatar-magenta-bg-color: #d82562;
+  --card-avatar-magenta-fg-color: #ffffff;
+  --card-avatar-red-bg-color: #df4032;
+  --card-avatar-red-fg-color: #ffffff;
+  --card-avatar-orange-bg-color: #e95e12;
+  --card-avatar-orange-fg-color: #ffffff;
+  --card-avatar-yellow-bg-color: #c48112;
+  --card-avatar-yellow-fg-color: #ffffff;
+  --card-avatar-green-bg-color: #0dad74;
+  --card-avatar-green-fg-color: #ffffff;
+  --card-avatar-cyan-bg-color: #0dacb4;
+  --card-avatar-cyan-fg-color: #ffffff;
+  --card-bg-color: #eeeef1;
+  --card-border-color: #d4d5db;
+  --card-badge-default-bg-color: #dedee4;
+  --card-badge-default-dot-color: #646983;
+  --card-badge-default-fg-color: #484e65;
+  --card-badge-default-icon-color: #646983;
+  --card-badge-neutral-bg-color: #dedee4;
+  --card-badge-neutral-dot-color: #646983;
+  --card-badge-neutral-fg-color: #484e65;
+  --card-badge-neutral-icon-color: #646983;
+  --card-badge-primary-bg-color: #d6ddf1;
+  --card-badge-primary-dot-color: #495eee;
+  --card-badge-primary-fg-color: #373cda;
+  --card-badge-primary-icon-color: #495eee;
+  --card-badge-suggest-bg-color: #e1dbf1;
+  --card-badge-suggest-dot-color: #7f4ce2;
+  --card-badge-suggest-fg-color: #651cd9;
+  --card-badge-suggest-icon-color: #7f4ce2;
+  --card-badge-positive-bg-color: #b8ebdb;
+  --card-badge-positive-dot-color: #0dab6a;
+  --card-badge-positive-fg-color: #0d7046;
+  --card-badge-positive-icon-color: #0dab6a;
+  --card-badge-caution-bg-color: #ebe3b1;
+  --card-badge-caution-dot-color: #c27c12;
+  --card-badge-caution-fg-color: #8b5012;
+  --card-badge-caution-icon-color: #c27c12;
+  --card-badge-critical-bg-color: #eed8d9;
+  --card-badge-critical-dot-color: #df3b2f;
+  --card-badge-critical-fg-color: #bf2418;
+  --card-badge-critical-icon-color: #df3b2f;
+  --card-code-bg-color: #e6e6ea;
+  --card-code-fg-color: #4c536a;
+  --card-fg-color: #353a4d;
+  --card-icon-color: #636776;
+  --card-kbd-bg-color: #eeeef1;
+  --card-kbd-border-color: #d4d5db;
+  --card-kbd-fg-color: #4c536a;
+  --card-link-fg-color: #6361b9;
+  --card-muted-bg-color: #e6e6ea;
+  --card-muted-fg-color: #636776;
+  --card-skeleton-color-from: #dedee4;
+  --card-skeleton-color-to: #e6e6eb;
+  --card-bg2-color: #e6e6ea;
+  --card-link-color: #6361b9;
+  --card-hairline-soft-color: #d4d5db;
+  --card-hairline-hard-color: #d4d5db;
+}
+.dzbAvX[data-as='button']:not(:disabled)[data-selected] {
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #dbcfff;
+  --card-avatar-gray-bg-color: #ffffff;
+  --card-avatar-gray-fg-color: #0d0e12;
+  --card-avatar-blue-bg-color: #ffffff;
+  --card-avatar-blue-fg-color: #0d0e12;
+  --card-avatar-purple-bg-color: #ffffff;
+  --card-avatar-purple-fg-color: #0d0e12;
+  --card-avatar-magenta-bg-color: #ffffff;
+  --card-avatar-magenta-fg-color: #0d0e12;
+  --card-avatar-red-bg-color: #ffffff;
+  --card-avatar-red-fg-color: #0d0e12;
+  --card-avatar-orange-bg-color: #ffffff;
+  --card-avatar-orange-fg-color: #0d0e12;
+  --card-avatar-yellow-bg-color: #ffffff;
+  --card-avatar-yellow-fg-color: #0d0e12;
+  --card-avatar-green-bg-color: #ffffff;
+  --card-avatar-green-fg-color: #0d0e12;
+  --card-avatar-cyan-bg-color: #ffffff;
+  --card-avatar-cyan-fg-color: #0d0e12;
+  --card-bg-color: #556bfc;
+  --card-border-color: #5f76fd;
+  --card-badge-default-bg-color: #5b72fd;
+  --card-badge-default-dot-color: #8ca8ff;
+  --card-badge-default-fg-color: #a1c1ff;
+  --card-badge-default-icon-color: #8ca8ff;
+  --card-badge-neutral-bg-color: #5b72fd;
+  --card-badge-neutral-dot-color: #8ca8ff;
+  --card-badge-neutral-fg-color: #a1c1ff;
+  --card-badge-neutral-icon-color: #8ca8ff;
+  --card-badge-primary-bg-color: #5b72fd;
+  --card-badge-primary-dot-color: #8ca8ff;
+  --card-badge-primary-fg-color: #a1c1ff;
+  --card-badge-primary-icon-color: #8ca8ff;
+  --card-badge-suggest-bg-color: #6471fd;
+  --card-badge-suggest-dot-color: #b79cff;
+  --card-badge-suggest-fg-color: #ccb8ff;
+  --card-badge-suggest-icon-color: #b79cff;
+  --card-badge-positive-bg-color: #5578fc;
+  --card-badge-positive-dot-color: #55d8fd;
+  --card-badge-positive-fg-color: #56f7fe;
+  --card-badge-positive-icon-color: #55d8fd;
+  --card-badge-caution-bg-color: #6772fc;
+  --card-badge-caution-dot-color: #e3bbfc;
+  --card-badge-caution-fg-color: #fbd8fc;
+  --card-badge-caution-icon-color: #e3bbfc;
+  --card-badge-critical-bg-color: #6f70fc;
+  --card-badge-critical-dot-color: #f590fc;
+  --card-badge-critical-fg-color: #faaefd;
+  --card-badge-critical-icon-color: #f590fc;
+  --card-code-bg-color: #5f76fd;
+  --card-code-fg-color: #e6efff;
+  --card-fg-color: #ffffff;
+  --card-icon-color: #bfcbfe;
+  --card-kbd-bg-color: #556bfc;
+  --card-kbd-border-color: #5d79fd;
+  --card-kbd-fg-color: #e6efff;
+  --card-link-fg-color: #e6efff;
+  --card-muted-bg-color: #5a71fc;
+  --card-muted-fg-color: #bfcbfe;
+  --card-skeleton-color-from: #5b72fd;
+  --card-skeleton-color-to: #586ffd;
+  --card-bg2-color: #5a71fc;
+  --card-link-color: #e6efff;
+  --card-hairline-soft-color: #5f76fd;
+  --card-hairline-hard-color: #5f76fd;
+}
+@media (hover: hover) {
+  .dzbAvX[data-as='button']:not(:disabled):not([data-pressed]):not(
+      [data-selected]
+    )[data-hovered],
+  .dzbAvX[data-as='button']:not(:disabled):not([data-pressed]):not(
+      [data-selected]
+    ):hover {
+    --card-backdrop-color: rgba(227, 228, 232, 0.5);
+    --card-focus-ring-color: #556bfc;
+    --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+    --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+    --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+    --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+    --card-accent-fg-color: #7e5cb6;
+    --card-avatar-gray-bg-color: #6e748e;
+    --card-avatar-gray-fg-color: #ffffff;
+    --card-avatar-blue-bg-color: #5268f5;
+    --card-avatar-blue-fg-color: #ffffff;
+    --card-avatar-purple-bg-color: #8a54e8;
+    --card-avatar-purple-fg-color: #ffffff;
+    --card-avatar-magenta-bg-color: #df2664;
+    --card-avatar-magenta-fg-color: #ffffff;
+    --card-avatar-red-bg-color: #e74233;
+    --card-avatar-red-fg-color: #ffffff;
+    --card-avatar-orange-bg-color: #f16112;
+    --card-avatar-orange-fg-color: #ffffff;
+    --card-avatar-yellow-bg-color: #cb8512;
+    --card-avatar-yellow-fg-color: #ffffff;
+    --card-avatar-green-bg-color: #0db377;
+    --card-avatar-green-fg-color: #ffffff;
+    --card-avatar-cyan-bg-color: #0db2b9;
+    --card-avatar-cyan-fg-color: #ffffff;
+    --card-bg-color: #f6f6f8;
+    --card-border-color: #dbdce2;
+    --card-badge-default-bg-color: #e6e6ea;
+    --card-badge-default-dot-color: #686d87;
+    --card-badge-default-fg-color: #4a5068;
+    --card-badge-default-icon-color: #686d87;
+    --card-badge-neutral-bg-color: #e6e6ea;
+    --card-badge-neutral-dot-color: #686d87;
+    --card-badge-neutral-fg-color: #4a5068;
+    --card-badge-neutral-icon-color: #686d87;
+    --card-badge-primary-bg-color: #dde5f8;
+    --card-badge-primary-dot-color: #4b61f5;
+    --card-badge-primary-fg-color: #393de1;
+    --card-badge-primary-icon-color: #4b61f5;
+    --card-badge-suggest-bg-color: #e9e3f8;
+    --card-badge-suggest-dot-color: #834fe8;
+    --card-badge-suggest-fg-color: #691ddf;
+    --card-badge-suggest-icon-color: #834fe8;
+    --card-badge-positive-bg-color: #bef3e2;
+    --card-badge-positive-dot-color: #0db06d;
+    --card-badge-positive-fg-color: #0d7448;
+    --card-badge-positive-icon-color: #0db06d;
+    --card-badge-caution-bg-color: #f3eab6;
+    --card-badge-caution-dot-color: #c87f12;
+    --card-badge-caution-fg-color: #8f5212;
+    --card-badge-caution-icon-color: #c87f12;
+    --card-badge-critical-bg-color: #f6dfdf;
+    --card-badge-critical-dot-color: #e73d2f;
+    --card-badge-critical-fg-color: #c52518;
+    --card-badge-critical-icon-color: #e73d2f;
+    --card-code-bg-color: #ededf1;
+    --card-code-fg-color: #4e556d;
+    --card-fg-color: #363b4f;
+    --card-icon-color: #666a79;
+    --card-kbd-bg-color: #f6f6f8;
+    --card-kbd-border-color: #dbdce2;
+    --card-kbd-fg-color: #4e556d;
+    --card-link-fg-color: #6664bf;
+    --card-muted-bg-color: #ededf1;
+    --card-muted-fg-color: #666a79;
+    --card-skeleton-color-from: #e6e6ea;
+    --card-skeleton-color-to: #eeeef1;
+    --card-bg2-color: #ededf1;
+    --card-link-color: #6664bf;
+    --card-hairline-soft-color: #dbdce2;
+    --card-hairline-hard-color: #dbdce2;
+  }
+  .dzbAvX[data-as='button']:not(:disabled):not([data-pressed]):not(
+      [data-selected]
+    ):active {
+    --card-backdrop-color: rgba(227, 228, 232, 0.5);
+    --card-focus-ring-color: #556bfc;
+    --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+    --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+    --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+    --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+    --card-accent-fg-color: #7a59b1;
+    --card-avatar-gray-bg-color: #6b718a;
+    --card-avatar-gray-fg-color: #ffffff;
+    --card-avatar-blue-bg-color: #5064ee;
+    --card-avatar-blue-fg-color: #ffffff;
+    --card-avatar-purple-bg-color: #8652e2;
+    --card-avatar-purple-fg-color: #ffffff;
+    --card-avatar-magenta-bg-color: #d82562;
+    --card-avatar-magenta-fg-color: #ffffff;
+    --card-avatar-red-bg-color: #df4032;
+    --card-avatar-red-fg-color: #ffffff;
+    --card-avatar-orange-bg-color: #e95e12;
+    --card-avatar-orange-fg-color: #ffffff;
+    --card-avatar-yellow-bg-color: #c48112;
+    --card-avatar-yellow-fg-color: #ffffff;
+    --card-avatar-green-bg-color: #0dad74;
+    --card-avatar-green-fg-color: #ffffff;
+    --card-avatar-cyan-bg-color: #0dacb4;
+    --card-avatar-cyan-fg-color: #ffffff;
+    --card-bg-color: #eeeef1;
+    --card-border-color: #d4d5db;
+    --card-badge-default-bg-color: #dedee4;
+    --card-badge-default-dot-color: #646983;
+    --card-badge-default-fg-color: #484e65;
+    --card-badge-default-icon-color: #646983;
+    --card-badge-neutral-bg-color: #dedee4;
+    --card-badge-neutral-dot-color: #646983;
+    --card-badge-neutral-fg-color: #484e65;
+    --card-badge-neutral-icon-color: #646983;
+    --card-badge-primary-bg-color: #d6ddf1;
+    --card-badge-primary-dot-color: #495eee;
+    --card-badge-primary-fg-color: #373cda;
+    --card-badge-primary-icon-color: #495eee;
+    --card-badge-suggest-bg-color: #e1dbf1;
+    --card-badge-suggest-dot-color: #7f4ce2;
+    --card-badge-suggest-fg-color: #651cd9;
+    --card-badge-suggest-icon-color: #7f4ce2;
+    --card-badge-positive-bg-color: #b8ebdb;
+    --card-badge-positive-dot-color: #0dab6a;
+    --card-badge-positive-fg-color: #0d7046;
+    --card-badge-positive-icon-color: #0dab6a;
+    --card-badge-caution-bg-color: #ebe3b1;
+    --card-badge-caution-dot-color: #c27c12;
+    --card-badge-caution-fg-color: #8b5012;
+    --card-badge-caution-icon-color: #c27c12;
+    --card-badge-critical-bg-color: #eed8d9;
+    --card-badge-critical-dot-color: #df3b2f;
+    --card-badge-critical-fg-color: #bf2418;
+    --card-badge-critical-icon-color: #df3b2f;
+    --card-code-bg-color: #e6e6ea;
+    --card-code-fg-color: #4c536a;
+    --card-fg-color: #353a4d;
+    --card-icon-color: #636776;
+    --card-kbd-bg-color: #eeeef1;
+    --card-kbd-border-color: #d4d5db;
+    --card-kbd-fg-color: #4c536a;
+    --card-link-fg-color: #6361b9;
+    --card-muted-bg-color: #e6e6ea;
+    --card-muted-fg-color: #636776;
+    --card-skeleton-color-from: #dedee4;
+    --card-skeleton-color-to: #e6e6eb;
+    --card-bg2-color: #e6e6ea;
+    --card-link-color: #6361b9;
+    --card-hairline-soft-color: #d4d5db;
+    --card-hairline-hard-color: #d4d5db;
+  }
+}
+.dzbAvX[data-as='a'] {
+  cursor: pointer;
+  box-shadow: var(--card-focus-ring-box-shadow);
+}
+.dzbAvX[data-as='a'][data-disabled] {
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #e3e4e8;
+  --card-avatar-gray-bg-color: #eeeef1;
+  --card-avatar-gray-fg-color: #ffffff;
+  --card-avatar-blue-bg-color: #eeeef1;
+  --card-avatar-blue-fg-color: #ffffff;
+  --card-avatar-purple-bg-color: #eeeef1;
+  --card-avatar-purple-fg-color: #ffffff;
+  --card-avatar-magenta-bg-color: #eeeef1;
+  --card-avatar-magenta-fg-color: #ffffff;
+  --card-avatar-red-bg-color: #eeeef1;
+  --card-avatar-red-fg-color: #ffffff;
+  --card-avatar-orange-bg-color: #eeeef1;
+  --card-avatar-orange-fg-color: #ffffff;
+  --card-avatar-yellow-bg-color: #eeeef1;
+  --card-avatar-yellow-fg-color: #ffffff;
+  --card-avatar-green-bg-color: #eeeef1;
+  --card-avatar-green-fg-color: #ffffff;
+  --card-avatar-cyan-bg-color: #eeeef1;
+  --card-avatar-cyan-fg-color: #ffffff;
+  --card-bg-color: #ffffff;
+  --card-border-color: #eeeef1;
+  --card-badge-default-bg-color: #f6f6f8;
+  --card-badge-default-dot-color: #dbdce2;
+  --card-badge-default-fg-color: #dbdce2;
+  --card-badge-default-icon-color: #dbdce2;
+  --card-badge-neutral-bg-color: #f6f6f8;
+  --card-badge-neutral-dot-color: #dbdce2;
+  --card-badge-neutral-fg-color: #dbdce2;
+  --card-badge-neutral-icon-color: #dbdce2;
+  --card-badge-primary-bg-color: #f6f6f8;
+  --card-badge-primary-dot-color: #dbdce2;
+  --card-badge-primary-fg-color: #dbdce2;
+  --card-badge-primary-icon-color: #dbdce2;
+  --card-badge-suggest-bg-color: #f6f6f8;
+  --card-badge-suggest-dot-color: #dbdce2;
+  --card-badge-suggest-fg-color: #dbdce2;
+  --card-badge-suggest-icon-color: #dbdce2;
+  --card-badge-positive-bg-color: #f6f6f8;
+  --card-badge-positive-dot-color: #dbdce2;
+  --card-badge-positive-fg-color: #dbdce2;
+  --card-badge-positive-icon-color: #dbdce2;
+  --card-badge-caution-bg-color: #f6f6f8;
+  --card-badge-caution-dot-color: #dbdce2;
+  --card-badge-caution-fg-color: #dbdce2;
+  --card-badge-caution-icon-color: #dbdce2;
+  --card-badge-critical-bg-color: #f6f6f8;
+  --card-badge-critical-dot-color: #dbdce2;
+  --card-badge-critical-fg-color: #dbdce2;
+  --card-badge-critical-icon-color: #dbdce2;
+  --card-code-bg-color: #f6f6f8;
+  --card-code-fg-color: #e3e4e8;
+  --card-fg-color: #e3e4e8;
+  --card-icon-color: #e3e4e8;
+  --card-kbd-bg-color: #ffffff;
+  --card-kbd-border-color: #eeeef1;
+  --card-kbd-fg-color: #e3e4e8;
+  --card-link-fg-color: #e3e4e8;
+  --card-muted-bg-color: #fbfbfc;
+  --card-muted-fg-color: #e3e4e8;
+  --card-skeleton-color-from: #eeeef1;
+  --card-skeleton-color-to: #f7f7f8;
+  --card-bg2-color: #fbfbfc;
+  --card-link-color: #e3e4e8;
+  --card-hairline-soft-color: #eeeef1;
+  --card-hairline-hard-color: #eeeef1;
+}
+.dzbAvX[data-as='a']:not([data-disabled])[data-pressed] {
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #7a59b1;
+  --card-avatar-gray-bg-color: #6b718a;
+  --card-avatar-gray-fg-color: #ffffff;
+  --card-avatar-blue-bg-color: #5064ee;
+  --card-avatar-blue-fg-color: #ffffff;
+  --card-avatar-purple-bg-color: #8652e2;
+  --card-avatar-purple-fg-color: #ffffff;
+  --card-avatar-magenta-bg-color: #d82562;
+  --card-avatar-magenta-fg-color: #ffffff;
+  --card-avatar-red-bg-color: #df4032;
+  --card-avatar-red-fg-color: #ffffff;
+  --card-avatar-orange-bg-color: #e95e12;
+  --card-avatar-orange-fg-color: #ffffff;
+  --card-avatar-yellow-bg-color: #c48112;
+  --card-avatar-yellow-fg-color: #ffffff;
+  --card-avatar-green-bg-color: #0dad74;
+  --card-avatar-green-fg-color: #ffffff;
+  --card-avatar-cyan-bg-color: #0dacb4;
+  --card-avatar-cyan-fg-color: #ffffff;
+  --card-bg-color: #eeeef1;
+  --card-border-color: #d4d5db;
+  --card-badge-default-bg-color: #dedee4;
+  --card-badge-default-dot-color: #646983;
+  --card-badge-default-fg-color: #484e65;
+  --card-badge-default-icon-color: #646983;
+  --card-badge-neutral-bg-color: #dedee4;
+  --card-badge-neutral-dot-color: #646983;
+  --card-badge-neutral-fg-color: #484e65;
+  --card-badge-neutral-icon-color: #646983;
+  --card-badge-primary-bg-color: #d6ddf1;
+  --card-badge-primary-dot-color: #495eee;
+  --card-badge-primary-fg-color: #373cda;
+  --card-badge-primary-icon-color: #495eee;
+  --card-badge-suggest-bg-color: #e1dbf1;
+  --card-badge-suggest-dot-color: #7f4ce2;
+  --card-badge-suggest-fg-color: #651cd9;
+  --card-badge-suggest-icon-color: #7f4ce2;
+  --card-badge-positive-bg-color: #b8ebdb;
+  --card-badge-positive-dot-color: #0dab6a;
+  --card-badge-positive-fg-color: #0d7046;
+  --card-badge-positive-icon-color: #0dab6a;
+  --card-badge-caution-bg-color: #ebe3b1;
+  --card-badge-caution-dot-color: #c27c12;
+  --card-badge-caution-fg-color: #8b5012;
+  --card-badge-caution-icon-color: #c27c12;
+  --card-badge-critical-bg-color: #eed8d9;
+  --card-badge-critical-dot-color: #df3b2f;
+  --card-badge-critical-fg-color: #bf2418;
+  --card-badge-critical-icon-color: #df3b2f;
+  --card-code-bg-color: #e6e6ea;
+  --card-code-fg-color: #4c536a;
+  --card-fg-color: #353a4d;
+  --card-icon-color: #636776;
+  --card-kbd-bg-color: #eeeef1;
+  --card-kbd-border-color: #d4d5db;
+  --card-kbd-fg-color: #4c536a;
+  --card-link-fg-color: #6361b9;
+  --card-muted-bg-color: #e6e6ea;
+  --card-muted-fg-color: #636776;
+  --card-skeleton-color-from: #dedee4;
+  --card-skeleton-color-to: #e6e6eb;
+  --card-bg2-color: #e6e6ea;
+  --card-link-color: #6361b9;
+  --card-hairline-soft-color: #d4d5db;
+  --card-hairline-hard-color: #d4d5db;
+}
+.dzbAvX[data-as='a']:not([data-disabled])[data-selected] {
+  --card-backdrop-color: rgba(227, 228, 232, 0.5);
+  --card-focus-ring-color: #556bfc;
+  --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+  --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+  --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+  --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+  --card-accent-fg-color: #dbcfff;
+  --card-avatar-gray-bg-color: #ffffff;
+  --card-avatar-gray-fg-color: #0d0e12;
+  --card-avatar-blue-bg-color: #ffffff;
+  --card-avatar-blue-fg-color: #0d0e12;
+  --card-avatar-purple-bg-color: #ffffff;
+  --card-avatar-purple-fg-color: #0d0e12;
+  --card-avatar-magenta-bg-color: #ffffff;
+  --card-avatar-magenta-fg-color: #0d0e12;
+  --card-avatar-red-bg-color: #ffffff;
+  --card-avatar-red-fg-color: #0d0e12;
+  --card-avatar-orange-bg-color: #ffffff;
+  --card-avatar-orange-fg-color: #0d0e12;
+  --card-avatar-yellow-bg-color: #ffffff;
+  --card-avatar-yellow-fg-color: #0d0e12;
+  --card-avatar-green-bg-color: #ffffff;
+  --card-avatar-green-fg-color: #0d0e12;
+  --card-avatar-cyan-bg-color: #ffffff;
+  --card-avatar-cyan-fg-color: #0d0e12;
+  --card-bg-color: #556bfc;
+  --card-border-color: #5f76fd;
+  --card-badge-default-bg-color: #5b72fd;
+  --card-badge-default-dot-color: #8ca8ff;
+  --card-badge-default-fg-color: #a1c1ff;
+  --card-badge-default-icon-color: #8ca8ff;
+  --card-badge-neutral-bg-color: #5b72fd;
+  --card-badge-neutral-dot-color: #8ca8ff;
+  --card-badge-neutral-fg-color: #a1c1ff;
+  --card-badge-neutral-icon-color: #8ca8ff;
+  --card-badge-primary-bg-color: #5b72fd;
+  --card-badge-primary-dot-color: #8ca8ff;
+  --card-badge-primary-fg-color: #a1c1ff;
+  --card-badge-primary-icon-color: #8ca8ff;
+  --card-badge-suggest-bg-color: #6471fd;
+  --card-badge-suggest-dot-color: #b79cff;
+  --card-badge-suggest-fg-color: #ccb8ff;
+  --card-badge-suggest-icon-color: #b79cff;
+  --card-badge-positive-bg-color: #5578fc;
+  --card-badge-positive-dot-color: #55d8fd;
+  --card-badge-positive-fg-color: #56f7fe;
+  --card-badge-positive-icon-color: #55d8fd;
+  --card-badge-caution-bg-color: #6772fc;
+  --card-badge-caution-dot-color: #e3bbfc;
+  --card-badge-caution-fg-color: #fbd8fc;
+  --card-badge-caution-icon-color: #e3bbfc;
+  --card-badge-critical-bg-color: #6f70fc;
+  --card-badge-critical-dot-color: #f590fc;
+  --card-badge-critical-fg-color: #faaefd;
+  --card-badge-critical-icon-color: #f590fc;
+  --card-code-bg-color: #5f76fd;
+  --card-code-fg-color: #e6efff;
+  --card-fg-color: #ffffff;
+  --card-icon-color: #bfcbfe;
+  --card-kbd-bg-color: #556bfc;
+  --card-kbd-border-color: #5d79fd;
+  --card-kbd-fg-color: #e6efff;
+  --card-link-fg-color: #e6efff;
+  --card-muted-bg-color: #5a71fc;
+  --card-muted-fg-color: #bfcbfe;
+  --card-skeleton-color-from: #5b72fd;
+  --card-skeleton-color-to: #586ffd;
+  --card-bg2-color: #5a71fc;
+  --card-link-color: #e6efff;
+  --card-hairline-soft-color: #5f76fd;
+  --card-hairline-hard-color: #5f76fd;
+}
+@media (hover: hover) {
+  .dzbAvX[data-as='a']:not([data-disabled]):not([data-pressed]):not(
+      [data-selected]
+    )[data-hovered],
+  .dzbAvX[data-as='a']:not([data-disabled]):not([data-pressed]):not(
+      [data-selected]
+    ):hover {
+    --card-backdrop-color: rgba(227, 228, 232, 0.5);
+    --card-focus-ring-color: #556bfc;
+    --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+    --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+    --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+    --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+    --card-accent-fg-color: #7e5cb6;
+    --card-avatar-gray-bg-color: #6e748e;
+    --card-avatar-gray-fg-color: #ffffff;
+    --card-avatar-blue-bg-color: #5268f5;
+    --card-avatar-blue-fg-color: #ffffff;
+    --card-avatar-purple-bg-color: #8a54e8;
+    --card-avatar-purple-fg-color: #ffffff;
+    --card-avatar-magenta-bg-color: #df2664;
+    --card-avatar-magenta-fg-color: #ffffff;
+    --card-avatar-red-bg-color: #e74233;
+    --card-avatar-red-fg-color: #ffffff;
+    --card-avatar-orange-bg-color: #f16112;
+    --card-avatar-orange-fg-color: #ffffff;
+    --card-avatar-yellow-bg-color: #cb8512;
+    --card-avatar-yellow-fg-color: #ffffff;
+    --card-avatar-green-bg-color: #0db377;
+    --card-avatar-green-fg-color: #ffffff;
+    --card-avatar-cyan-bg-color: #0db2b9;
+    --card-avatar-cyan-fg-color: #ffffff;
+    --card-bg-color: #f6f6f8;
+    --card-border-color: #dbdce2;
+    --card-badge-default-bg-color: #e6e6ea;
+    --card-badge-default-dot-color: #686d87;
+    --card-badge-default-fg-color: #4a5068;
+    --card-badge-default-icon-color: #686d87;
+    --card-badge-neutral-bg-color: #e6e6ea;
+    --card-badge-neutral-dot-color: #686d87;
+    --card-badge-neutral-fg-color: #4a5068;
+    --card-badge-neutral-icon-color: #686d87;
+    --card-badge-primary-bg-color: #dde5f8;
+    --card-badge-primary-dot-color: #4b61f5;
+    --card-badge-primary-fg-color: #393de1;
+    --card-badge-primary-icon-color: #4b61f5;
+    --card-badge-suggest-bg-color: #e9e3f8;
+    --card-badge-suggest-dot-color: #834fe8;
+    --card-badge-suggest-fg-color: #691ddf;
+    --card-badge-suggest-icon-color: #834fe8;
+    --card-badge-positive-bg-color: #bef3e2;
+    --card-badge-positive-dot-color: #0db06d;
+    --card-badge-positive-fg-color: #0d7448;
+    --card-badge-positive-icon-color: #0db06d;
+    --card-badge-caution-bg-color: #f3eab6;
+    --card-badge-caution-dot-color: #c87f12;
+    --card-badge-caution-fg-color: #8f5212;
+    --card-badge-caution-icon-color: #c87f12;
+    --card-badge-critical-bg-color: #f6dfdf;
+    --card-badge-critical-dot-color: #e73d2f;
+    --card-badge-critical-fg-color: #c52518;
+    --card-badge-critical-icon-color: #e73d2f;
+    --card-code-bg-color: #ededf1;
+    --card-code-fg-color: #4e556d;
+    --card-fg-color: #363b4f;
+    --card-icon-color: #666a79;
+    --card-kbd-bg-color: #f6f6f8;
+    --card-kbd-border-color: #dbdce2;
+    --card-kbd-fg-color: #4e556d;
+    --card-link-fg-color: #6664bf;
+    --card-muted-bg-color: #ededf1;
+    --card-muted-fg-color: #666a79;
+    --card-skeleton-color-from: #e6e6ea;
+    --card-skeleton-color-to: #eeeef1;
+    --card-bg2-color: #ededf1;
+    --card-link-color: #6664bf;
+    --card-hairline-soft-color: #dbdce2;
+    --card-hairline-hard-color: #dbdce2;
+  }
+  .dzbAvX[data-as='a']:not([data-disabled]):not([data-pressed]):not(
+      [data-selected]
+    ):active {
+    --card-backdrop-color: rgba(227, 228, 232, 0.5);
+    --card-focus-ring-color: #556bfc;
+    --card-shadow-outline-color: rgba(114, 120, 146, 0.3);
+    --card-shadow-umbra-color: rgba(114, 120, 146, 0.1);
+    --card-shadow-penumbra-color: rgba(114, 120, 146, 0.07);
+    --card-shadow-ambient-color: rgba(114, 120, 146, 0.06);
+    --card-accent-fg-color: #7a59b1;
+    --card-avatar-gray-bg-color: #6b718a;
+    --card-avatar-gray-fg-color: #ffffff;
+    --card-avatar-blue-bg-color: #5064ee;
+    --card-avatar-blue-fg-color: #ffffff;
+    --card-avatar-purple-bg-color: #8652e2;
+    --card-avatar-purple-fg-color: #ffffff;
+    --card-avatar-magenta-bg-color: #d82562;
+    --card-avatar-magenta-fg-color: #ffffff;
+    --card-avatar-red-bg-color: #df4032;
+    --card-avatar-red-fg-color: #ffffff;
+    --card-avatar-orange-bg-color: #e95e12;
+    --card-avatar-orange-fg-color: #ffffff;
+    --card-avatar-yellow-bg-color: #c48112;
+    --card-avatar-yellow-fg-color: #ffffff;
+    --card-avatar-green-bg-color: #0dad74;
+    --card-avatar-green-fg-color: #ffffff;
+    --card-avatar-cyan-bg-color: #0dacb4;
+    --card-avatar-cyan-fg-color: #ffffff;
+    --card-bg-color: #eeeef1;
+    --card-border-color: #d4d5db;
+    --card-badge-default-bg-color: #dedee4;
+    --card-badge-default-dot-color: #646983;
+    --card-badge-default-fg-color: #484e65;
+    --card-badge-default-icon-color: #646983;
+    --card-badge-neutral-bg-color: #dedee4;
+    --card-badge-neutral-dot-color: #646983;
+    --card-badge-neutral-fg-color: #484e65;
+    --card-badge-neutral-icon-color: #646983;
+    --card-badge-primary-bg-color: #d6ddf1;
+    --card-badge-primary-dot-color: #495eee;
+    --card-badge-primary-fg-color: #373cda;
+    --card-badge-primary-icon-color: #495eee;
+    --card-badge-suggest-bg-color: #e1dbf1;
+    --card-badge-suggest-dot-color: #7f4ce2;
+    --card-badge-suggest-fg-color: #651cd9;
+    --card-badge-suggest-icon-color: #7f4ce2;
+    --card-badge-positive-bg-color: #b8ebdb;
+    --card-badge-positive-dot-color: #0dab6a;
+    --card-badge-positive-fg-color: #0d7046;
+    --card-badge-positive-icon-color: #0dab6a;
+    --card-badge-caution-bg-color: #ebe3b1;
+    --card-badge-caution-dot-color: #c27c12;
+    --card-badge-caution-fg-color: #8b5012;
+    --card-badge-caution-icon-color: #c27c12;
+    --card-badge-critical-bg-color: #eed8d9;
+    --card-badge-critical-dot-color: #df3b2f;
+    --card-badge-critical-fg-color: #bf2418;
+    --card-badge-critical-icon-color: #df3b2f;
+    --card-code-bg-color: #e6e6ea;
+    --card-code-fg-color: #4c536a;
+    --card-fg-color: #353a4d;
+    --card-icon-color: #636776;
+    --card-kbd-bg-color: #eeeef1;
+    --card-kbd-border-color: #d4d5db;
+    --card-kbd-fg-color: #4c536a;
+    --card-link-fg-color: #6361b9;
+    --card-muted-bg-color: #e6e6ea;
+    --card-muted-fg-color: #636776;
+    --card-skeleton-color-from: #dedee4;
+    --card-skeleton-color-to: #e6e6eb;
+    --card-bg2-color: #e6e6ea;
+    --card-link-color: #6361b9;
+    --card-hairline-soft-color: #d4d5db;
+    --card-hairline-hard-color: #d4d5db;
+  }
+}
+.klixiI {
+  background-color: var(--overlay-bg);
+  border-radius: 3px;
+  pointer-events: none;
+  position: absolute;
+  will-change: transform;
+  box-shadow: var(--overlay-box-shadow);
+  transition: none;
+  --overlay-bg: transparent;
+  --overlay-box-shadow: inset 0 0 0 1px transparent;
+}
+[data-overlays] .klixiI {
+  --overlay-bg: color-mix(
+    in srgb,
+    transparent 95%,
+    var(--card-focus-ring-color)
+  );
+  --overlay-box-shadow: inset 0 0 0 2px
+    color-mix(in srgb, transparent 50%, var(--card-focus-ring-color));
+}
+[data-fading-out] .klixiI {
+  transition:
+    box-shadow 1550ms,
+    background-color 1550ms;
+  --overlay-bg: rgba(0, 0, 255, 0);
+  --overlay-box-shadow: inset 0 0 0 1px transparent;
+}
+.klixiI[data-focused] {
+  --overlay-box-shadow: inset 0 0 0 1px var(--card-focus-ring-color);
+}
+.klixiI[data-hovered]:not([data-focused]) {
+  transition: none;
+  --overlay-box-shadow: inset 0 0 0 2px var(--card-focus-ring-color);
+}
+.klixiI :link {
+  text-decoration: none;
+}
+.iJXDQG {
+  top: 100%;
+  cursor: pointer;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  gap: 4px;
+  padding: 4px 0;
+  flex-wrap: wrap;
+}
+[data-hovered]:not([data-menu-open]) .iJXDQG {
+  pointer-events: all;
+}
+[data-flipped] .iJXDQG {
+  top: calc(100% + 2rem);
+}
+.jsAZeb {
+  bottom: 100%;
+  cursor: pointer;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+}
+[data-hovered]:not([data-menu-open]) .jsAZeb {
+  pointer-events: all;
+}
+[data-flipped] .jsAZeb {
+  bottom: auto;
+  top: 100%;
+}
+.fxkBzM {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-focus-ring-color);
+  right: 0;
+  border-radius: 3px;
+}
+.fxkBzM [data-ui='Text'],
+.fxkBzM [data-sanity-icon] {
+  color: #fff;
+  white-space: nowrap;
+}
+.NDvWH {
+  background-color: transparent;
+  direction: ltr;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999;
+}
+
+.hNYPgQ {
+  min-width: 0;
+  min-height: 0;
+  flex-direction: row;
+}
+
+.hNYPgQ.hNYPgQ:not([hidden]) {
+  display: flex;
+}
+
+.jqTrIL {
+  bottom: 100%;
+  cursor: pointer;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+[data-hovered]:not([data-menu-open]) .jqTrIL {
+  pointer-events: all;
+}
+[data-flipped] .jqTrIL {
+  bottom: auto;
+  top: 100%;
+}
+
+.TJtVc {
+  cursor: pointer;
+  background-color: var(--card-focus-ring-color);
+  right: 0;
+  border-radius: 3px;
+}
+
+.TJtVc [data-ui='Text'] {
+  color: #fff;
+  white-space: nowrap;
+}

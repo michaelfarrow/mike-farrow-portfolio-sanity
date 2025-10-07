@@ -53,32 +53,32 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
       }
     };
 
-    const onBeforeSwap = (event: TransitionBeforeSwapEvent) => {
-      function mySwap(newDoc: Document) {
-        const styled = Array.from(
-          document.querySelectorAll('head style[data-styled]')
-        ).map((style) => style.cloneNode(true));
-        styled.forEach((style) => {
-          newDoc.querySelector('head')?.appendChild(style);
-        });
-        swapFunctions.deselectScripts(newDoc);
-        swapFunctions.swapRootAttributes(newDoc);
-        swapFunctions.swapHeadElements(newDoc);
-        const restoreFocusFunction = swapFunctions.saveFocus();
-        swapFunctions.swapBodyElement(newDoc.body, document.body);
-        restoreFocusFunction();
-      }
-      event.swap = () => mySwap(event.newDocument);
-    };
+    // const onBeforeSwap = (event: TransitionBeforeSwapEvent) => {
+    //   function mySwap(newDoc: Document) {
+    //     const styled = Array.from(
+    //       document.querySelectorAll('head style[data-styled]')
+    //     ).map((style) => style.cloneNode(true));
+    //     styled.forEach((style) => {
+    //       newDoc.querySelector('head')?.appendChild(style);
+    //     });
+    //     swapFunctions.deselectScripts(newDoc);
+    //     swapFunctions.swapRootAttributes(newDoc);
+    //     swapFunctions.swapHeadElements(newDoc);
+    //     const restoreFocusFunction = swapFunctions.saveFocus();
+    //     swapFunctions.swapBodyElement(newDoc.body, document.body);
+    //     restoreFocusFunction();
+    //   }
+    //   event.swap = () => mySwap(event.newDocument);
+    // };
 
     document.addEventListener('astro:page-load', onPageLoad);
-    document.addEventListener('astro:before-swap', onBeforeSwap);
+    // document.addEventListener('astro:before-swap', onBeforeSwap);
 
     onPageLoad();
 
     return () => {
       document.removeEventListener('astro:page-load', onPageLoad);
-      document.removeEventListener('astro:before-swap', onBeforeSwap);
+      // document.removeEventListener('astro:before-swap', onBeforeSwap);
     };
   }, [navigate]);
 
