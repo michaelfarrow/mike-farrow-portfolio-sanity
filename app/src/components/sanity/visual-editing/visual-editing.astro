@@ -1,0 +1,18 @@
+---
+import {
+  VisualEditingComponent,
+  type VisualEditingOptions,
+} from './visual-editing';
+
+export interface Props extends VisualEditingOptions {
+  enabled?: boolean;
+}
+
+const { enabled, zIndex } = Astro.props;
+---
+
+{
+  enabled ? (
+    <VisualEditingComponent client:only='react' zIndex={zIndex} />
+  ) : null
+}
