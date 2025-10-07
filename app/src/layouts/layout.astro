@@ -1,5 +1,7 @@
 ---
-import { VisualEditing } from '@app/components/sanity/visual-editing';
+import { ClientRouter } from 'astro:transitions';
+
+import VisualEditing from '@app/components/sanity/visual-editing/visual-editing.astro';
 import { config } from '@app/config';
 
 const visualEditingEnabled =
@@ -40,6 +42,7 @@ const { title, description } = Astro.props;
         document.documentElement.classList.add('sanity--presentation');
       }
     </script>
+    <ClientRouter />
   </head>
   <body>
     <slot />
