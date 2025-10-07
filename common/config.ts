@@ -1,7 +1,13 @@
 const env = process.env.NODE_ENV;
 const production = env === 'production';
 
-export const config = ({ dataset }: { dataset?: string }) => ({
+export const config = ({
+  dataset,
+  googleMapsKey,
+}: {
+  dataset?: string;
+  googleMapsKey?: string;
+}) => ({
   env,
   production,
   title: 'Mike Farrow',
@@ -21,7 +27,7 @@ export const config = ({ dataset }: { dataset?: string }) => ({
   },
   google: {
     maps: {
-      apiKey: process.env.SANITY_STUDIO_GOOGLE_MAPS_API_KEY,
+      apiKey: googleMapsKey,
     },
   },
 });
