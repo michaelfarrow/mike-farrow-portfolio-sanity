@@ -13,6 +13,10 @@ const { enabled, zIndex } = Astro.props;
 
 {
   enabled ? (
-    <VisualEditingComponent client:only='react' zIndex={zIndex} />
+    <VisualEditingComponent
+      transition:persist
+      client:only='react'
+      zIndex={zIndex}
+    />
   ) : null
 }
