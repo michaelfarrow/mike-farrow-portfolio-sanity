@@ -42,12 +42,7 @@ const { title, description } = Astro.props;
         document.documentElement.classList.add('sanity--presentation');
       }
     </script>
-    {
-      visualEditingEnabled && (
-        <link rel='stylesheet' href='/styles/visual-editing.css' />
-      )
-    }
-    <ClientRouter fallback='swap' />
+    <ClientRouter />
   </head>
   <body>
     <slot />

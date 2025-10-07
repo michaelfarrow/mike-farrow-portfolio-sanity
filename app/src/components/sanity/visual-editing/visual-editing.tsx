@@ -4,11 +4,8 @@ import {
   type HistoryAdapterNavigate,
   type VisualEditingOptions as InternalVisualEditingOptions,
 } from '@sanity/visual-editing/react';
-import {
-  navigate as astroNavigate,
-  // swapFunctions,
-  // type TransitionBeforeSwapEvent,
-} from 'astro:transitions/client';
+import { navigate as astroNavigate } from 'astro:transitions/client';
+import { StyleSheetManager } from 'styled-components';
 import { useEffect, useMemo, useState } from 'react';
 
 export type VisualEditingOptions = Pick<InternalVisualEditingOptions, 'zIndex'>;
@@ -16,6 +13,7 @@ export type VisualEditingOptions = Pick<InternalVisualEditingOptions, 'zIndex'>;
 export function VisualEditingComponent(props: VisualEditingOptions) {
   const [navigate, setNavigate] = useState<HistoryAdapterNavigate>();
   const [currentPath, setCurrentPath] = useState<string>();
+  const [style, setStyle] = useState<HTMLDivElement | undefined>(undefined);
 
   const history: HistoryAdapter = useMemo(
     () => ({
@@ -42,6 +40,7 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
     }),
     []
   );
+
   useEffect(() => {
     const onPageLoad = () => {
       setCurrentPath(window.location.href);
@@ -53,47 +52,33 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
       }
     };
 
-    // const onBeforeSwap = (event: TransitionBeforeSwapEvent) => {
-    //   function mySwap(newDoc: Document) {
-    //     const styled = Array.from(
-    //       document.querySelectorAll('head style[data-styled]')
-    //     ).map((style) => style.cloneNode(true));
-    //     styled.forEach((style) => {
-    //       newDoc.querySelector('head')?.appendChild(style);
-    //     });
-    //     swapFunctions.deselectScripts(newDoc);
-    //     swapFunctions.swapRootAttributes(newDoc);
-    //     swapFunctions.swapHeadElements(newDoc);
-    //     const restoreFocusFunction = swapFunctions.saveFocus();
-    //     swapFunctions.swapBodyElement(newDoc.body, document.body);
-    //     restoreFocusFunction();
-    //   }
-    //   event.swap = () => mySwap(event.newDocument);
-    // };
-
     document.addEventListener('astro:page-load', onPageLoad);
-    // document.addEventListener('astro:before-swap', onBeforeSwap);
-
-    onPageLoad();
 
     return () => {
       document.removeEventListener('astro:page-load', onPageLoad);
-      // document.removeEventListener('astro:before-swap', onBeforeSwap);
     };
   }, [navigate]);
 
   return (
-    <InternalVisualEditing
-      key={currentPath}
-      portal
-      zIndex={props.zIndex}
-      history={history}
-      refresh={() => {
-        return new Promise((resolve) => {
-          astroNavigate(window.location.href, { history: 'replace' });
-          resolve();
-        });
-      }}
-    />
+    <>
+      <div
+        style={{ display: 'none' }}
+        ref={(ref) => setStyle(ref || undefined)}
+      ></div>
+      <StyleSheetManager target={style}>
+        <InternalVisualEditing
+          key={currentPath}
+          portal
+          zIndex={props.zIndex}
+          history={history}
+          refresh={() => {
+            return new Promise((resolve) => {
+              location.reload();
+              resolve();
+            });
+          }}
+        />
+      </StyleSheetManager>
+    </>
   );
 }
