@@ -4,7 +4,11 @@ import {
   type HistoryAdapterNavigate,
   type VisualEditingOptions as InternalVisualEditingOptions,
 } from '@sanity/visual-editing/react';
-import { navigate as astroNavigate } from 'astro:transitions/client';
+import {
+  navigate as astroNavigate,
+  swapFunctions,
+  type TransitionBeforeSwapEvent,
+} from 'astro:transitions/client';
 import { StyleSheetManager } from 'styled-components';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -12,7 +16,6 @@ export type VisualEditingOptions = Pick<InternalVisualEditingOptions, 'zIndex'>;
 
 export function VisualEditingComponent(props: VisualEditingOptions) {
   const [navigate, setNavigate] = useState<HistoryAdapterNavigate>();
-  const [currentPath, setCurrentPath] = useState<string>();
   const [style, setStyle] = useState<HTMLDivElement | undefined>(undefined);
 
   const history: HistoryAdapter = useMemo(
@@ -42,8 +45,29 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
   );
 
   useEffect(() => {
+    function swap(newDoc: Document) {
+      swapFunctions.deselectScripts(newDoc);
+      swapFunctions.swapRootAttributes(newDoc);
+      swapFunctions.swapHeadElements(newDoc);
+      const restoreFocusFunction = swapFunctions.saveFocus();
+
+      const tempEl = document.createElement('div');
+      tempEl.append(...document.body.children);
+
+      document.body.innerHTML = '';
+      document.body.appendChild(tempEl);
+
+      swapFunctions.swapBodyElement(newDoc.body, tempEl);
+
+      const newBody = document.body.children[0];
+
+      document.body.append(...newBody.children);
+      newBody.remove();
+
+      restoreFocusFunction();
+    }
+
     const onPageLoad = () => {
-      setCurrentPath(window.location.href);
       if (navigate) {
         navigate({
           type: 'push',
@@ -52,11 +76,17 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
       }
     };
 
+    const onBeforeSwap = (event: TransitionBeforeSwapEvent) => {
+      event.swap = () => swap(event.newDocument);
+    };
+
     document.addEventListener('astro:page-load', onPageLoad);
+    document.addEventListener('astro:before-swap', onBeforeSwap);
     onPageLoad();
 
     return () => {
       document.removeEventListener('astro:page-load', onPageLoad);
+      document.removeEventListener('astro:before-swap', onBeforeSwap);
     };
   }, [navigate]);
 
@@ -68,8 +98,7 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
       ></div>
       <StyleSheetManager target={style} disableCSSOMInjection>
         <InternalVisualEditing
-          key={currentPath}
-          portal
+          portal={false}
           zIndex={props.zIndex}
           history={history}
           refresh={() => {
