@@ -53,6 +53,7 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
     };
 
     document.addEventListener('astro:page-load', onPageLoad);
+    onPageLoad();
 
     return () => {
       document.removeEventListener('astro:page-load', onPageLoad);
