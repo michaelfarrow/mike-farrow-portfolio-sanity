@@ -14,6 +14,8 @@ import { schemas } from '@studio/schemas';
 
 import '@studio/styles/global.css';
 
+console.log(config.studio);
+
 export default defineConfig({
   ...config.studio,
 
