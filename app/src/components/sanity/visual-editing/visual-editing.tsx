@@ -6,8 +6,8 @@ import {
 } from '@sanity/visual-editing/react';
 import {
   navigate as astroNavigate,
-  swapFunctions,
-  type TransitionBeforeSwapEvent,
+  // swapFunctions,
+  // type TransitionBeforeSwapEvent,
 } from 'astro:transitions/client';
 import { useEffect, useMemo, useState } from 'react';
 
