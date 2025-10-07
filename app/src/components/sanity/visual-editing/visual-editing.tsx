@@ -65,7 +65,7 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
         style={{ display: 'none' }}
         ref={(ref) => setStyle(ref || undefined)}
       ></div>
-      <StyleSheetManager target={style}>
+      <StyleSheetManager target={style} disableCSSOMInjection>
         <InternalVisualEditing
           key={currentPath}
           portal
