@@ -56,8 +56,7 @@ const {
     color: transparent;
     transition-property: opacity;
     transition-duration: 250ms;
-    /* opacity: 0; */
-    opacity: 1;
+    opacity: 0;
   }
 
   :global(html.sanity--presentation) img {
@@ -71,15 +70,21 @@ const {
 </style>
 
 <script>
-  const images = document.querySelectorAll('img');
+  function setupImages() {
+    const images = document.querySelectorAll('img');
 
-  const onImageLoaded = (image: HTMLImageElement) => () => {
-    image.setAttribute('data-loaded', '');
-  };
+    const onImageLoaded = (image: HTMLImageElement) => () => {
+      image.setAttribute('data-loaded', '');
+    };
 
-  images.forEach((image) => {
-    const handleLoaded = onImageLoaded(image);
-    image.addEventListener('load', handleLoaded);
-    if (image.complete) handleLoaded();
-  });
+    images.forEach((image) => {
+      if (image.hasAttribute('data-load')) return;
+      image.setAttribute('data-load', '');
+      const handleLoaded = onImageLoaded(image);
+      image.addEventListener('load', handleLoaded);
+      if (image.complete) handleLoaded();
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupImages);
 </script>
