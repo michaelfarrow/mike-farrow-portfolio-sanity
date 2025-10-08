@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en' transition:name='root' transition:animate='none'>
   <head>
     <meta charset='UTF-8' />
     <meta
@@ -42,7 +42,7 @@ const { title, description } = Astro.props;
         document.documentElement.classList.add('sanity--presentation');
       }
     </script>
-    <ClientRouter />
+    {visualEditingEnabled && <ClientRouter />}
   </head>
   <body>
     <slot />
