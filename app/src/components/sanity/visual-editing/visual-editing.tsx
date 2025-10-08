@@ -51,17 +51,25 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
       swapFunctions.swapHeadElements(newDoc);
       const restoreFocusFunction = swapFunctions.saveFocus();
 
-      const tempEl = document.createElement('div');
-      tempEl.append(...document.body.children);
+      // Do some jiggery pokery with the body to avoid swapping out
+      // the body el and losing the overlay mutation observers
 
-      document.body.innerHTML = '';
-      document.body.appendChild(tempEl);
+      // Move current body content to temp container
+      const childrenToMove = [...document.body.children];
+      const tempContainer = document.createElement('temp-container');
+      tempContainer.style.display = 'contents';
+      document.body.appendChild(tempContainer);
+      tempContainer.append(...childrenToMove);
 
-      swapFunctions.swapBodyElement(newDoc.body, tempEl);
+      // Swap new container with new body. This ensures regular processing
+      // of exising elements still takes place, while preserving original body.
+      const newBody = newDoc.body;
+      newBody.style.display = 'contents';
+      swapFunctions.swapBodyElement(newBody, tempContainer);
 
-      const newBody = document.body.children[0];
-
-      document.body.append(...newBody.children);
+      // Move everything from new body element to document body, and remove
+      // new body element once done.
+      document.body.prepend(...newBody.children);
       newBody.remove();
 
       restoreFocusFunction();
