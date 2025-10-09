@@ -12,11 +12,11 @@ import ContentPicture from '@app/components/content/picture.astro';
 import ContentQuote from '@app/components/content/quote.astro';
 import ContentVideo from '@app/components/content/video.astro';
 import Wrapper from '@app/components/content/wrapper.astro';
-import Markdown from '@app/components/general/markdown.astro';
 import ProjectAttributions from '@app/components/project/attributions.astro';
 import Array from '@app/components/sanity/array.astro';
 import SanityImage from '@app/components/sanity/image.astro';
 import LockedElement from '@app/components/sanity/locked/locked-element.astro';
+import Markdown from '@app/components/sanity/markdown.astro';
 
 export const getStaticPaths = async () => {
   return (await getProjects()).data.map((project) => ({

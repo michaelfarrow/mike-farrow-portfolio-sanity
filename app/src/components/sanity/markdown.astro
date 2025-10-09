@@ -10,17 +10,15 @@ import type { CommonSchemaType } from '@app/types/content';
 
 export type SanityMarkdown = CommonSchemaType<'markdown'>;
 
-export interface Props extends Omit<MarkdownProps, 'content'> {
-  md: SanityMarkdown;
-}
+export interface Props extends Omit<MarkdownProps, 'content'>, SanityMarkdown {}
 
 const props = Astro.props;
 
-const { md, ...rest } = props;
+const { content, ...rest } = props;
 ---
 
 <GeneralMarkdown
-  data-sanity={decodeStegaValue(md.content)}
-  content={(md.content && stegaClean(md.content)) || undefined}
+  data-sanity={decodeStegaValue(content)}
+  content={(content && stegaClean(content)) || undefined}
   {...rest}
 />

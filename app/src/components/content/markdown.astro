@@ -8,7 +8,7 @@ export interface Props extends SanityMarkdown {}
 
 const props = Astro.props;
 
-const { ...rest } = props;
+const { content, ...rest } = props;
 ---
 
-<SanityMarkdown md={rest} />
+<SanityMarkdown content={content} {...rest} />
