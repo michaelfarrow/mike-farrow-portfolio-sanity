@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes, HTMLTag, Polymorphic } from 'astro/types';
+
+import LockedHideBefore from '@app/components/sanity/locked/locked-hide-before.astro';
+
+export type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> &
+  HTMLAttributes<'div'> & {
+    passthrough?: boolean;
+  };
+
+const { as: Tag = 'div', passthrough } = Astro.props as Props<any>;
+---
+
+<style>
+  .locked--passthrough:not([hidden]) {
+    display: contents;
+  }
+</style>
+<Tag class:list={[passthrough && 'locked--passthrough']} hidden>
+  <slot />
+</Tag>
+<LockedHideBefore />

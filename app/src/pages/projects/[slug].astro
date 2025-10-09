@@ -16,7 +16,7 @@ import Markdown from '@app/components/general/markdown.astro';
 import ProjectAttributions from '@app/components/project/attributions.astro';
 import Array from '@app/components/sanity/array.astro';
 import SanityImage from '@app/components/sanity/image.astro';
-import Locked from '@app/components/sanity/locked.astro';
+import LockedElement from '@app/components/sanity/locked/locked-element.astro';
 
 export const getStaticPaths = async () => {
   return (await getProjects()).data.map((project) => ({
@@ -61,13 +61,16 @@ const { name, description, descriptionLong, thumbnail } = project;
     top: 0;
   }
 </style>
-<Layout title={project.name} description={project.description}>
+<Layout
+  title={stegaClean(project.name)}
+  description={stegaClean(project.description)}
+>
   <div style={{ maxWidth: 1500, margin: 'auto' }}>
     <div>
       <a href='/'>← Back to projects</a>
     </div>
-    <Locked> This is a test </Locked>
-    <Locked> This is a another test </Locked>
+    <LockedElement> This is a test </LockedElement>
+    <LockedElement> This is a another test </LockedElement>
     <div>{name ? <h1>{name}</h1> : null}</div>
     <div>{description ? <p>{description}</p> : null}</div>
     <div>

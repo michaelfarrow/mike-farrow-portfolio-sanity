@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+import LockedHideBefore from '@app/components/sanity/locked/locked-hide-before.astro';
+
+export interface Props extends HTMLAttributes<'div'> {}
+
+const { ...rest } = Astro.props;
+---
+
+<div {...rest} transition:persist hidden>
+  <button data-locked-ui-button>Clear password</button>
+</div>
+<LockedHideBefore />
+
+<script>
+  document.querySelectorAll('[data-locked-ui-button]').forEach((button) => {
+    button.addEventListener('click', () => {
+      localStorage.removeItem('password');
+      window.location.reload();
+    });
+  });
+</script>

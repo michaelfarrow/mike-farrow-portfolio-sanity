@@ -1,6 +1,8 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 
+import LockedHead from '@app/components/sanity/locked/locked-head.astro';
+import LockedUi from '@app/components/sanity/locked/locked-ui.astro';
 import VisualEditing from '@app/components/sanity/visual-editing/visual-editing.astro';
 import { config } from '@app/config';
 
@@ -43,10 +45,12 @@ const { title, description } = Astro.props;
       }
     </script>
     {visualEditingEnabled && <ClientRouter />}
+    <LockedHead />
   </head>
   <body>
     <slot />
     <VisualEditing enabled={visualEditingEnabled} />
+    <LockedUi class='locked-ui' />
   </body>
 </html>
 
@@ -56,5 +60,15 @@ const { title, description } = Astro.props;
     margin: 0;
     padding: 2em;
     background-color: white;
+  }
+
+  [hidden] {
+    display: none;
+  }
+
+  .locked-ui {
+    position: fixed;
+    top: 20px;
+    right: 20px;
   }
 </style>

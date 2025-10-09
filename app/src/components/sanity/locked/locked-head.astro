@@ -1,0 +1,46 @@
+---
+import { stegaClean } from '@sanity/client/stega';
+
+import { getSettings } from '@app/lib/sanity/queries/settings';
+
+const { data: settings } = await getSettings();
+
+const hashPassword = (s: string) =>
+  String(s.split('').reduce((a, b) => ((a << 5) - a + b.charCodeAt(0)) | 0, 0));
+---
+
+<script
+  is:inline
+  data-password={settings?.password &&
+    hashPassword(stegaClean(settings.password))}
+>
+  (function () {
+    function hashPassword(s) {
+      return String(
+        s.split('').reduce((a, b) => ((a << 5) - a + b.charCodeAt(0)) | 0, 0)
+      );
+    }
+
+    const password =
+      document.currentScript?.getAttribute('data-password') || undefined;
+    const locationPassword = window.location.hash.match(/^#password=(.*?)\s*$/);
+    let localPassword = localStorage.getItem('password') || undefined;
+
+    if (locationPassword) {
+      localPassword = hashPassword(locationPassword[1]);
+      localStorage.setItem('password', localPassword);
+      history.replaceState(
+        '',
+        document.title,
+        window.location.pathname + window.location.search
+      );
+    }
+
+    window.sanityLocked = {
+      hashPassword,
+      password,
+      localPassword,
+      locked: localPassword !== password,
+    };
+  })();
+</script>
