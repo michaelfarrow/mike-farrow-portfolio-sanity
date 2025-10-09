@@ -1,5 +1,6 @@
 export { PiQuestionMarkBold as IconUnknown } from 'react-icons/pi';
 
+export { PiGear as IconSettings } from 'react-icons/pi';
 export { PiUserCircleBold as IconContact } from 'react-icons/pi';
 export { PiUserCircleBold as IconIndividual } from 'react-icons/pi';
 export { PiBuildingBold as IconCompany } from 'react-icons/pi';
