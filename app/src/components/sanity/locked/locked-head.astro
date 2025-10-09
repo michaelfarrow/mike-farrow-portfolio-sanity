@@ -21,6 +21,11 @@ const hashPassword = (s: string) =>
       );
     }
 
+    function checkPrevious() {
+      if (!window.sanityLocked.locked && document.currentScript)
+        document.currentScript.previousElementSibling.removeAttribute('hidden');
+    }
+
     const password =
       document.currentScript?.getAttribute('data-password') || undefined;
     const locationPassword = window.location.hash.match(/^#password=(.*?)\s*$/);
@@ -41,6 +46,7 @@ const hashPassword = (s: string) =>
       password,
       localPassword,
       locked: localPassword !== password,
+      checkPrevious,
     };
   })();
 </script>
