@@ -12,7 +12,7 @@ const hashPassword = (s: string) =>
 <script
   is:inline
   data-password={settings?.password &&
-    hashPassword(stegaClean(settings.password))}
+    hashPassword(hashPassword(stegaClean(settings.password)))}
 >
   (function () {
     function hashPassword(s) {
@@ -32,7 +32,7 @@ const hashPassword = (s: string) =>
     let localPassword = localStorage.getItem('password') || undefined;
 
     if (locationPassword) {
-      localPassword = locationPassword[1];
+      localPassword = hashPassword(locationPassword[1]);
       localStorage.setItem('password', localPassword);
       history.replaceState(
         '',
