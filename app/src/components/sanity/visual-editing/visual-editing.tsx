@@ -51,6 +51,17 @@ export function VisualEditingComponent(props: VisualEditingOptions) {
       swapFunctions.swapHeadElements(newDoc);
       const restoreFocusFunction = swapFunctions.saveFocus();
 
+      // Always execute certain scripts
+      newDoc
+        .querySelectorAll('script[data-astro-exec-always]')
+        .forEach((script) => script.removeAttribute('data-astro-exec'));
+
+      // const script = document.createElement('script');
+      // script.innerHTML = 'console.log("test")';
+      // script.setAttribute('data-astro-exec', '');
+      // newDoc.body.appendChild(script);
+      // data-astro-exec
+
       // Do some jiggery pokery with the body to avoid swapping out
       // the body el and losing the overlay mutation observers
 
