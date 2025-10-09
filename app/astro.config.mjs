@@ -2,7 +2,7 @@
 import react from '@astrojs/react';
 import astro from '@astrojs/vercel';
 import sanity from '@sanity/astro';
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import { loadEnv } from 'vite';
 
 import { plugins as postCssPlugins } from './postcss.config.mjs';
@@ -22,6 +22,15 @@ export default defineConfig({
   output: visualEditingEnabled ? 'server' : 'static',
   adapter: visualEditingEnabled ? astro() : undefined,
   integrations: [sanity(config.studio), react()],
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: 'Roboto',
+        cssVariable: '--font-roboto',
+      },
+    ],
+  },
   vite: {
     css: {
       transformer: 'postcss',

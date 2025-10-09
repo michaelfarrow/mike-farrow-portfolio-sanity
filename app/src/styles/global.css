@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 2em;
+  background-color: white;
+}
+
+body {
+  font-family: var(--font-roboto);
+}
+
+[hidden] {
+  display: none;
+}
