@@ -13,21 +13,16 @@ const hashPassword = (s: string) =>
   is:inline
   data-password={settings?.password &&
     hashPassword(hashPassword(stegaClean(settings.password)))}
+  data-hash-function={hashPassword.toString()}
 >
   (function () {
-    function hashPassword(s) {
-      return String(
-        s.split('').reduce((a, b) => ((a << 5) - a + b.charCodeAt(0)) | 0, 0)
-      );
-    }
+    const currentScript = document.currentScript;
 
-    function checkPrevious() {
-      if (!window.sanityLocked.locked && document.currentScript)
-        document.currentScript.previousElementSibling.removeAttribute('hidden');
-    }
+    const hashPassword = eval(currentScript.getAttribute('data-hash-function'));
 
     const password =
-      document.currentScript?.getAttribute('data-password') || undefined;
+      (currentScript && currentScript.getAttribute('data-password')) ||
+      undefined;
     const locationPassword = window.location.hash.match(/^#password=(.*?)\s*$/);
     let localPassword = localStorage.getItem('password') || undefined;
 
@@ -45,8 +40,19 @@ const hashPassword = (s: string) =>
       hashPassword,
       password,
       localPassword,
-      locked: hashPassword(localPassword) !== password,
-      checkPrevious,
+      locked: Boolean(
+        !localPassword || hashPassword(localPassword) !== password
+      ),
+      checkPrevious: () => {
+        if (
+          !window.sanityLocked.locked &&
+          document.currentScript &&
+          document.currentScript.previousElementSibling
+        )
+          document.currentScript.previousElementSibling.removeAttribute(
+            'hidden'
+          );
+      },
     };
   })();
 </script>
