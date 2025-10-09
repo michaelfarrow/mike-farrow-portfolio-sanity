@@ -1,4 +1,5 @@
 ---
+import { decodeStegaValue, stegaClean } from '@app/lib/sanity/stega';
 import Markdown from '@app/components/general/markdown.astro';
 import MaybeLink from '@app/components/general/maybe-link.astro';
 import GeneralQuote, {
@@ -18,13 +19,17 @@ const {
 } = Astro.props;
 ---
 
-<GeneralQuote cite={link?.url} {...rest}>
-  <Markdown content={quote} />
+<GeneralQuote
+  data-sanity={decodeStegaValue(quote)?.replace(/\.quote/, '')}
+  cite={link?.url}
+  {...rest}
+>
+  <Markdown content={stegaClean(quote)} />
   {
     attribution && (
       <Fragment slot='attribution'>
         <MaybeLink {...link} target='_blank'>
-          {attribution}
+          {stegaClean(attribution)}
         </MaybeLink>
       </Fragment>
     )

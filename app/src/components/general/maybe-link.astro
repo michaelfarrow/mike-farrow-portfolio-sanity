@@ -1,23 +1,24 @@
 ---
 import type { ComponentPropsWithoutRef } from 'react';
 
+import { hasSlot } from '@app/lib/astro';
+
 export interface Props extends ComponentPropsWithoutRef<'a'> {
-  children?: string;
   name?: string;
   shortName?: string;
   url?: string;
 }
 
-const { children, name, shortName, url, className, ...rest } = Astro.props;
+const { name, shortName, url, className, ...rest } = Astro.props;
 
-const content = children || name || shortName || name;
+const content = name || shortName;
 const El = url ? 'a' : 'span';
 ---
 
 {
   (content && (
     <El {...(url ? (rest as any) : {})} href={url} class={className}>
-      {content}
+      {(await hasSlot(Astro.slots, 'default')) ? <slot /> : content}
     </El>
   )) ||
     null
