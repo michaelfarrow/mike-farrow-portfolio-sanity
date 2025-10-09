@@ -1,5 +1,4 @@
 ---
-import { decodeStegaValue } from '@app/lib/sanity/stega';
 import SanityVideo from '@app/components/sanity/video.astro';
 import type { CommonSchemaType } from '@app/types/content';
 
@@ -18,9 +17,4 @@ const { sizes = '100vw', ratio, ...rest } = Astro.props;
   }
 </style>
 
-<SanityVideo
-  class='content-video'
-  data-sanity={decodeStegaValue(rest.alt)}
-  video={rest}
-  {sizes}
-/>
+<SanityVideo class='content-video' video={rest} {sizes} />

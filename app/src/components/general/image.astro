@@ -1,13 +1,14 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
 import { getImgProps, type ImageLoader } from '@app/lib/image';
-import type { AstroReactElement } from '@app/types';
 import type { CommonSchemaType } from '@app/types/content';
 
 export const QUALITY_DEFAULT = 75;
 
 export type SanityImage = CommonSchemaType<'image'>;
 
-export interface Props extends AstroReactElement<'img'> {
+export interface Props extends HTMLAttributes<'img'> {
   loader: ImageLoader;
   decorative?: boolean;
 }
@@ -28,22 +29,25 @@ const {
 
 {
   (src && (
-    <img
-      {...rest}
-      class:list={['img', className]}
-      decoding='async'
-      loading='lazy'
-      role={decorative ? 'presentation' : undefined}
-      alt={decorative ? '' : alt}
-      {...getImgProps({
-        sizes: rest.sizes || undefined,
-        src,
-        loader,
-        quality: QUALITY_DEFAULT,
-        width: (width && Number(width)) || undefined,
-        height: (height && Number(height)) || undefined,
-      })}
-    />
+    <>
+      <img
+        {...rest}
+        data-image-component
+        class:list={['img', className]}
+        decoding='async'
+        loading='lazy'
+        role={decorative ? 'presentation' : undefined}
+        alt={decorative ? '' : alt}
+        {...getImgProps({
+          sizes: rest.sizes || undefined,
+          src,
+          loader,
+          quality: QUALITY_DEFAULT,
+          width: (width && Number(width)) || undefined,
+          height: (height && Number(height)) || undefined,
+        })}
+      />
+    </>
   )) ||
     null
 }

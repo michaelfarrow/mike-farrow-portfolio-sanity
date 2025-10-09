@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import _ from 'lodash';
 
 import { getImgProps } from '@app/lib/image';
@@ -6,7 +7,6 @@ import Image, {
   QUALITY_DEFAULT,
   type Props as ImageProps,
 } from '@app/components/general/image.astro';
-import type { AstroReactElement } from '@app/types';
 
 const { orderBy } = _;
 
@@ -18,7 +18,7 @@ export type PictureImage = {
 };
 
 export interface Props
-  extends AstroReactElement<'picture'>,
+  extends HTMLAttributes<'picture'>,
     Pick<ImageProps, 'alt' | 'loader'> {
   images: PictureImage[];
   sizes?: string;

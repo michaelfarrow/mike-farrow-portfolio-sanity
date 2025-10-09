@@ -2,6 +2,7 @@
 import { stegaClean } from '@sanity/client/stega';
 
 import { sanityImageCroppedSize } from '@app/lib/image';
+import { decodeStegaValue } from '@app/lib/sanity/stega';
 import GeneralVideo, {
   type Props as VideoProps,
 } from '@app/components/general/video.astro';
@@ -44,6 +45,7 @@ const finalRatio = parsedRatio
 {
   url && (
     <GeneralVideo
+      data-sanity={decodeStegaValue(alt)?.replace(/\.alt/, '.url')}
       url={url}
       ratio={finalRatio}
       title={stegaClean(alt)}

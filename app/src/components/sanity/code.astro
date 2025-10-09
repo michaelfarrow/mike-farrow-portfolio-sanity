@@ -1,4 +1,5 @@
 ---
+import { decodeStegaValue, stegaClean } from '@app/lib/sanity/stega';
 import GeneralCode, {
   type Props as GeneralCodeProps,
 } from '@app/components/general/code.astro';
@@ -17,11 +18,12 @@ const MAP: Record<string, string> = {
 };
 
 const {
-  code: { language = 'typescript', code, highlightedLines },
+  code: { language = 'typescript', code, highlightedLines, ...rest },
 } = Astro.props;
 ---
 
 <GeneralCode
+  data-sanity={decodeStegaValue(code)?.replace(/\.code/, '')}
   code={code
     ?.split(/\r?\n/)
     .map(
@@ -30,4 +32,5 @@ const {
     )
     .join('\n')}
   language={(language && MAP[language]) || language}
+  {...rest}
 />

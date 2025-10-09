@@ -17,7 +17,7 @@ export interface Props extends Omit<PictureProps, 'loader' | 'images'> {
   picture: SanityPicture;
 }
 
-const { picture, ...rest } = Astro.props;
+const { picture, alt, ...rest } = Astro.props;
 
 const images = [
   (picture.main && { source: picture.main, breakpoint: undefined }) ||
@@ -50,4 +50,9 @@ const images = [
   .filter((image) => !!image);
 ---
 
-<GeneralPicture loader={sanityImageLoader} {...rest} images={images} />
+<GeneralPicture
+  {...rest}
+  loader={sanityImageLoader}
+  alt={alt || picture.main?.alt}
+  images={images}
+/>

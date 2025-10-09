@@ -2,20 +2,15 @@
 import { markdown } from '@astropub/md';
 import type { HTMLAttributes } from 'astro/types';
 
-import { decodeStegaValue, stegaClean } from '@app/lib/sanity/stega';
-
 export interface Props extends HTMLAttributes<'div'> {
-  value?: string;
+  content?: string;
+  options?: Record<string, any>;
+  naked?: boolean;
 }
 
-const { value, ...rest } = Astro.props;
+const { content, options, naked, ...rest } = Astro.props;
+
+const parsed = content && (await markdown(content, options));
 ---
 
-{
-  (value && (
-    <div data-sanity={decodeStegaValue(value)} {...rest}>
-      {await markdown(stegaClean(value))}
-    </div>
-  )) ||
-    null
-}
+{parsed && (naked ? parsed : <div {...rest}>{parsed}</div>)}

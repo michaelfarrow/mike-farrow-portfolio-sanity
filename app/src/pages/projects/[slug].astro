@@ -5,12 +5,12 @@ import Layout from '@app/layouts/layout.astro';
 
 import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
 import { getProject, getProjects } from '@app/lib/sanity/queries/project';
-import { default as ContentCode } from '@app/components/content/code.astro';
-import { default as ContentImage } from '@app/components/content/image.astro';
-import { default as ContentMarkdown } from '@app/components/content/markdown.astro';
-import { default as ContentPicture } from '@app/components/content/picture.astro';
-import { default as ContentQuote } from '@app/components/content/quote.astro';
-import { default as ContentVideo } from '@app/components/content/video.astro';
+import ContentCode from '@app/components/content/code.astro';
+import ContentImage from '@app/components/content/image.astro';
+import ContentMarkdown from '@app/components/content/markdown.astro';
+import ContentPicture from '@app/components/content/picture.astro';
+import ContentQuote from '@app/components/content/quote.astro';
+import ContentVideo from '@app/components/content/video.astro';
 import Wrapper from '@app/components/content/wrapper.astro';
 import Markdown from '@app/components/general/markdown.astro';
 import ProjectAttributions from '@app/components/project/attributions.astro';
@@ -68,7 +68,7 @@ const { name, description, descriptionLong, thumbnail } = project;
     <div>{name ? <h1>{name}</h1> : null}</div>
     <div>{description ? <p>{description}</p> : null}</div>
     <div>
-      {descriptionLong ? <Markdown value={descriptionLong} /> : null}
+      {descriptionLong ? <Markdown content={descriptionLong} /> : null}
     </div>
     {
       thumbnail ? (
