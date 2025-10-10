@@ -1,6 +1,7 @@
 // @ts-check
 import react from '@astrojs/react';
-import astro from '@astrojs/vercel';
+import solid from '@astrojs/solid-js';
+import vercel from '@astrojs/vercel';
 import sanity from '@sanity/astro';
 import { defineConfig, fontProviders } from 'astro/config';
 import { loadEnv } from 'vite';
@@ -20,14 +21,23 @@ const visualEditingEnabled =
 
 export default defineConfig({
   output: visualEditingEnabled ? 'server' : 'static',
-  adapter: visualEditingEnabled ? astro() : undefined,
-  integrations: [sanity(config.studio), react()],
+  adapter: visualEditingEnabled ? vercel() : undefined,
+  integrations: [
+    sanity(config.studio),
+    react({
+      include: ['**/react/*'],
+    }),
+    solid({
+      include: ['**/solid/*'],
+    }),
+  ],
   experimental: {
     fonts: [
       {
         provider: fontProviders.google(),
         name: 'Roboto',
         cssVariable: '--font-roboto',
+        weights: ['400', '700'],
       },
     ],
   },

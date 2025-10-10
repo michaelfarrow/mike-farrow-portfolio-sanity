@@ -1,6 +1,6 @@
 ---
 import type { getProject } from '@app/lib/sanity/queries/project';
-import MaybeLink from '@app/components/general/maybe-link.astro';
+import MaybeLink from '@app/components/astro/general/maybe-link.astro';
 
 export interface Props {
   project: NonNullable<Awaited<ReturnType<typeof getProject>>['data']>;

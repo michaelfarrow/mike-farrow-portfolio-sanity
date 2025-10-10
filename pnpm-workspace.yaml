@@ -13,5 +13,6 @@ catalog:
   prettier: ^3.6.2
   react: ^19.2.0
   react-dom: ^19.2.0
+  solid-js: ^1.9.9
   typescript: ^5.9.3
   typescript-plugin-css-modules: ^5.2.0

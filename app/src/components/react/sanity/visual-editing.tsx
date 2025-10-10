@@ -1,3 +1,5 @@
+/** @jsxImportSource react */
+
 import {
   VisualEditing as InternalVisualEditing,
   type HistoryAdapter,

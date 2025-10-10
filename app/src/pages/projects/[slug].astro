@@ -5,18 +5,19 @@ import Layout from '@app/layouts/layout.astro';
 
 import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
 import { getProject, getProjects } from '@app/lib/sanity/queries/project';
-import ContentCode from '@app/components/content/code.astro';
-import ContentImage from '@app/components/content/image.astro';
-import ContentMarkdown from '@app/components/content/markdown.astro';
-import ContentPicture from '@app/components/content/picture.astro';
-import ContentQuote from '@app/components/content/quote.astro';
-import ContentVideo from '@app/components/content/video.astro';
-import Wrapper from '@app/components/content/wrapper.astro';
-import ProjectAttributions from '@app/components/project/attributions.astro';
-import Array from '@app/components/sanity/array.astro';
-import SanityImage from '@app/components/sanity/image.astro';
-import LockedElement from '@app/components/sanity/locked/locked-element.astro';
-import Markdown from '@app/components/sanity/markdown.astro';
+import ContentCode from '@app/components/astro/content/code.astro';
+import ContentImage from '@app/components/astro/content/image.astro';
+import ContentMarkdown from '@app/components/astro/content/markdown.astro';
+import ContentPicture from '@app/components/astro/content/picture.astro';
+import ContentQuote from '@app/components/astro/content/quote.astro';
+import ContentVideo from '@app/components/astro/content/video.astro';
+import Wrapper from '@app/components/astro/content/wrapper.astro';
+import ProjectAttributions from '@app/components/astro/project/attributions.astro';
+import Array from '@app/components/astro/sanity/array.astro';
+import SanityImage from '@app/components/astro/sanity/image.astro';
+import LockedElement from '@app/components/astro/sanity/locked/locked-element.astro';
+import Markdown from '@app/components/astro/sanity/markdown.astro';
+import { Counter } from '@app/components/solid/counter';
 
 export const getStaticPaths = async () => {
   return (await getProjects()).data.map((project) => ({
@@ -73,6 +74,7 @@ const { name, description, descriptionLong, thumbnail } = project;
     <LockedElement> This is a another test </LockedElement>
     <div>{name ? <h1>{name}</h1> : null}</div>
     <div>{description ? <p>{description}</p> : null}</div>
+    <Counter client:load />
     <div>
       {descriptionLong ? <Markdown content={descriptionLong} /> : null}
     </div>

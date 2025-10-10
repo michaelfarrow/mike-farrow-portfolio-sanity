@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes, HTMLTag, Polymorphic } from 'astro/types';
 
-import LockedCheck from '@app/components/sanity/locked/locked-check.astro';
+import LockedCheck from '@app/components/astro/sanity/locked/locked-check.astro';
 
 export type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> &
   HTMLAttributes<'div'> & {

@@ -4,11 +4,11 @@ import { stegaClean } from '@sanity/client/stega';
 import { BREAKPOINTS_MAX } from '@app/lib/responsive';
 import GeneralPicture, {
   type Props as PictureProps,
-} from '@app/components/general/picture.astro';
+} from '@app/components/astro/general/picture.astro';
 import {
   getSanityImageProps,
   sanityImageLoader,
-} from '@app/components/sanity/image.astro';
+} from '@app/components/astro/sanity/image.astro';
 import type { CommonSchemaType } from '@app/types/content';
 
 export type SanityPicture = CommonSchemaType<'responsiveImage'>;

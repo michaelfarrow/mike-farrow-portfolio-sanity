@@ -1,11 +1,11 @@
 ---
-import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 
-import Presentation from '@app/components/page/head/presentation.astro';
-import LockedHead from '@app/components/sanity/locked/locked-head.astro';
-import LockedUi from '@app/components/sanity/locked/locked-ui.astro';
-import VisualEditing from '@app/components/sanity/visual-editing/visual-editing.astro';
+import Fonts from '@app/components/astro/page/head/fonts.astro';
+import Presentation from '@app/components/astro/page/head/presentation.astro';
+import LockedHead from '@app/components/astro/sanity/locked/locked-head.astro';
+import LockedUi from '@app/components/astro/sanity/locked/locked-ui.astro';
+import VisualEditing from '@app/components/astro/sanity/visual-editing.astro';
 import { config } from '@app/config';
 
 import '@app/styles/reset.css';
@@ -34,9 +34,9 @@ const { title, description } = Astro.props;
     <meta name='generator' content={Astro.generator} />
     <title>{(title && `${title} - `) || ''}{config.title}</title>
     {(description && <meta name='description' content={description} />) || null}
-    <Font cssVariable='--font-roboto' preload />
     {visualEditingEnabled && <ClientRouter />}
     <LockedHead />
+    <Fonts />
     <Presentation />
   </head>
   <body>

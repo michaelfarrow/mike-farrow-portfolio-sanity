@@ -1,10 +1,10 @@
 ---
 import { decodeStegaValue, stegaClean } from '@app/lib/sanity/stega';
-import Markdown from '@app/components/general/markdown.astro';
-import MaybeLink from '@app/components/general/maybe-link.astro';
+import Markdown from '@app/components/astro/general/markdown.astro';
+import MaybeLink from '@app/components/astro/general/maybe-link.astro';
 import GeneralQuote, {
   type Props as QuoteProps,
-} from '@app/components/general/quote.astro';
+} from '@app/components/astro/general/quote.astro';
 import type { CommonSchemaType } from '@app/types/content';
 
 export type SanityQuote = CommonSchemaType<'quote'>;

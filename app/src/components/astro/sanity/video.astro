@@ -5,8 +5,8 @@ import { sanityImageCroppedSize } from '@app/lib/image';
 import { decodeStegaValue } from '@app/lib/sanity/stega';
 import GeneralVideo, {
   type Props as VideoProps,
-} from '@app/components/general/video.astro';
-import Image from '@app/components/sanity/image.astro';
+} from '@app/components/astro/general/video.astro';
+import Image from '@app/components/astro/sanity/image.astro';
 import type { CommonSchemaType } from '@app/types/content';
 
 export type SanityVideo = CommonSchemaType<'remoteVideo'>;
