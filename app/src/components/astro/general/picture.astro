@@ -7,6 +7,7 @@ import Image, {
   QUALITY_DEFAULT,
   type Props as ImageProps,
 } from '@app/components/astro/general/image.astro';
+import { Picture as SolidPicture } from '@app/components/solid/general/picture';
 
 const { orderBy } = _;
 
@@ -24,7 +25,7 @@ export interface Props
   sizes?: string;
 }
 
-const { class: className, images, alt, loader, sizes, ...rest } = Astro.props;
+const { class: className, images, alt, loader, sizes } = Astro.props;
 
 const defaultImage =
   images.find(({ max }) => !max) || images[images.length - 1];
@@ -42,6 +43,7 @@ const imageProps = (image: PictureImage) => {
   });
 };
 
+const defaultImageProps = imageProps(defaultImage);
 //backupSrc
 ---
 
@@ -49,21 +51,20 @@ const imageProps = (image: PictureImage) => {
   images.length === 1 ? (
     <Image {...images[0]} class={className} {alt} {loader} {sizes} />
   ) : (
-    <picture class:list={[className]} {...rest}>
-      {orderBy(images, 'max', 'asc').map(({ max, ...image }) => {
+    <SolidPicture
+      class={className || undefined}
+      client:load
+      image={defaultImageProps}
+      sources={orderBy(images, 'max', 'asc').map(({ max, ...image }) => {
         const { srcSet, width, height } = imageProps(image);
-
-        return (
-          <source
-            {sizes}
-            {width}
-            {height}
-            media={max ? `(max-width: ${max - 1}px)` : undefined}
-            srcset={srcSet}
-          />
-        );
+        return {
+          sizes,
+          width,
+          height,
+          media: max ? `(max-width: ${max - 1}px)` : undefined,
+          srcSet,
+        };
       })}
-      <Image {...defaultImage} {alt} {loader} {sizes} />
-    </picture>
+    />
   )
 }

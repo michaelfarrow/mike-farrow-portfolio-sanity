@@ -1,0 +1,18 @@
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: transparent;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  opacity: 0;
+}
+
+html.sanity--presentation img {
+  transition-duration: 0s;
+}
+
+.imgLoaded,
+html.sanity--presentation img {
+  opacity: 1;
+}

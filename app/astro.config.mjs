@@ -25,10 +25,10 @@ export default defineConfig({
   integrations: [
     sanity(config.studio),
     react({
-      include: ['**/react/*'],
+      include: ['**/react/**/*'],
     }),
     solid({
-      include: ['**/solid/*'],
+      include: ['**/solid/**/*'],
     }),
   ],
   experimental: {

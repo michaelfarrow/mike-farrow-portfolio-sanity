@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 
 import { getImgProps, type ImageLoader } from '@app/lib/image';
+import { Image as SolidImage } from '@app/components/solid/general/image';
 import type { CommonSchemaType } from '@app/types/content';
 
 export const QUALITY_DEFAULT = 75;
@@ -29,67 +30,23 @@ const {
 
 {
   (src && (
-    <>
-      <img
-        {...rest}
-        data-image-component
-        class:list={['img', className]}
-        decoding='async'
-        loading='lazy'
-        role={decorative ? 'presentation' : undefined}
-        alt={decorative ? '' : alt}
-        {...getImgProps({
-          sizes: rest.sizes || undefined,
-          src,
-          loader,
-          quality: QUALITY_DEFAULT,
-          width: (width && Number(width)) || undefined,
-          height: (height && Number(height)) || undefined,
-        })}
-      />
-    </>
+    <SolidImage
+      client:load
+      data-image-component
+      decoding='async'
+      loading='lazy'
+      class={className || undefined}
+      role={decorative ? 'presentation' : undefined}
+      alt={decorative ? '' : alt || undefined}
+      {...getImgProps({
+        sizes: rest.sizes || undefined,
+        src,
+        loader,
+        quality: QUALITY_DEFAULT,
+        width: (width && Number(width)) || undefined,
+        height: (height && Number(height)) || undefined,
+      })}
+    />
   )) ||
     null
 }
-
-<style>
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    color: transparent;
-    transition-property: opacity;
-    transition-duration: 250ms;
-    opacity: 0;
-  }
-
-  :global(html.sanity--presentation) img {
-    transition-duration: 0s;
-  }
-
-  img[data-loaded],
-  :global(html.sanity--presentation) img {
-    opacity: 1;
-  }
-</style>
-
-<script>
-  function setupImages() {
-    const images = document.querySelectorAll('img');
-
-    const onImageLoaded = (image: HTMLImageElement) => () => {
-      image.setAttribute('data-loaded', '');
-    };
-
-    images.forEach((image) => {
-      if (image.hasAttribute('data-load')) return;
-      image.setAttribute('data-load', '');
-      const handleLoaded = onImageLoaded(image);
-      image.addEventListener('load', handleLoaded);
-      if (image.complete) handleLoaded();
-    });
-  }
-
-  setupImages();
-  document.addEventListener('astro:page-load', setupImages);
-</script>

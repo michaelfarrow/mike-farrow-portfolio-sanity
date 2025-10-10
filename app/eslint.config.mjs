@@ -4,6 +4,7 @@ import eslint from '@eslint/js';
 import pluginAstro from 'eslint-plugin-astro';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
+import pluginSolid from 'eslint-plugin-solid/configs/typescript';
 import { defineConfig } from 'eslint/config';
 import tsEslint from 'typescript-eslint';
 
@@ -17,9 +18,10 @@ const eslintConfig = defineConfig(
     ...config,
     files: ['**/*.ts', '**/*.tsx'],
   })),
-  { ...pluginReact.configs.flat.recommended, files: ['**/*.tsx'] },
+  { ...pluginSolid, files: ['**/solid/**/*.tsx'] },
+  { ...pluginReact.configs.flat.recommended, files: ['**/react/**/*.tsx'] },
   {
-    files: ['**/*.tsx'],
+    files: ['**/react/**/*.tsx'],
     plugins: {
       'react-hooks': pluginReactHooks,
     },

@@ -80,14 +80,17 @@ const { name, description, descriptionLong, thumbnail } = project;
     </div>
     {
       thumbnail ? (
-        <SanityImage
-          image={thumbnail}
-          sizes='(max-width: 200px) 100vw, 200px'
-          ratio={1}
+        <div
           style={{
             maxWidth: '200px',
           }}
-        />
+        >
+          <SanityImage
+            image={thumbnail}
+            sizes='(max-width: 200px) 100vw, 200px'
+            ratio={1}
+          />
+        </div>
       ) : null
     }
     <div class='grid'>
@@ -111,7 +114,6 @@ const { name, description, descriptionLong, thumbnail } = project;
                     md: ContentMarkdown,
                     code: ContentCode,
                     quote: ContentQuote,
-                    remoteVideo: ContentVideo,
                   }}
                   props={{ sizes }}
                   wrapper={Wrapper}
