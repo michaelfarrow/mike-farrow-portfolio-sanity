@@ -2,14 +2,12 @@ import { useMeasure, useMouse } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import formatDuration from 'format-duration';
 import mergeRefs from 'merge-refs';
-
 import { useState } from 'react';
 
 import { styleWithVars } from '@app/lib/style';
-
 import Progress from '@app/components/general/progress';
 
-import styles from './video-progress.module.css';
+import styles from './video-progress.module.scss';
 
 // const SEEK_PAD = 25;
 

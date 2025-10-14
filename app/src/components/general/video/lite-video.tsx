@@ -5,7 +5,7 @@ import React, { HTMLAttributes, useEffect, useState } from 'react';
 
 import { styleWithVars } from '@app/lib/style';
 
-import styles from './lite-video.module.css';
+import styles from './lite-video.module.scss';
 
 const LITE_VIDEO_DEFAULT_CONTAINER: React.ElementType = 'article';
 

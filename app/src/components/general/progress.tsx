@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import { useAnimationFrameLoop } from 'react-timing-hooks';
-
 import { useEffect, useState } from 'react';
 
 import { styleWithVars } from '@app/lib/style';
 
-import styles from './progress.module.css';
+import styles from './progress.module.scss';
 
 export interface Props extends React.ComponentPropsWithoutRef<'div'> {
   className?: string;

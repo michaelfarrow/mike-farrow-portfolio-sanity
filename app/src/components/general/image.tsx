@@ -9,7 +9,7 @@ import { useTimeout } from '@app/hooks/timeout';
 import { BREAKPOINTS_MAX } from '@app/lib/responsive';
 import { stegaValue } from '@app/lib/stega';
 
-import styles from './image.module.css';
+import styles from './image.module.scss';
 
 export const IMAGE_DEFAULT_QUALITY = 75;
 

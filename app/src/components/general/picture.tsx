@@ -2,12 +2,11 @@
 
 import clsx from 'clsx';
 import { orderBy } from 'lodash';
+import { getImageProps, ImageProps } from 'next/image';
 
-import { ImageProps, getImageProps } from 'next/image';
+import { Image, IMAGE_DEFAULT_QUALITY } from '@app/components/general/image';
 
-import { IMAGE_DEFAULT_QUALITY, Image } from '@app/components/general/image';
-
-import styles from './picture.module.css';
+import styles from './picture.module.scss';
 
 export type PictureImage = {
   src: string;

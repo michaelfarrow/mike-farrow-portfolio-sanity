@@ -14,7 +14,7 @@ import {
   conditionalComponent as cc,
 } from '@app/components/sanity/array';
 
-import styles from './content.module.css';
+import styles from './content.module.scss';
 
 export function ProjectContent({
   project,

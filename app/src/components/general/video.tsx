@@ -8,7 +8,6 @@ import {
 } from 'react-icons/pi';
 import ReactPlayer from 'react-player';
 import { useTimeout } from 'react-timing-hooks';
-
 import {
   ReactEventHandler,
   useCallback,
@@ -20,11 +19,10 @@ import {
 import { EventBus } from '@app/lib/events';
 import { memo } from '@app/lib/react';
 import { styleWithVars } from '@app/lib/style';
-
 import { Conditional } from '@app/components/general/conditional';
 import VideoProgress from '@app/components/general/video-progress';
 
-import styles from './video.module.css';
+import styles from './video.module.scss';
 
 export interface VideoProps extends React.ComponentPropsWithoutRef<'div'> {
   src: string;
