@@ -1,12 +1,8 @@
-'use client';
-
 import clsx from 'clsx';
 import { stegaClean } from 'next-sanity';
 
 import { getProject } from '@app/lib//sanity/queries/project';
-import { memo } from '@app/lib/react';
 import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
-
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
 import { Markdown } from '@app/components/content/markdown';
@@ -17,46 +13,37 @@ import {
   Array,
   conditionalComponent as cc,
 } from '@app/components/sanity/array';
-import { Sortable, SortableChild } from '@app/components/sanity/sortable';
 
 import styles from './content.module.css';
 
-type Project = NonNullable<Awaited<ReturnType<typeof getProject>>>;
-type Content = NonNullable<Project['content']>;
-type ContentItem = Content[number];
+export function ProjectContent({
+  project,
+}: {
+  project: NonNullable<Awaited<ReturnType<typeof getProject>>>;
+}) {
+  if (!project.content) return null;
 
-const ProjectContentItem = memo(
-  function ProjectContentItem({
-    block,
-    SortableChild,
-    className,
-    full,
-    ...rest
-  }: React.ComponentPropsWithoutRef<'div'> & {
-    block: ContentItem;
-    SortableChild: SortableChild;
-    full: boolean;
-  }) {
-    const sizes = breakpointSizes(
-      { max: 'mobile', size: '100vw' },
-      { max: 'desktop', size: full ? '100vw' : '50vw' },
-      BREAKPOINT_MAX / (full ? 1 : 2)
-    );
+  return (
+    <div className={styles.grid}>
+      {project.content.map((item) => {
+        const full = stegaClean(item.span) === 'full';
 
-    return (
-      <div {...rest} className={clsx(className, styles.handle)}>
-        <div className={styles.gridItemContent}>
-          <SortableChild of={block} path='content' items={block.content}>
-            {({ items, props }) => (
+        const sizes = breakpointSizes(
+          { max: 'mobile', size: '100vw' },
+          { max: 'desktop', size: full ? '100vw' : '50vw' },
+          BREAKPOINT_MAX / (full ? 1 : 2)
+        );
+
+        return (
+          <div
+            key={item._key}
+            className={clsx(styles.gridItem, full && styles.gridItemFull)}
+          >
+            <div className={styles.gridItemContent}>
               <Array
-                value={items}
+                value={item.content || []}
                 wrapper={(child, children) => {
-                  const { key, ...rest } = props(child);
-                  return (
-                    <div key={key} {...rest}>
-                      {children}
-                    </div>
-                  );
+                  return <div key={child._key}>{children}</div>;
                 }}
                 components={{
                   code: (block) =>
@@ -76,11 +63,11 @@ const ProjectContentItem = memo(
                       block.asset?.url,
                       <ContentImage image={block} sizes={sizes} />
                     ),
-                  video: (block) =>
-                    cc(
-                      block.file,
-                      <ContentVideo video={block} sizes={sizes} />
-                    ),
+                  // video: (block) =>
+                  //   cc(
+                  //     block.file,
+                  //     <ContentVideo video={block} sizes={sizes} />
+                  //   ),
                   remoteVideo: (block) =>
                     cc(block.url, <ContentVideo video={block} sizes={sizes} />),
                   quote: (block) =>
@@ -90,57 +77,10 @@ const ProjectContentItem = memo(
                     ),
                 }}
               />
-            )}
-          </SortableChild>
-        </div>
-      </div>
-    );
-  },
-  {
-    deep: true,
-    ignoreFunctions: true,
-  }
-);
-
-export const ProjectContent = memo(
-  function ProjectContent({
-    project,
-  }: {
-    project: NonNullable<Awaited<ReturnType<typeof getProject>>>;
-  }) {
-    if (!project.content) return null;
-
-    return (
-      <Sortable
-        document={project}
-        path='content'
-        getItems={(project) => project.content}
-        className={styles.grid}
-      >
-        {({ items, props, SortableChild }) =>
-          items.map((item) => {
-            const { key, ...rest } = props(item);
-            return (
-              <ProjectContentItem
-                key={key}
-                className={clsx(
-                  styles.gridItem,
-                  stegaClean(item.span) === 'full' && styles.gridItemFull
-                )}
-                block={item}
-                SortableChild={SortableChild}
-                data-sanity-drag-flow='horizontal'
-                full={stegaClean(item.span) === 'full'}
-                // data-sanity-drag-flow={
-                //   stegaClean(item.span) === 'full ? 'horizontal' : 'vertical'
-                // }
-                {...rest}
-              />
-            );
-          })
-        }
-      </Sortable>
-    );
-  },
-  { deep: true }
-);
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

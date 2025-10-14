@@ -24,24 +24,8 @@
     "generate:types": "pnpm run --filter studio generate:types",
     "generate:favicons": "pnpm create favicon common/assets/logo.svg common/static -- --overwrite --no-warn"
   },
-  "dependencies": {
-    "change-case": "^5.4.4",
-    "lodash": "^4.17.21",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "title-case": "^4.3.2"
-  },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-    "@types/lodash": "^4.17.20",
-    "@types/node": "^24.3.1",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
     "chokidar-cli": "^3.0.0",
-    "concurrently": "^9.2.1",
-    "eslint": "^9.35.0",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2",
-    "typescript-plugin-css-modules": "^5.2.0"
+    "concurrently": "^9.2.1"
   }
 }

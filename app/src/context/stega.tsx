@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, createContext } from 'react';
+import { createContext, ReactNode } from 'react';
 
 type StegaContextType = boolean;
 

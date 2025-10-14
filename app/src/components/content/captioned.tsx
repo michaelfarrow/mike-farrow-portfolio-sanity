@@ -1,7 +1,4 @@
-'use client';
-
-import { useStegaValue } from '@app/hooks/stega';
-
+import { stegaValue } from '@app/lib/stega';
 import { Figure } from '@app/components/general/figure';
 
 export interface CaptionedProps extends React.ComponentPropsWithoutRef<'div'> {
@@ -9,7 +6,7 @@ export interface CaptionedProps extends React.ComponentPropsWithoutRef<'div'> {
 }
 
 export function Captioned({ caption, children, ...rest }: CaptionedProps) {
-  const _caption = useStegaValue(caption);
+  const _caption = stegaValue(caption);
 
   return (
     <div {...rest}>

@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 // import { getExifData } from '@app/lib/image';
 import { createPage } from '@app/lib/page';
-import { getProject } from '@app/lib/sanity/queries/project';
-
+import { getProject, getProjects } from '@app/lib/sanity/queries/project';
 import { Markdown } from '@app/components/content/markdown';
 // import { Figure } from '@app/components/general/figure';
 import { ProjectAttributions } from '@app/components/project/attributions';
@@ -11,6 +10,14 @@ import { ProjectContent } from '@app/components/project/content';
 import { SanityImage } from '@app/components/sanity/image';
 
 const project = createPage('project', getProject, {
+  params: async () => {
+    return (await getProjects())
+      .map(({ slug }) => slug?.current)
+      .filter((slug): slug is string => !!slug)
+      .map((slug) => ({
+        slug,
+      }));
+  },
   metadata: ({ name, hideFromSearchEngines, private: isPrivate }) => ({
     title: name,
     robots: hideFromSearchEngines || isPrivate ? { index: false } : undefined,
@@ -94,5 +101,5 @@ const project = createPage('project', getProject, {
 //   />
 // </Figure>
 
-export const { generateMetadata } = project;
+export const { generateMetadata, generateStaticParams } = project;
 export default project.page;

@@ -3,9 +3,7 @@
 import { imageLoader } from 'next-sanity/image';
 
 import type { CommonSchemaType } from '@app/types/content';
-
 import { imageUrl } from '@app/lib/image';
-
 import { Image, ImageProps } from '@app/components/general/image';
 
 export type SanityImage = CommonSchemaType<'image'>;

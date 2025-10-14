@@ -1,9 +1,8 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-// import { PartialOnUndefinedDeep } from 'type-fest';
-import { sanityFetch } from '@app/lib/sanity/live';
+import { sanityClient } from '@app/lib/sanity/client';
 
-export type Query = Parameters<typeof sanityFetch>[0]['query'];
-export type Params = Parameters<typeof sanityFetch>[0]['params'];
+export type Query = Parameters<typeof sanityClient.fetch>[0];
+export type Params = Parameters<typeof sanityClient.fetch>[1];
 
 type NullsToUndefined<T> = T extends null
   ? undefined
@@ -34,8 +33,8 @@ function nullsToUndefined<T>(obj: T): NullsToUndefined<T> {
 }
 
 export async function fetch<T extends Query>(query: T, params?: Params) {
-  const res = await sanityFetch({ query, params });
-  return nullsToUndefined(res.data);
+  const res = await sanityClient.fetch(query, params);
+  return nullsToUndefined(res);
 }
 
 export function createQuery<T extends Query>(query: T) {

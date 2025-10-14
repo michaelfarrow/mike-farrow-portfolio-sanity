@@ -3,7 +3,7 @@ import { unflatten } from 'flat';
 import { mapKeys } from 'lodash';
 import { titleCase } from 'title-case';
 
-import { PathResolver, resolve as pathResolve } from './resolve';
+import { resolve as pathResolve, PathResolver } from './resolve';
 
 export type TypeResolver = ReturnType<ReturnType<typeof createTypeResolver>>;
 
@@ -34,7 +34,6 @@ function createTypeResolver<PR extends PathResolver>(pathResolve: PR) {
           .replace(/\[(.*?)\]/g, ':$1')
           .replace(/\./g, '__'),
         resolve(ctx: any) {
-          console.log(ctx);
           const { params } = ctx;
           const mapped: any = unflatten(
             mapKeys(params, (_val, key) => key.replace(/__/g, '.'))

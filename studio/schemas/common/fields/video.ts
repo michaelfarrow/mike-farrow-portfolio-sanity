@@ -1,9 +1,11 @@
-import { ObjectDefinition, defineField } from 'sanity';
+import { defineField, ObjectDefinition } from 'sanity';
 
 import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { imageField } from '@studio/schemas/common/fields/image';
 import { IconVideo } from '@studio/schemas/common/icons';
 import { DocumentPreview } from '@studio/schemas/previews/document';
+
+import { SUPPORTED_VIDEO_TYPES } from './video-types';
 
 export type VideoFieldDefinition = CustomFieldOptions<
   ObjectDefinition,
@@ -13,13 +15,6 @@ export type VideoFieldDefinition = CustomFieldOptions<
     field?: ReturnType<typeof defineField>;
   }
 >;
-
-const SUPPORTED = {
-  youTube:
-    /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|live\/|v\/)?)([\w-]+)(\S+)?$/,
-  vimeo:
-    /^(?:http|https)?:?\/?\/?(?:www\.)?(?:player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^/]*)\/videos\/|video\/|)(\d+)(?:|\/\?)$/,
-};
 
 export function videoField({ caption, field, ...rest }: VideoFieldDefinition) {
   return defineField({
@@ -45,6 +40,12 @@ export function videoField({ caption, field, ...rest }: VideoFieldDefinition) {
         title: 'Alternative Text',
         type: 'string',
         validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'ratio',
+        type: 'string',
+        description:
+          'If unspecified, ratio will be either the ratio of the poster image if supplied, or 16:9',
       }),
       ...(caption
         ? [
@@ -80,7 +81,7 @@ export function remoteVideoField({
       validation: (rule) =>
         rule.required().custom((value) => {
           let valid = false;
-          for (const regex of Object.values(SUPPORTED)) {
+          for (const regex of Object.values(SUPPORTED_VIDEO_TYPES)) {
             if (regex.test(value || '')) {
               valid = true;
               break;
@@ -88,7 +89,7 @@ export function remoteVideoField({
           }
           return (
             valid ||
-            `Invalid video url, must be one of: ${Object.keys(SUPPORTED).join(', ')}`
+            `Invalid video url, must be one of: ${Object.keys(SUPPORTED_VIDEO_TYPES).join(', ')}`
           );
         }),
     }),

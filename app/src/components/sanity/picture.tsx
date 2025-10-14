@@ -4,9 +4,7 @@ import { stegaClean } from 'next-sanity';
 import { imageLoader } from 'next-sanity/image';
 
 import type { CommonSchemaType } from '@app/types/content';
-
 import { BREAKPOINTS_MAX } from '@app/lib/responsive';
-
 import { Picture, PictureProps } from '@app/components/general/picture';
 import { getSanityImageProps } from '@app/components/sanity/image';
 

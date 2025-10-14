@@ -1,10 +1,17 @@
 import { getExifData } from '@app/lib/image';
 import { createPage } from '@app/lib/page';
-import { getAlbum } from '@app/lib/sanity/queries/album';
-
+import { getAlbum, getAlbums } from '@app/lib/sanity/queries/album';
 import { ContentImage } from '@app/components/content/image';
 
 const album = createPage('album', getAlbum, {
+  params: async () => {
+    return (await getAlbums())
+      .map(({ slug }) => slug?.current)
+      .filter((slug): slug is string => !!slug)
+      .map((slug) => ({
+        slug,
+      }));
+  },
   metadata: ({ name }) => ({
     title: name,
   }),
@@ -32,5 +39,5 @@ const album = createPage('album', getAlbum, {
   },
 });
 
-export const { generateMetadata } = album;
+export const { generateMetadata, generateStaticParams } = album;
 export default album.page;

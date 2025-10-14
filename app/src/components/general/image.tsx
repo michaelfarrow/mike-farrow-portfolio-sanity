@@ -1,15 +1,13 @@
 'use client';
 
 import clsx from 'clsx';
-
 import { useCallback, useEffect, useRef, useState } from 'react';
-
 import { default as NextImage, ImageProps as NextImageProps } from 'next/image';
 
 import { useIsMaybePresentation } from '@app/hooks/sanity';
-import { useStegaValue } from '@app/hooks/stega';
 import { useTimeout } from '@app/hooks/timeout';
 import { BREAKPOINTS_MAX } from '@app/lib/responsive';
+import { stegaValue } from '@app/lib/stega';
 
 import styles from './image.module.css';
 
@@ -67,7 +65,7 @@ export function Image({
         undefined
       }
       loading={isPresentation ? 'eager' : 'lazy'}
-      alt={useStegaValue(alt)}
+      alt={stegaValue(alt)}
       quality={quality}
       className={clsx(
         styles.image,

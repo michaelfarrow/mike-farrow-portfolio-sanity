@@ -8,7 +8,7 @@ import {
 export type CustomFieldOptions<
   T extends BaseSchemaDefinition,
   K extends Exclude<keyof T, 'type'> | null = null,
-  C extends {} = {},
+  C extends object = object,
 > = FieldDefinitionBase & Omit<T, K extends null ? 'type' : 'type' | K> & C;
 
 export type ValidatorRule<V> =

@@ -6,8 +6,6 @@ import { draftMode } from 'next/headers';
 
 import { config } from '@common/config';
 
-import { SanityLive } from '@app/lib/sanity/live';
-
 import { DisableDraftMode } from '@app/components/disable-draft-mode';
 
 import '@app/styles/code.css';
@@ -38,7 +36,6 @@ export default async function RootLayout({
     <html lang='en' className={(draftModeEnabled && 'draft-mode') || undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
-        <SanityLive />
         {draftModeEnabled && (
           <>
             <DisableDraftMode />

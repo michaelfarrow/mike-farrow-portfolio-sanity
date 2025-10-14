@@ -6,29 +6,44 @@
   "scripts": {
     "dev": "next dev --turbopack -H 127.0.0.1",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 127.0.0.1",
     "lint": "next lint"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
+    "change-case": "catalog:",
     "clsx": "^2.1.1",
     "format-duration": "^3.0.2",
+    "get-video-id": "^4.1.7",
+    "lodash": "catalog:",
     "merge-refs": "^2.0.0",
     "next": "^15.5.3",
     "next-sanity": "^11.1.1",
     "num2fraction": "^1.2.2",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-icons": "^5.5.0",
     "react-player": "^3.3.3",
     "react-refractor": "^4.0.0",
     "react-timing-hooks": "^5.1.0",
-    "refractor": "^5.0.0"
+    "refractor": "^5.0.0",
+    "title-case": "catalog:"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
+    "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@next/bundle-analyzer": "^15.5.3",
+    "@types/lodash": "catalog:",
+    "@types/node": "catalog:",
     "@types/num2fraction": "^1.2.2",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "catalog:",
     "eslint-config-next": "^15.5.2",
     "postcss-simple-vars": "^7.0.1",
-    "type-fest": "^5.0.1"
+    "prettier": "catalog:",
+    "type-fest": "^5.0.1",
+    "typescript": "catalog:",
+    "typescript-plugin-css-modules": "catalog:"
   }
 }

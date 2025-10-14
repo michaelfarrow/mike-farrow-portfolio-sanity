@@ -1,1 +1,1 @@
-export const Logo = () => <img src='/static/favicon.svg' />;
+export const Logo = () => <img alt='logo' src='/static/favicon.svg' />;
