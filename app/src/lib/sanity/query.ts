@@ -1,4 +1,6 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
+import { draftMode } from 'next/headers';
+
 import { sanityClient } from '@app/lib/sanity/client';
 
 export type Query = Parameters<typeof sanityClient.fetch>[0];
@@ -33,7 +35,20 @@ function nullsToUndefined<T>(obj: T): NullsToUndefined<T> {
 }
 
 export async function fetch<T extends Query>(query: T, params?: Params) {
-  const res = await sanityClient.fetch(query, params);
+  let draftModeEnabled = false;
+
+  try {
+    draftModeEnabled = (await draftMode()).isEnabled;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (e) {}
+
+  const res = await sanityClient.fetch(query, params, {
+    perspective: draftModeEnabled ? 'drafts' : 'published',
+    useCdn: !draftModeEnabled,
+    stega: draftModeEnabled,
+    token: process.env.SANITY_STUDIO_API_READ_TOKEN,
+  });
+
   return nullsToUndefined(res);
 }
 
