@@ -7,7 +7,7 @@ export const config = ({ dataset }: { dataset?: string }) => ({
   title: 'Mike Farrow',
   studio: {
     projectId: 'h0q0fht4',
-    dataset,
+    dataset: dataset || 'development',
     apiVersion: 'vX',
   },
   url: {
