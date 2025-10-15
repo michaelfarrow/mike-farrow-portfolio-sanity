@@ -10,13 +10,12 @@ import { Logo } from '@studio/components/logo';
 import { config } from '@studio/lib/config';
 import { resolveDynamic } from '@studio/presentation/resolve-dynamic';
 import { resolve } from '@studio/presentation/resolve-studio';
-import { schemas } from '@studio/schemas';
+import { schemas, schemasFlat } from '@studio/schemas';
 
 import '@studio/styles/global.css';
 
-const settingsSchema = schemas.find((schema) => schema.name === 'settings');
+const settingsSchema = schemasFlat.find((schema) => schema.name === 'settings');
 const singletonActions = new Set(['publish', 'discardChanges', 'restore']);
-const commonTypes = new Set(['common']);
 const singletonTypes = new Set(['settings']);
 
 export default defineConfig({
@@ -32,6 +31,15 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
+            ...schemas
+              .filter((item) => item.type !== 'ignore')
+              .map((item) => [
+                ...item.schemas.map((schema) =>
+                  S.documentTypeListItem(schema.name)
+                ),
+                S.divider(), //.title(item.title),
+              ])
+              .flat(),
             ...((settingsSchema && [
               S.listItem()
                 .title(settingsSchema.title || '')
@@ -44,14 +52,6 @@ export default defineConfig({
                 ),
             ]) ||
               []),
-            S.divider(),
-            ...schemas
-              .filter(
-                (schema) =>
-                  !singletonTypes.has(schema.name) &&
-                  !commonTypes.has(schema.name)
-              )
-              .map((schema) => S.documentTypeListItem(schema.name)),
           ]),
     }),
     visionTool(),
@@ -83,8 +83,7 @@ export default defineConfig({
   ],
 
   schema: {
-    types: schemas,
-
+    types: schemasFlat,
     templates: (templates) =>
       templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
   },
