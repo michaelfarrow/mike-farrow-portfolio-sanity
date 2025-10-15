@@ -1,20 +1,18 @@
 'use client';
 
-import { useDraftModeEnvironment } from 'next-sanity/hooks';
-
 import { useTransition } from 'react';
-
 import { useRouter } from 'next/navigation';
 
+import { useIsMaybePresentation } from '@app/hooks/sanity';
 import { disableDraftMode } from '@app/lib/actions';
 
 export function DisableDraftMode() {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
-  const environment = useDraftModeEnvironment();
+  const presentation = useIsMaybePresentation();
 
-  if (environment !== 'live' && environment !== 'unknown') {
+  if (presentation) {
     return null;
   }
 
