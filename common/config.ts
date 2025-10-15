@@ -12,7 +12,7 @@ export const config = ({ dataset }: { dataset?: string }) => ({
   },
   url: {
     app: production
-      ? 'https://mike-farrow-portfolio-sanity-app.vercel.app'
+      ? 'https://mike-farrow-portfolio-sanity-next.vercel.app'
       : 'http://127.0.0.1:3000',
     studio: production
       ? 'https://mike-farrow-portfolio-sanity-studio.vercel.app'
