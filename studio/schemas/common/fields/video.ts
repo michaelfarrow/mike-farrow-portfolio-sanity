@@ -45,7 +45,7 @@ export function videoField({ caption, field, ...rest }: VideoFieldDefinition) {
         name: 'ratio',
         type: 'string',
         description:
-          'If unspecified, ratio will be either the ratio of the poster image if supplied, or 16:9',
+          'Format 16:9 or 16/9. If unspecified, ratio will be either the ratio of the poster image if supplied, or 16:9',
       }),
       ...(caption
         ? [
