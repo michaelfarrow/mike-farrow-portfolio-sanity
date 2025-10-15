@@ -19,16 +19,6 @@ export function getSanityImageProps(
   image: SanityImage,
   options?: { ratio?: number }
 ) {
-  const crop = {
-    ...{
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-    },
-    ...image.crop,
-  };
-
   const url = image.asset?.url;
 
   const croppedSize = sanityImageCroppedSize(image);
