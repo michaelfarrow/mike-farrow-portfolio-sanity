@@ -18,5 +18,6 @@
     "html",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "remote.autoForwardPortsSource": "hybrid"
 }

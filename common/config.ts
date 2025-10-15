@@ -13,10 +13,10 @@ export const config = ({ dataset }: { dataset?: string }) => ({
   url: {
     app: production
       ? 'https://mike-farrow-portfolio-sanity-next.vercel.app'
-      : 'http://127.0.0.1:3000',
+      : 'http://localhost:3000',
     studio: production
       ? 'https://mike-farrow-portfolio-sanity-studio.vercel.app'
-      : 'http://127.0.0.1:3333',
+      : 'http://localhost:3333',
   },
   google: {
     maps: {
