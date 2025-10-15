@@ -70,7 +70,6 @@ export function Image({
       className={clsx(
         styles.image,
         (isPresentation || loaded) && styles.loaded,
-        isPresentation && styles.disableAnimation,
         className
       )}
       ref={image}

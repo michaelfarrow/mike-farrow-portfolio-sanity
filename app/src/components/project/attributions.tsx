@@ -1,5 +1,3 @@
-import { stegaClean } from 'next-sanity';
-
 import type { getProject } from '@app/lib//sanity/queries/project';
 import { MaybeLink } from '@app/components/content/maybe-link';
 
@@ -13,7 +11,7 @@ export function ProjectAttributions({ project }: { project: Project }) {
         {attribution.contacts?.map((contact) => (
           <li key={contact._key}>
             <MaybeLink {...contact.link} target='_blank'>
-              {stegaClean(contact.name)}
+              {contact.name}
             </MaybeLink>
           </li>
         ))}
