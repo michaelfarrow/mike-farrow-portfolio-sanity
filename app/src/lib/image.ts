@@ -2,10 +2,8 @@ import imageUrlBuilder from '@sanity/image-url';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import numToFraction from 'num2fraction';
 
-import { config } from '@common/config';
-
 import type { CommonSchemaType } from '@app/types/content';
-
+import { config } from '@app/lib/config';
 import { romanize } from '@app/lib/number';
 
 const builder = imageUrlBuilder(config.studio);

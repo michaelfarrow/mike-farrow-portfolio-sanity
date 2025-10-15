@@ -1,12 +1,10 @@
 import { vercelStegaDecode, vercelStegaSplit } from '@vercel/stega';
 import { mapValues } from 'lodash';
 import { stegaClean } from 'next-sanity';
-
 import { useContext } from 'react';
 
-import { config } from '@common/config';
-
 import { StegaContext } from '@app/context/stega';
+import { config } from '@app/lib/config';
 
 export function useStega() {
   return useContext(StegaContext);

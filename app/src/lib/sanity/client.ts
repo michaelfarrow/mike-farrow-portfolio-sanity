@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client';
 
-import { config } from '@common/config';
+import { config } from '@app/lib/config';
 
 export const sanityClient = createClient({
   ...config.studio,

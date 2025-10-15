@@ -1,5 +1,3 @@
-import { config } from '@common/config';
-
 import { codeInput } from '@sanity/code-input';
 import { googleMapsInput } from '@sanity/google-maps-input';
 import { visionTool } from '@sanity/vision';
@@ -9,6 +7,7 @@ import { defineDocuments, presentationTool } from 'sanity/presentation';
 import { structureTool } from 'sanity/structure';
 
 import { Logo } from '@studio/components/logo';
+import { config } from '@studio/lib/config';
 import { resolveDynamic } from '@studio/presentation/resolve-dynamic';
 import { resolve } from '@studio/presentation/resolve-studio';
 import { schemas } from '@studio/schemas';

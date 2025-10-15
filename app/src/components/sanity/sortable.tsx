@@ -1,15 +1,13 @@
 'use client';
 
 import { /* isEqual,*/ mapValues } from 'lodash';
-import { SanityDocument, createDataAttribute } from 'next-sanity';
+import { createDataAttribute, SanityDocument } from 'next-sanity';
 import { useOptimistic } from 'next-sanity/hooks';
 import { LiteralUnion, Paths } from 'type-fest';
-
 import { ReactNode } from 'react';
 
-import { config } from '@common/config';
-
 import { DisableStega } from '@app/context/stega';
+import { config } from '@app/lib/config';
 
 type ContentItem = {
   _key: string;

@@ -2,7 +2,7 @@ import { vercelStegaDecode, vercelStegaSplit } from '@vercel/stega';
 import { mapValues } from 'lodash';
 import { stegaClean } from 'next-sanity';
 
-import { config } from '@common/config';
+import { config } from '@app/lib/config';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const processObject = (o?: any): any => {

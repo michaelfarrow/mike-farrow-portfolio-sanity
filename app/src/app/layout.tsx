@@ -1,11 +1,9 @@
 import { VisualEditing } from 'next-sanity/visual-editing';
-
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { draftMode } from 'next/headers';
 
-import { config } from '@common/config';
-
+import { config } from '@app/lib/config';
 import { DisableDraftMode } from '@app/components/disable-draft-mode';
 
 import '@app/styles/code.css';
