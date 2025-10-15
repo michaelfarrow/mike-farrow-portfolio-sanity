@@ -3,7 +3,7 @@
 import { imageLoader } from 'next-sanity/image';
 
 import type { CommonSchemaType } from '@app/types/content';
-import { imageUrl } from '@app/lib/image';
+import { imageUrl, sanityImageCroppedSize } from '@app/lib/image';
 import { Image, ImageProps } from '@app/components/general/image';
 
 export type SanityImage = CommonSchemaType<'image'>;
@@ -30,8 +30,8 @@ export function getSanityImageProps(
   };
 
   const url = image.asset?.url;
-  const width = image.asset?.metadata?.dimensions?.width;
-  const height = image.asset?.metadata?.dimensions?.height;
+
+  const croppedSize = sanityImageCroppedSize(image);
 
   const ratioSize = options?.ratio
     ? {
@@ -40,17 +40,13 @@ export function getSanityImageProps(
       }
     : null;
 
-  if (url && width && height) {
+  if (url && croppedSize.width && croppedSize.height) {
     return {
       src: ratioSize
         ? imageUrl(image).width(ratioSize.width).height(ratioSize.height).url()
         : imageUrl(image).url(),
-      width: ratioSize
-        ? ratioSize?.width
-        : Math.round(width * (1 - (crop.left + crop.right))),
-      height: ratioSize
-        ? ratioSize.height
-        : Math.round(height * (1 - (crop.top + crop.bottom))),
+      width: ratioSize ? ratioSize?.width : croppedSize.width,
+      height: ratioSize ? ratioSize.height : croppedSize.height,
     };
   }
 

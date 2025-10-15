@@ -5,6 +5,7 @@ import React from 'react';
 import { SUPPORTED_VIDEO_TYPES } from '@studio/schemas/common/fields/video-types';
 
 import type { CommonSchemaType } from '@app/types/content';
+import { sanityImageCroppedSize } from '@app/lib/image';
 import { Video, VideoProps } from '@app/components/general/video';
 import { LiteVideoExtendsProps } from '@app/components/general/video/lite-video';
 import { VimeoVideo } from '@app/components/general/video/vimeo-video';
@@ -16,7 +17,7 @@ import styles from './video.module.css';
 export type SanityRemoteVideo = CommonSchemaType<'remoteVideo'>;
 export type SanityVideo = CommonSchemaType<'video'>;
 
-export interface SanityVideoProps extends Omit<VideoProps, 'src' | 'title'> {
+export interface SanityVideoProps {
   video: SanityVideo | SanityRemoteVideo;
   alt?: string;
   sizes?: string;
@@ -42,8 +43,20 @@ export function SanityVideo({ video, alt, sizes, ...rest }: SanityVideoProps) {
 
   if ('url' in video) {
     if (!video.url) return null;
+
     const matchedVideo = getVideoId(video.url);
     if (!matchedVideo?.id) return null;
+
+    const { poster, ratio } = video;
+
+    const croppedSize = poster && sanityImageCroppedSize(poster);
+
+    const parsedRatio = ratio?.match(/(\d+)\s*[/:]\s*(\d+)/);
+    const finalRatio = parsedRatio
+      ? Number(parsedRatio[1]) / Number(parsedRatio[2])
+      : croppedSize?.width && croppedSize.height
+        ? croppedSize.width / croppedSize.height
+        : undefined;
 
     for (const [key, type] of Object.entries(SUPPORTED_VIDEO_TYPES)) {
       if (type.test(video.url)) {
@@ -52,7 +65,8 @@ export function SanityVideo({ video, alt, sizes, ...rest }: SanityVideoProps) {
         return (
           <VideoComponent
             id={matchedVideo.id}
-            title={video.alt || ''}
+            title={alt || video.alt || ''}
+            aspect={finalRatio}
             poster={
               video.poster && (
                 <SanityImage

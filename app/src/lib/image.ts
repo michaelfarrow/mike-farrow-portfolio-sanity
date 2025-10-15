@@ -12,6 +12,8 @@ type UnknownImageData = {
   [key: string]: number | string | undefined;
 };
 
+export type SanityImage = CommonSchemaType<'image'>;
+
 export type ExifData = {
   camera?: string;
   lens?: string;
@@ -23,6 +25,26 @@ export type ExifData = {
     exposureCompensation?: string;
   };
 };
+
+export function sanityImageCroppedSize(image: SanityImage) {
+  const crop = {
+    ...{
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    },
+    ...image.crop,
+  };
+
+  const width = image.asset?.metadata?.dimensions?.width;
+  const height = image.asset?.metadata?.dimensions?.height;
+
+  return {
+    width: width && Math.round(width * (1 - (crop.left + crop.right))),
+    height: height && Math.round(height * (1 - (crop.top + crop.bottom))),
+  };
+}
 
 export function imageUrl(source: SanityImageSource) {
   return builder.image(source);
