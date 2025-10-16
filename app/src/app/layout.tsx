@@ -1,10 +1,9 @@
-import { VisualEditing } from 'next-sanity/visual-editing';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { draftMode } from 'next/headers';
 
 import { config } from '@app/lib/config';
-import { DisableDraftMode } from '@app/components/disable-draft-mode';
+import { DraftMode } from '@app/components/studio/draft-mode';
 
 import '@app/styles/code.css';
 import '@app/styles/globals.css';
@@ -34,12 +33,7 @@ export default async function RootLayout({
     <html lang='en' className={(draftModeEnabled && 'draft-mode') || undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
-        {draftModeEnabled && (
-          <>
-            <DisableDraftMode />
-            <VisualEditing />
-          </>
-        )}
+        <DraftMode enabled={draftModeEnabled} />
       </body>
     </html>
   );
