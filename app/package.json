@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/presentation-comlink": "^1.0.29",
     "@uidotdev/usehooks": "^2.4.1",
     "change-case": "catalog:",
     "clsx": "^2.1.1",
