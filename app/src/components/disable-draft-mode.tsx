@@ -12,7 +12,7 @@ export function DisableDraftMode() {
 
   const presentation = useIsMaybePresentation();
 
-  if (presentation) {
+  if (presentation === undefined || presentation) {
     return null;
   }
 

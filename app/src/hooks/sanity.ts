@@ -11,7 +11,7 @@ export function isMaybePresentation(): boolean {
 }
 
 export function useIsMaybePresentation() {
-  const [current, setCurrent] = useState(true);
+  const [current, setCurrent] = useState<boolean>();
   useEffect(() => {
     setCurrent(isMaybePresentation());
   }, []);
