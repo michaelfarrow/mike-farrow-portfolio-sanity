@@ -1,4 +1,4 @@
-import { get as _get } from 'lodash';
+import { get as _get } from 'lodash-es';
 import { Get, Paths } from 'type-fest';
 
 export function get<T extends object, P extends Paths<T>>(obj: T, path: P) {

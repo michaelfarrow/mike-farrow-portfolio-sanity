@@ -1,4 +1,6 @@
-import { Falsey } from 'lodash';
+import React from 'react';
+
+import { Falsey } from '@app/lib/types';
 
 export type CSSPropertiesWithVars = React.CSSProperties & {
   [key: `--${string}`]: unknown;

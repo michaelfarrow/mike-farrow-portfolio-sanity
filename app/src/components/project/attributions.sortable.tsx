@@ -1,11 +1,11 @@
 'use client';
 
 import { stegaClean } from 'next-sanity';
+import React from 'react';
 
 import { useStegaValue } from '@app/hooks/stega';
 import type { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';
-
 import { MaybeLink } from '@app/components/content/maybe-link';
 import { Sortable, SortableChild } from '@app/components/sanity/sortable';
 

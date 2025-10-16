@@ -1,5 +1,4 @@
-import { isEqual as deepEqual, mapValues, omitBy } from 'lodash';
-
+import { isEqual as deepEqual, mapValues, omitBy } from 'lodash-es';
 import { FunctionComponent, memo as reactMemo } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

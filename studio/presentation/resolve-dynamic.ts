@@ -1,4 +1,4 @@
-import { uniqBy } from 'lodash';
+import { uniqBy } from 'lodash-es';
 import { map, Observable } from 'rxjs';
 
 import { type ClientReturn } from '@sanity/client';

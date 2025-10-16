@@ -8,7 +8,7 @@ import {
 } from 'react-icons/pi';
 import ReactPlayer from 'react-player';
 import { useTimeout } from 'react-timing-hooks';
-import {
+import React, {
   ReactEventHandler,
   useCallback,
   useEffect,

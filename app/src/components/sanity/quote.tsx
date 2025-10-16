@@ -1,7 +1,7 @@
 import clsx from 'clsx';
+import React from 'react';
 
 import type { CommonSchemaType } from '@app/types/content';
-
 import { Markdown } from '@app/components/content/markdown';
 import { MaybeLink } from '@app/components/content/maybe-link';
 

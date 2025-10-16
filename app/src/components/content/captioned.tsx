@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { stegaValue } from '@app/lib/stega';
 import { Figure } from '@app/components/general/figure';
 

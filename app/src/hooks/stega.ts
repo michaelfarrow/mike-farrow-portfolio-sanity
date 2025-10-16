@@ -1,5 +1,5 @@
 import { vercelStegaDecode, vercelStegaSplit } from '@vercel/stega';
-import { mapValues } from 'lodash';
+import { mapValues } from 'lodash-es';
 import { stegaClean } from 'next-sanity';
 import { useContext } from 'react';
 

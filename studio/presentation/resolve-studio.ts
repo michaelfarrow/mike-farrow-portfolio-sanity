@@ -1,6 +1,6 @@
 import { capitalCase } from 'change-case';
 import { unflatten } from 'flat';
-import { mapKeys } from 'lodash';
+import { mapKeys } from 'lodash-es';
 import { titleCase } from 'title-case';
 
 import { resolve as pathResolve, PathResolver } from './resolve';

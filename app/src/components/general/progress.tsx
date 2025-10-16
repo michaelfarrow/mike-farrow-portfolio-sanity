@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useAnimationFrameLoop } from 'react-timing-hooks';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { styleWithVars } from '@app/lib/style';
 

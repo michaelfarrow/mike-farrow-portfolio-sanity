@@ -7,6 +7,7 @@ import js from 'refractor/jsx';
 import html from 'refractor/markup';
 import shell from 'refractor/shell-session';
 import ts from 'refractor/tsx';
+import React from 'react';
 
 import type { CommonSchemaType } from '@app/types/content';
 

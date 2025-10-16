@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import { stegaClean } from 'next-sanity';
+import React from 'react';
 
 import { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';

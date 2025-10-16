@@ -1,7 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import { orderBy } from 'lodash';
+import { orderBy } from 'lodash-es';
+import React from 'react';
 import { getImageProps, ImageProps } from 'next/image';
 
 import { Image, IMAGE_DEFAULT_QUALITY } from '@app/components/general/image';

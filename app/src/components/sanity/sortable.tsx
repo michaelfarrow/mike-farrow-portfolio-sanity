@@ -1,10 +1,10 @@
 'use client';
 
-import { /* isEqual,*/ mapValues } from 'lodash';
+import { /* isEqual,*/ mapValues } from 'lodash-es';
 import { createDataAttribute, SanityDocument } from 'next-sanity';
 import { useOptimistic } from 'next-sanity/hooks';
 import { LiteralUnion, Paths } from 'type-fest';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { DisableStega } from '@app/context/stega';
 import { config } from '@app/lib/config';

@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import React from 'react';
 
 import styles from './figure.module.scss';
 
 export interface FigureProps extends React.ComponentPropsWithoutRef<'figure'> {
-  caption: ReactNode;
+  caption: React.ReactNode;
   captionClassName?: string;
 }
 
