@@ -3,10 +3,6 @@
 import clsx from 'clsx';
 import React, { HTMLAttributes, useEffect, useState } from 'react';
 
-import { styleWithVars } from '@app/lib/style';
-
-import styles from './lite-video.module.scss';
-
 const LITE_VIDEO_DEFAULT_CONTAINER: React.ElementType = 'article';
 
 export interface LiteVideoProps<
@@ -31,7 +27,7 @@ export type LiteVideoExtendsProps = Omit<
 
 export function LiteVideo<T extends React.ElementType>({
   title,
-  aspect,
+  aspect = 16 / 9,
   announce = 'Watch',
   alwaysLoadIframe,
   onIframeAdded,
@@ -67,31 +63,33 @@ export function LiteVideo<T extends React.ElementType>({
       <>{preconnected && preconnect}</>
       <Container
         {...containerAttrs}
-        style={styleWithVars(
-          (containerAttrs && containerAttrs.style) || {},
-          aspect
-            ? {
-                '--video-aspect': aspect,
-              }
-            : {}
-        )}
         className={clsx([
-          styles.video,
+          'relative overflow-hidden bg-black',
           containerAttrs && containerAttrs.className,
-          iframe && styles.iframeLoaded,
         ])}
+        style={{
+          ...containerAttrs?.style,
+          ...{ paddingTop: `${100 / aspect}%` },
+        }}
         onPointerOver={warmConnections}
         onClick={addIframe}
       >
-        <span className={styles.inner}>
+        <span className='absolute inset-0 block h-full w-full *:absolute *:inset-0 *:h-full *:w-full'>
           {(iframe && children) || (
             <button
               type='button'
-              className={styles.button}
+              className='invisible'
               aria-label={`${announce} ${title}`}
             />
           )}
-          <div className={styles.poster}>{poster}</div>
+          <div
+            className={clsx(
+              'pointer-events-none absolute inset-0 block h-full w-full transition-opacity duration-500 *:absolute *:inset-0 *:!h-full *:!w-full',
+              iframe && 'opacity-0'
+            )}
+          >
+            {poster}
+          </div>
         </span>
       </Container>
     </>

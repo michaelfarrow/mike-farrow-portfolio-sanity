@@ -6,7 +6,7 @@ import React from 'react';
 
 import { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';
-import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
+import { /* BREAKPOINT_MAX, */ breakpointSizes } from '@app/lib/responsive';
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
 import { Markdown } from '@app/components/content/markdown';
@@ -19,7 +19,10 @@ import {
 } from '@app/components/sanity/array';
 import { Sortable, SortableChild } from '@app/components/sanity/sortable';
 
-import styles from './content.module.css';
+// import styles from './content.module.css';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const styles: any = {};
 
 type Project = NonNullable<Awaited<ReturnType<typeof getProject>>>;
 type Content = NonNullable<Project['content']>;
@@ -37,11 +40,10 @@ const ProjectContentItem = memo(
     SortableChild: SortableChild;
     full: boolean;
   }) {
-    const sizes = breakpointSizes(
-      { max: 'mobile', size: '100vw' },
-      { max: 'desktop', size: full ? '100vw' : '50vw' },
-      BREAKPOINT_MAX / (full ? 1 : 2)
-    );
+    const sizes = breakpointSizes();
+    // { max: 'mobile', size: '100vw' },
+    // { max: 'desktop', size: full ? '100vw' : '50vw' },
+    // BREAKPOINT_MAX / (full ? 1 : 2)
 
     return (
       <div {...rest} className={clsx(className, styles.handle)}>

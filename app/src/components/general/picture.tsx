@@ -7,13 +7,11 @@ import { getImageProps, ImageProps } from 'next/image';
 
 import { Image, IMAGE_DEFAULT_QUALITY } from '@app/components/general/image';
 
-import styles from './picture.module.scss';
-
 export type PictureImage = {
   src: string;
   width: number;
   height: number;
-  max?: number;
+  min?: number;
 };
 
 export interface PictureProps
@@ -50,8 +48,8 @@ export function Picture({
     );
   }
 
-  const defaultImage =
-    images.find(({ max }) => !max) || images[images.length - 1];
+  const imagesSorted = orderBy(images, 'min', 'asc');
+  const defaultImage = imagesSorted[0];
 
   const imageProps = (image: PictureImage) => {
     const { src, width, height } = image;
@@ -68,8 +66,8 @@ export function Picture({
   };
 
   return (
-    <picture className={clsx(styles.picture, className)} {...rest}>
-      {orderBy(images, 'max', 'asc').map(({ max, ...image }, i) => {
+    <picture className={clsx('block', className)} {...rest}>
+      {imagesSorted.map(({ min, ...image }, i) => {
         const {
           props: { srcSet, sizes, width, height },
         } = imageProps(image);
@@ -80,7 +78,7 @@ export function Picture({
             sizes={sizes}
             width={width}
             height={height}
-            media={max ? `(max-width: ${max - 1}px)` : undefined}
+            media={min ? `(min-width: ${min}px)` : undefined}
             srcSet={srcSet}
           />
         );

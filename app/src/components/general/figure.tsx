@@ -1,7 +1,4 @@
-import clsx from 'clsx';
 import React from 'react';
-
-import styles from './figure.module.scss';
 
 export interface FigureProps extends React.ComponentPropsWithoutRef<'figure'> {
   caption: React.ReactNode;
@@ -9,14 +6,13 @@ export interface FigureProps extends React.ComponentPropsWithoutRef<'figure'> {
 }
 
 export function Figure({
-  className,
   caption,
   captionClassName,
   children,
   ...rest
 }: FigureProps) {
   return (
-    <figure {...rest} className={clsx(styles.figure, className)}>
+    <figure {...rest}>
       {children}
       <figcaption className={captionClassName}>{caption}</figcaption>
     </figure>

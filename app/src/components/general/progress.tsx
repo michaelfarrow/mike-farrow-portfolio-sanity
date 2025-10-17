@@ -1,10 +1,8 @@
+'use client';
+
 import clsx from 'clsx';
 import { useAnimationFrameLoop } from 'react-timing-hooks';
 import React, { useEffect, useState } from 'react';
-
-import { styleWithVars } from '@app/lib/style';
-
-import styles from './progress.module.scss';
 
 export interface Props extends React.ComponentPropsWithoutRef<'div'> {
   className?: string;
@@ -16,7 +14,6 @@ export interface Props extends React.ComponentPropsWithoutRef<'div'> {
 
 export default function Progress({
   className,
-  style,
   min = 0,
   max = 100,
   current,
@@ -47,12 +44,14 @@ export default function Progress({
 
   return (
     <div
-      className={clsx(styles.wrapper, className)}
-      style={styleWithVars(style, { '--progress-percent': percent / 100 })}
+      className={clsx('relative h-3 overflow-hidden bg-black', className)}
       {...rest}
     >
-      <span className={styles.bar} />
-      <span className={styles.label}>{percent}</span>
+      <span
+        className='absolute left-0 block h-full w-full origin-left bg-red-500'
+        style={{ transform: `scaleX(${percent}%)` }}
+      />
+      <span className='absolute hidden'>{percent}</span>
     </div>
   );
 }

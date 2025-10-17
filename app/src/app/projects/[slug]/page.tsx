@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { createPage } from '@app/lib/page';
 import { getProject, getProjects } from '@app/lib/sanity/queries/project';
 import { Markdown } from '@app/components/content/markdown';
+import Progress from '@app/components/general/progress';
 // import { Figure } from '@app/components/general/figure';
 import { ProjectAttributions } from '@app/components/project/attributions';
 import { ProjectContent } from '@app/components/project/content';
@@ -31,6 +32,8 @@ const project = createPage('project', getProject, {
 
     return (
       <div style={{ maxWidth: 1500, margin: 'auto' }}>
+        <Progress current={40} />
+
         <div>
           <Link href='/'>← Back to projects</Link>
         </div>

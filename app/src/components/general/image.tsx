@@ -6,10 +6,8 @@ import { default as NextImage, ImageProps as NextImageProps } from 'next/image';
 
 import { useIsMaybePresentation } from '@app/hooks/sanity';
 import { useTimeout } from '@app/hooks/timeout';
-import { BREAKPOINTS_MAX } from '@app/lib/responsive';
+import { BREAKPOINTS_MIN } from '@app/lib/responsive';
 import { stegaValue } from '@app/lib/stega';
-
-import styles from './image.module.scss';
 
 export const IMAGE_DEFAULT_QUALITY = 75;
 
@@ -26,7 +24,7 @@ export function Image({
   quality = IMAGE_DEFAULT_QUALITY,
   overrideSrc,
   backupSrc,
-  backupSrcSize = BREAKPOINTS_MAX.tablet,
+  backupSrcSize = BREAKPOINTS_MIN.xl.width,
   ...rest
 }: ImageProps) {
   const image = useRef<HTMLImageElement>(null);
@@ -68,8 +66,10 @@ export function Image({
       alt={stegaValue(alt)}
       quality={quality}
       className={clsx(
-        styles.image,
-        (isPresentation || loaded) && styles.loaded,
+        'block h-auto w-full transition-opacity',
+        isPresentation || loaded
+          ? 'opacity-1 duration-200'
+          : 'opacity-0 duration-0',
         className
       )}
       ref={image}

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { stegaClean } from 'next-sanity';
 
 import { getProject } from '@app/lib//sanity/queries/project';
-import { BREAKPOINT_MAX, breakpointSizes } from '@app/lib/responsive';
+import { breakpointSizes } from '@app/lib/responsive';
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
 import { Markdown } from '@app/components/content/markdown';
@@ -14,8 +14,6 @@ import {
   conditionalComponent as cc,
 } from '@app/components/sanity/array';
 
-import styles from './content.module.scss';
-
 export function ProjectContent({
   project,
 }: {
@@ -24,22 +22,22 @@ export function ProjectContent({
   if (!project.content) return null;
 
   return (
-    <div className={styles.grid}>
+    <div className='grid grid-cols-2 gap-10'>
       {project.content.map((item) => {
         const full = stegaClean(item.span) === 'full';
 
         const sizes = breakpointSizes(
-          { max: 'mobile', size: '100vw' },
-          { max: 'desktop', size: full ? '100vw' : '50vw' },
-          BREAKPOINT_MAX / (full ? 1 : 2)
+          { min: 1500, size: 1500 / (full ? 1 : 2) },
+          { min: 'md', size: full ? '100vw' : '50vw' },
+          '100vw'
         );
 
         return (
           <div
             key={item._key}
-            className={clsx(styles.gridItem, full && styles.gridItemFull)}
+            className={clsx('col-span-full', !full && 'md:col-auto')}
           >
-            <div className={styles.gridItemContent}>
+            <div className='sticky top-0 [.draft-mode_&]:static'>
               <Array
                 value={item.content || []}
                 wrapper={(child, children) => {
@@ -63,11 +61,11 @@ export function ProjectContent({
                       block.asset?.url,
                       <ContentImage image={block} sizes={sizes} />
                     ),
-                  // video: (block) =>
-                  //   cc(
-                  //     block.file,
-                  //     <ContentVideo video={block} sizes={sizes} />
-                  //   ),
+                  video: (block) =>
+                    cc(
+                      block.file,
+                      <ContentVideo video={block} sizes={sizes} />
+                    ),
                   remoteVideo: (block) =>
                     cc(block.url, <ContentVideo video={block} sizes={sizes} />),
                   quote: (block) =>

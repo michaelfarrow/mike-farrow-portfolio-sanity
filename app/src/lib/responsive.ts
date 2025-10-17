@@ -1,10 +1,8 @@
-import breakpoints from '@app/config/breakpoints.json';
+import breakpoints from '@common/config/breakpoints';
 
-export const BREAKPOINTS_MAX = breakpoints;
+export const BREAKPOINTS_MIN = breakpoints;
 
-export const BREAKPOINT_MAX = Math.max(...Object.values(BREAKPOINTS_MAX)) || 0;
-
-export type BREAKPOINT_NAME = keyof typeof BREAKPOINTS_MAX;
+export type BREAKPOINT_NAME = Exclude<keyof typeof BREAKPOINTS_MIN, '2xl'>;
 
 export function breakpointSize(size: string | number) {
   return typeof size === 'number' ? `${size}px` : size;
@@ -14,14 +12,19 @@ export function breakpointSizes(
   ...sizes: (
     | number
     | string
-    | { max: BREAKPOINT_NAME; size: number | string }
+    | { min: BREAKPOINT_NAME | number; size: number | string }
   )[]
 ) {
   if (!sizes.length) return '100vw';
   return sizes
     .map((item) => {
       if (typeof item === 'object' && 'size' in item) {
-        return `(max-width: ${breakpointSize(BREAKPOINTS_MAX[item.max] - 1)}) ${breakpointSize(item.size)}`;
+        const minWidth =
+          (typeof item.min === 'string' &&
+            BREAKPOINTS_MIN[item.min] &&
+            breakpointSize(BREAKPOINTS_MIN[item.min].width)) ||
+          breakpointSize(item.min);
+        return `(min-width: ${minWidth}) ${breakpointSize(item.size)}`;
       } else {
         return `${breakpointSize(item)}`;
       }

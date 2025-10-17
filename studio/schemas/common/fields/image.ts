@@ -1,15 +1,20 @@
+import breakpoints from '@common/config/breakpoints';
 import { titleCase } from 'title-case';
 
 import {
-  ImageDefinition,
-  ObjectDefinition,
   defineArrayMember,
   defineField,
+  ImageDefinition,
+  ObjectDefinition,
 } from 'sanity';
 
 import type { CustomFieldOptions } from '@studio/schemas/common/fields/field';
 import { IconImage, IconImages } from '@studio/schemas/common/icons';
 import { DocumentPreview } from '@studio/schemas/previews/document';
+
+const breakpointsOrdered = Object.entries(breakpoints)
+  .map(([key, breakpoint]) => ({ key, breakpoint }))
+  .sort((a, b) => (a.breakpoint.width < b.breakpoint.width ? -1 : 1));
 
 export function imageField({
   decorative,
@@ -101,7 +106,7 @@ export function responsiveImageField({
         name: 'main',
         title: 'Main Image',
         description:
-          'Used across all breakpoints, or highest breakpoints if any alternative images are set',
+          'Used across all breakpoints, or lowest breakpoints if any alternative images are set',
         required,
         caption,
       }),
@@ -121,7 +126,12 @@ export function responsiveImageField({
                 name: 'breakpoint',
                 type: 'string',
                 options: {
-                  list: ['mobile', 'tablet'],
+                  list: breakpointsOrdered
+                    .slice(1)
+                    .map(({ key, breakpoint }, i) => ({
+                      title: `${breakpoint.name} (above ${breakpointsOrdered[i].breakpoint.width}px)`,
+                      value: key,
+                    })),
                 },
                 validation: (rule) => rule.required(),
               }),
@@ -134,7 +144,7 @@ export function responsiveImageField({
               prepare: ({ media, breakpoint }) => ({
                 media,
                 title:
-                  (breakpoint && titleCase(breakpoint)) ||
+                  (breakpoint && (breakpoints as any)[breakpoint].name) ||
                   '[No breakpoint selected]',
               }),
             },

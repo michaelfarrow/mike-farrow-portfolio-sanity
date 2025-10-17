@@ -4,8 +4,14 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "css.lint.unknownAtRules": "ignore",
   "typescript.preferences.importModuleSpecifier": "non-relative",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "[markdown]": {
     "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.wordWrap": "bounded"
   },
   "emmet.includeLanguages": {
     "postcss": "css"
@@ -19,5 +25,13 @@
     "typescript",
     "typescriptreact"
   ],
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact",
+    "css": "css"
+  },
   "remote.autoForwardPortsSource": "hybrid"
 }

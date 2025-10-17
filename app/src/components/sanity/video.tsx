@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import getVideoId from 'get-video-id';
 import React from 'react';
 
@@ -6,8 +5,8 @@ import { SUPPORTED_VIDEO_TYPES } from '@studio/schemas/common/fields/video-types
 
 import type { CommonSchemaType } from '@app/types/content';
 import { sanityImageCroppedSize } from '@app/lib/image';
-import { Video, VideoProps } from '@app/components/general/video';
 import { LiteVideoExtendsProps } from '@app/components/general/video/lite-video';
+import { NativeVideo } from '@app/components/general/video/native-video';
 import { VimeoVideo } from '@app/components/general/video/vimeo-video';
 import { YoutubeVideo } from '@app/components/general/video/youtube-video';
 import { SanityImage } from '@app/components/sanity/image';
@@ -31,7 +30,7 @@ export const videoComponentMap: Record<
   vimeo: VimeoVideo,
 };
 
-export function SanityVideo({ video, alt, sizes, ...rest }: SanityVideoProps) {
+export function SanityVideo({ video, alt, sizes }: SanityVideoProps) {
   const src =
     'file' in video
       ? video.file?.asset?.url
@@ -41,67 +40,46 @@ export function SanityVideo({ video, alt, sizes, ...rest }: SanityVideoProps) {
 
   if (!src) return;
 
+  const { poster, ratio } = video;
+  const title = alt || video.alt || '';
+
+  const croppedSize = poster && sanityImageCroppedSize(poster);
+
+  const parsedRatio = ratio?.match(/(\d+)\s*[/:]\s*(\d+)/);
+  const finalRatio = parsedRatio
+    ? Number(parsedRatio[1]) / Number(parsedRatio[2])
+    : croppedSize?.width && croppedSize.height
+      ? croppedSize.width / croppedSize.height
+      : undefined;
+
+  const posterComponent = video.poster && (
+    <SanityImage
+      className={styles.posterImage}
+      image={video.poster}
+      sizes={sizes}
+    />
+  );
+
+  const commonProps = {
+    title,
+    poster: posterComponent,
+    aspect: finalRatio,
+  };
+
   if ('url' in video) {
     if (!video.url) return null;
 
     const matchedVideo = getVideoId(video.url);
     if (!matchedVideo?.id) return null;
 
-    const { poster, ratio } = video;
-
-    const croppedSize = poster && sanityImageCroppedSize(poster);
-
-    const parsedRatio = ratio?.match(/(\d+)\s*[/:]\s*(\d+)/);
-    const finalRatio = parsedRatio
-      ? Number(parsedRatio[1]) / Number(parsedRatio[2])
-      : croppedSize?.width && croppedSize.height
-        ? croppedSize.width / croppedSize.height
-        : undefined;
-
     for (const [key, type] of Object.entries(SUPPORTED_VIDEO_TYPES)) {
       if (type.test(video.url)) {
         const VideoComponent =
           videoComponentMap[key as keyof typeof SUPPORTED_VIDEO_TYPES];
-        return (
-          <VideoComponent
-            id={matchedVideo.id}
-            title={alt || video.alt || ''}
-            aspect={finalRatio}
-            poster={
-              video.poster && (
-                <SanityImage
-                  className={styles.posterImage}
-                  image={video.poster}
-                  sizes={sizes}
-                />
-              )
-            }
-          />
-        );
+        return <VideoComponent {...commonProps} id={matchedVideo.id} />;
       }
     }
   }
 
-  return null;
-
-  // return (
-  //   <Video
-  //     {...rest}
-  //     src={src}
-  //     title={alt || video.alt}
-  //     poster={({ playing }) =>
-  //       (video.poster && (
-  //         <div className={clsx(styles.poster, playing && styles.posterPlaying)}>
-  //           <SanityImage
-  //             className={styles.posterImage}
-  //             image={video.poster}
-  //             sizes={sizes}
-  //           />
-  //         </div>
-  //       )) ||
-  //       null
-  //     }
-  //     native={'url' in video}
-  //   />
-  // );
+  return <NativeVideo {...commonProps} src={src} />;
 }

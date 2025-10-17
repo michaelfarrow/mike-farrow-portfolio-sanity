@@ -49,7 +49,6 @@ export function YoutubeVideo({
       }
     >
       <iframe
-        {...rest}
         src={iframeSrc}
         title={title}
         frameBorder='0'
