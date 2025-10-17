@@ -102,5 +102,5 @@ const project = createPage('project', getProject, {
 //   />
 // </Figure>
 
-export const { generateMetadata, generateStaticParams } = project;
+export const { generateMetadata /*, generateStaticParams */ } = project;
 export default project.page;
