@@ -10,14 +10,14 @@ import { ProjectContent } from '@app/components/project/content';
 import { SanityImage } from '@app/components/sanity/image';
 
 const project = createPage('project', getProject, {
-  // params: async () => {
-  //   return (await getProjects())
-  //     .map(({ slug }) => slug?.current)
-  //     .filter((slug): slug is string => !!slug)
-  //     .map((slug) => ({
-  //       slug,
-  //     }));
-  // },
+  params: async () => {
+    return (await getProjects())
+      .map(({ slug }) => slug?.current)
+      .filter((slug): slug is string => !!slug)
+      .map((slug) => ({
+        slug,
+      }));
+  },
   metadata: ({ name, hideFromSearchEngines, private: isPrivate }) => ({
     title: name,
     robots: hideFromSearchEngines || isPrivate ? { index: false } : undefined,
@@ -102,5 +102,5 @@ const project = createPage('project', getProject, {
 //   />
 // </Figure>
 
-export const { generateMetadata /*, generateStaticParams */ } = project;
+export const { generateMetadata, generateStaticParams } = project;
 export default project.page;
