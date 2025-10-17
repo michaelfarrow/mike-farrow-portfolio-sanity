@@ -2,12 +2,14 @@
 
 import clsx from 'clsx';
 import getVideoId from 'get-video-id';
+import { stegaClean } from 'next-sanity';
 import React from 'react';
 
 import { SUPPORTED_VIDEO_TYPES } from '@studio/schemas/common/fields/video-types';
 
 import type { CommonSchemaType } from '@app/types/content';
 import { sanityImageCroppedSize } from '@app/lib/image';
+import { stegaValueDecode } from '@app/lib/stega';
 import { LiteVideoExtendsProps } from '@app/components/general/video/lite-video';
 import { NativeVideo } from '@app/components/general/video/native-video';
 import { VimeoVideo } from '@app/components/general/video/vimeo-video';
@@ -42,7 +44,7 @@ export function SanityVideo({ video, alt, sizes }: SanityVideoProps) {
   if (!src) return;
 
   const { poster, ratio } = video;
-  const title = alt || video.alt || '';
+  const title = stegaClean(alt || video.alt || '');
 
   const croppedSize = poster && sanityImageCroppedSize(poster);
 
@@ -69,6 +71,7 @@ export function SanityVideo({ video, alt, sizes }: SanityVideoProps) {
     title,
     poster: posterComponent,
     aspect: finalRatio,
+    'data-sanity': stegaValueDecode(video.alt),
   };
 
   if ('url' in video) {

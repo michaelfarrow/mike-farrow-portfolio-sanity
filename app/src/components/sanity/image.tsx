@@ -58,6 +58,3 @@ export function SanityImage({ image, alt, ratio, ...rest }: SanityImageProps) {
     />
   );
 }
-
-// placeholder='blur'
-// blurDataURL={image.asset?.metadata?.lqip}

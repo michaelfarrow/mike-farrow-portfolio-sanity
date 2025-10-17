@@ -38,6 +38,7 @@ export function LiteVideo<T extends React.ElementType>({
   children,
   preconnect,
   poster,
+  ...rest
 }: LiteVideoProps<T>) {
   const [preconnected, setPreconnected] = useState(false);
   const [initialised, setInitialised] = useState(Boolean(alwaysLoadIframe));
@@ -64,6 +65,7 @@ export function LiteVideo<T extends React.ElementType>({
     <>
       <>{preconnected && preconnect}</>
       <Container
+        {...rest}
         {...containerAttrs}
         className={clsx([
           'relative overflow-hidden bg-black',

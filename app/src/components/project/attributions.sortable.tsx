@@ -3,7 +3,7 @@
 import { stegaClean } from 'next-sanity';
 import React from 'react';
 
-import { useStegaValue } from '@app/hooks/stega';
+// import { useStegaValue } from '@app/hooks/stega';
 import type { getProject } from '@app/lib//sanity/queries/project';
 import { memo } from '@app/lib/react';
 import { MaybeLink } from '@app/components/content/maybe-link';
@@ -21,15 +21,15 @@ const ProjectAttribution = memo(
     attribution: Attribution;
     SortableChild: SortableChild;
   }) {
-    const _attribution = useStegaValue(attribution);
+    // const _attribution = useStegaValue(attribution);
     return (
       <div {...rest}>
-        <h3>{_attribution.name}</h3>
+        <h3>{attribution.name}</h3>
         <ul>
           <SortableChild
-            of={_attribution}
+            of={attribution}
             path='contacts'
-            items={_attribution.contacts}
+            items={attribution.contacts}
           >
             {({ items, props }) => {
               return items.map((contact) => {

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { stegaClean } from 'next-sanity';
 import { Refractor, registerLanguage } from 'react-refractor';
 import arduino from 'refractor/arduino';
 import bash from 'refractor/bash';
@@ -10,6 +11,7 @@ import ts from 'refractor/tsx';
 import React from 'react';
 
 import type { CommonSchemaType } from '@app/types/content';
+import { stegaValueDecode } from '@app/lib/stega';
 
 registerLanguage(arduino);
 registerLanguage(bash);
@@ -37,12 +39,18 @@ export function SanityCode({
 }: SanityCodeProps) {
   if (!code) return null;
 
+  const _language = stegaClean(language);
+
   return (
-    <div {...rest} className={clsx(className)}>
-      {(filename && <p>{filename}</p>) || null}
+    <div
+      {...rest}
+      className={clsx(className)}
+      data-sanity={stegaValueDecode(code)}
+    >
+      {(filename && <p>{stegaClean(filename)}</p>) || null}
       <Refractor
-        language={MAP[language] || language}
-        value={code}
+        language={MAP[_language] || _language}
+        value={stegaClean(code)}
         markers={highlightedLines}
       />
     </div>

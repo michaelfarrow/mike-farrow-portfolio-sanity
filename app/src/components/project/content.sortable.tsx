@@ -33,7 +33,7 @@ const ProjectContentItem = memo(
     block,
     SortableChild,
     className,
-    full,
+    full: _full,
     ...rest
   }: React.ComponentPropsWithoutRef<'div'> & {
     block: ContentItem;

@@ -4,6 +4,8 @@ import { stegaClean } from 'next-sanity';
 
 import { config } from '@app/lib/config';
 
+export { stegaClean } from 'next-sanity';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const processObject = (o?: any): any => {
   if (!o) return o;
@@ -34,7 +36,7 @@ export function stegaValueSplit(o?: string) {
   return { ...split, encoded: split.encoded };
 }
 
-export function stegaValue<T>(o: T): T {
+export function stegaCleanObject<T>(o: T): T {
   if (o === undefined) return o;
   return processObject(o);
 }
