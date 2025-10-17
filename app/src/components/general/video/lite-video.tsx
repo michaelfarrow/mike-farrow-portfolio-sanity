@@ -17,7 +17,9 @@ export interface LiteVideoProps<
   containerAttrs?: Partial<HTMLAttributes<T>>;
   children: React.ReactNode;
   preconnect: React.ReactNode;
-  poster: React.ReactNode;
+  poster:
+    | React.ReactNode
+    | ((props: { initialised: boolean }) => React.ReactNode);
 }
 
 export type LiteVideoExtendsProps = Omit<
@@ -38,7 +40,7 @@ export function LiteVideo<T extends React.ElementType>({
   poster,
 }: LiteVideoProps<T>) {
   const [preconnected, setPreconnected] = useState(false);
-  const [iframe, setIframe] = useState(Boolean(alwaysLoadIframe));
+  const [initialised, setInitialised] = useState(Boolean(alwaysLoadIframe));
 
   const Container = containerElement || LITE_VIDEO_DEFAULT_CONTAINER;
 
@@ -48,15 +50,15 @@ export function LiteVideo<T extends React.ElementType>({
   };
 
   const addIframe = () => {
-    if (iframe) return;
-    setIframe(true);
+    if (initialised) return;
+    setInitialised(true);
   };
 
   useEffect(() => {
-    if (iframe && onIframeAdded) {
+    if (initialised && onIframeAdded) {
       onIframeAdded();
     }
-  }, [iframe, onIframeAdded]);
+  }, [initialised, onIframeAdded]);
 
   return (
     <>
@@ -75,7 +77,7 @@ export function LiteVideo<T extends React.ElementType>({
         onClick={addIframe}
       >
         <span className='absolute inset-0 block h-full w-full *:absolute *:inset-0 *:h-full *:w-full'>
-          {(iframe && children) || (
+          {(initialised && children) || (
             <button
               type='button'
               className='invisible'
@@ -84,11 +86,12 @@ export function LiteVideo<T extends React.ElementType>({
           )}
           <div
             className={clsx(
-              'pointer-events-none absolute inset-0 block h-full w-full transition-opacity duration-500 *:absolute *:inset-0 *:!h-full *:!w-full',
-              iframe && 'opacity-0'
+              'absolute inset-0 block h-full w-full transition-opacity duration-500 *:absolute *:inset-0 *:!h-full *:!w-full',
+              initialised && 'pointer-events-none opacity-0',
+              !initialised && 'cursor-pointer'
             )}
           >
-            {poster}
+            {typeof poster === 'function' ? poster({ initialised }) : poster}
           </div>
         </span>
       </Container>

@@ -1,3 +1,6 @@
+'use client';
+
+import clsx from 'clsx';
 import getVideoId from 'get-video-id';
 import React from 'react';
 
@@ -10,8 +13,6 @@ import { NativeVideo } from '@app/components/general/video/native-video';
 import { VimeoVideo } from '@app/components/general/video/vimeo-video';
 import { YoutubeVideo } from '@app/components/general/video/youtube-video';
 import { SanityImage } from '@app/components/sanity/image';
-
-import styles from './video.module.css';
 
 export type SanityRemoteVideo = CommonSchemaType<'remoteVideo'>;
 export type SanityVideo = CommonSchemaType<'video'>;
@@ -52,13 +53,17 @@ export function SanityVideo({ video, alt, sizes }: SanityVideoProps) {
       ? croppedSize.width / croppedSize.height
       : undefined;
 
-  const posterComponent = video.poster && (
-    <SanityImage
-      className={styles.posterImage}
-      image={video.poster}
-      sizes={sizes}
-    />
-  );
+  const posterComponent = ({ initialised }: { initialised: boolean }) =>
+    video.poster && (
+      <div
+        className={clsx(
+          'transition-transform',
+          initialised && 'scale-110 duration-500'
+        )}
+      >
+        <SanityImage className='h-full' image={video.poster} sizes={sizes} />
+      </div>
+    );
 
   const commonProps = {
     title,
