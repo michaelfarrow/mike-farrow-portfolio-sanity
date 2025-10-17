@@ -2,7 +2,6 @@ import { PartialDeep } from 'type-fest';
 
 import { createPage } from '@app/lib/page';
 import { getCV } from '@app/lib/sanity/queries/cv';
-
 import { MaybeLink } from '@app/components/content/maybe-link';
 import { Conditional } from '@app/components/general/conditional';
 

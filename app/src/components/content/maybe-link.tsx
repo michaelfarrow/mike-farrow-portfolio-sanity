@@ -4,7 +4,6 @@ export interface MaybeLinkProps extends ComponentPropsWithoutRef<'a'> {
   name?: string;
   shortName?: string;
   url?: string;
-  children?: string;
 }
 
 export function MaybeLink({
