@@ -24,7 +24,7 @@ export function Image({
   quality = IMAGE_DEFAULT_QUALITY,
   overrideSrc,
   backupSrc,
-  backupSrcSize = BREAKPOINTS_MIN.xl.width,
+  backupSrcSize = BREAKPOINTS_MIN.lg.width,
   ...rest
 }: ImageProps) {
   const image = useRef<HTMLImageElement>(null);
