@@ -49,6 +49,7 @@ const project = createPage('project', getProject, {
               height: 'auto',
               maxWidth: 200,
             }}
+            loading='eager'
           />
         ) : null}
         <ProjectContent project={project} />

@@ -19,7 +19,6 @@ export interface ImageProps extends NextImageProps {
 
 export function Image({
   className,
-  alt,
   onImageLoaded,
   quality = IMAGE_DEFAULT_QUALITY,
   overrideSrc,
@@ -49,7 +48,14 @@ export function Image({
 
   return (
     <NextImage
+      loading={isPresentation ? 'eager' : 'lazy'}
+      quality={quality}
       {...rest}
+      className={clsx(
+        'block h-auto w-full transition-opacity',
+        loaded ? 'opacity-1 duration-200' : 'opacity-0 duration-0',
+        className
+      )}
       overrideSrc={
         overrideSrc ||
         (backupSrc &&
@@ -62,16 +68,6 @@ export function Image({
           })) ||
         undefined
       }
-      loading={isPresentation ? 'eager' : 'lazy'}
-      alt={stegaValue(alt)}
-      quality={quality}
-      className={clsx(
-        'block h-auto w-full transition-opacity',
-        isPresentation || loaded
-          ? 'opacity-1 duration-200'
-          : 'opacity-0 duration-0',
-        className
-      )}
       ref={image}
       onLoad={_onLoad}
     />
