@@ -45,7 +45,7 @@ export function SanityCode({
     <div
       {...rest}
       className={clsx(className)}
-      data-sanity={stegaValueDecode(code)}
+      data-sanity={stegaValueDecode(code, { popPath: true })}
     >
       {(filename && <p>{stegaClean(filename)}</p>) || null}
       <Refractor

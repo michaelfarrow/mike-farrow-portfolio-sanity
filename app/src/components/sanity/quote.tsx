@@ -18,7 +18,7 @@ export function SanityQuote({
   ...rest
 }: SanityQuoteProps) {
   return (
-    <div {...rest} className={clsx(className)}>
+    <div {...rest} className={clsx(className)} data-sanity-edit-group>
       <blockquote cite={link?.url}>
         <Markdown value={quote} />
       </blockquote>

@@ -2,8 +2,6 @@ import { vercelStegaDecode, vercelStegaSplit } from '@vercel/stega';
 import { mapValues } from 'lodash-es';
 import { stegaClean } from 'next-sanity';
 
-import { config } from '@app/lib/config';
-
 export { stegaClean } from 'next-sanity';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,17 +15,41 @@ const processObject = (o?: any): any => {
   return o;
 };
 
-export function stegaValueDecode(o?: string) {
+export function stegaValueDecode(
+  o?: string,
+  {
+    popPath,
+    replacePath,
+    pathParts,
+  }: { popPath?: boolean; replacePath?: string; pathParts?: number } = {}
+) {
   if (!o) return undefined;
   const decoded: { href?: string } | undefined = vercelStegaDecode(o);
-  return decoded?.href
-    ?.split(/;/g)
-    .slice(1)
-    .join(';')
-    .replace(
-      /\?baseUrl=.*?$/,
-      `;base=${encodeURIComponent(config.url.studio || '/')}`
+
+  if (!decoded || !decoded.href) return undefined;
+
+  const url = new URL(decoded.href);
+  url.searchParams.set('base', url.searchParams.get('baseUrl') || '');
+  url.searchParams.delete('perspective');
+  url.searchParams.delete('baseUrl');
+
+  if (popPath || replacePath) {
+    url.searchParams.set(
+      'path',
+      (url.searchParams.get('path') || '').replace(
+        new RegExp(`(\.[^\.]+){${pathParts || 1}}$`),
+        replacePath ? `.${replacePath}` : ''
+      )
     );
+  }
+
+  return url.searchParams
+    .entries()
+    .toArray()
+    .map(
+      ([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`
+    )
+    .join(';');
 }
 
 export function stegaValueSplit(o?: string) {

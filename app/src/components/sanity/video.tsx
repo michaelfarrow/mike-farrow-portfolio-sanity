@@ -71,7 +71,10 @@ export function SanityVideo({ video, alt, sizes }: SanityVideoProps) {
     title,
     poster: posterComponent,
     aspect: finalRatio,
-    'data-sanity': stegaValueDecode(video.alt),
+    'data-sanity': stegaValueDecode(
+      video.alt,
+      'url' in video ? { replacePath: 'url' } : { popPath: true }
+    ),
   };
 
   if ('url' in video) {
