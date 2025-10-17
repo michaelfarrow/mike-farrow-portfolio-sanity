@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { orderBy } from 'lodash-es';
+import { omit, orderBy } from 'lodash-es';
 import React from 'react';
 import { getImageProps, ImageProps } from 'next/image';
 
@@ -84,7 +84,7 @@ export function Picture({
         );
       })}
       <Image
-        {...defaultImage}
+        {...omit(defaultImage, 'min')}
         alt={alt}
         quality={quality}
         loader={loader}
