@@ -27,7 +27,7 @@ function renderSkills(skills?: PartialDeep<SkillFlat>[]) {
 
 const cv = createPage('cv', getCV, {
   metadata: () => ({
-    title: `CV`,
+    title: 'CV',
   }),
   render: ({ experience, education, skills }) => {
     return (

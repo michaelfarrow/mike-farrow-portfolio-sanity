@@ -57,10 +57,4 @@ export const getExperience = createQuery(experienceQuery);
 export const getEducation = createQuery(educationQuery);
 export const getSkills = createQuery(skillsQuery);
 
-// export const getCV = async () => ({
-//   experience: await getExperience(),
-//   education: await getEducation(),
-//   skills: await getSkills(),
-// });
-
 export const getCV = createQuery(cvQuery);
