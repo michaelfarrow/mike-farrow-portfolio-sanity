@@ -1,9 +1,9 @@
 'use client';
 
 import { stegaClean } from 'next-sanity';
-import { imageLoader } from 'next-sanity/image';
 
 import type { CommonSchemaType } from '@app/types/content';
+import { sanityImageLoader } from '@app/lib/image';
 import { BREAKPOINTS_MIN } from '@app/lib/responsive';
 import { Picture, PictureProps } from '@app/components/general/picture';
 import { getSanityImageProps } from '@app/components/sanity/image';
@@ -51,7 +51,7 @@ export function SanityPicture({ image, alt, ...rest }: SanityPictureProps) {
       {...rest}
       alt={alt || image.main?.alt || ''}
       images={images}
-      loader={imageLoader}
+      loader={sanityImageLoader}
     />
   );
 }

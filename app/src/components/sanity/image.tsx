@@ -1,9 +1,11 @@
 'use client';
 
-import { imageLoader } from 'next-sanity/image';
-
 import type { CommonSchemaType } from '@app/types/content';
-import { imageUrl, sanityImageCroppedSize } from '@app/lib/image';
+import {
+  imageUrl,
+  sanityImageCroppedSize,
+  sanityImageLoader,
+} from '@app/lib/image';
 import { Image, ImageProps } from '@app/components/general/image';
 
 export type SanityImage = CommonSchemaType<'image'>;
@@ -51,7 +53,7 @@ export function SanityImage({ image, alt, ratio, ...rest }: SanityImageProps) {
       {...rest}
       {...props}
       alt={alt || image.alt || ''}
-      loader={imageLoader}
+      loader={sanityImageLoader}
       backupSrc
     />
   );

@@ -1,6 +1,7 @@
 import imageUrlBuilder from '@sanity/image-url';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import numToFraction from 'num2fraction';
+import { ImageLoader } from 'next/image';
 
 import type { CommonSchemaType } from '@app/types/content';
 import { config } from '@app/lib/config';
@@ -119,3 +120,22 @@ export function getExifData(
     },
   };
 }
+
+export const sanityImageLoader: ImageLoader = ({ src, width, quality }) => {
+  const url = new URL(src);
+  // url.searchParams.set('auto', 'format');
+  url.searchParams.set('fm', 'webp');
+  if (!url.searchParams.has('fit'))
+    url.searchParams.set('fit', url.searchParams.has('h') ? 'min' : 'max');
+  if (url.searchParams.has('h') && url.searchParams.has('w')) {
+    const originalHeight = parseInt(url.searchParams.get('h') || '0', 10);
+    const originalWidth = parseInt(url.searchParams.get('w') || '0', 10);
+    url.searchParams.set(
+      'h',
+      Math.round((originalHeight / originalWidth) * width).toString()
+    );
+  }
+  url.searchParams.set('w', width.toString());
+  if (quality) url.searchParams.set('q', quality.toString());
+  return url.href;
+};

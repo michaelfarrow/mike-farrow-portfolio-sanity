@@ -7,9 +7,8 @@ import { default as NextImage, ImageProps as NextImageProps } from 'next/image';
 import { useIsMaybePresentation } from '@app/hooks/sanity';
 import { useTimeout } from '@app/hooks/timeout';
 import { BREAKPOINTS_MIN } from '@app/lib/responsive';
-import { stegaValue } from '@app/lib/stega';
 
-export const IMAGE_DEFAULT_QUALITY = 60;
+export const IMAGE_DEFAULT_QUALITY = 40;
 
 export interface ImageProps extends NextImageProps {
   onImageLoaded?: () => void;
