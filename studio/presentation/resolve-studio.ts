@@ -2,7 +2,7 @@ import { capitalCase } from 'change-case';
 import { unflatten } from 'flat';
 import { mapKeys } from 'lodash-es';
 import { titleCase } from 'title-case';
-import { SetOptional } from 'type-fest';
+import { PartialDeep, SetOptional } from 'type-fest';
 
 import { resolve } from './resolve';
 import { Path, PathResolver } from './resolver';
@@ -10,7 +10,7 @@ import { Path, PathResolver } from './resolver';
 export type TypeResolver = ReturnType<ReturnType<typeof createTypeResolver>>;
 
 function createTypeResolver<PR extends PathResolver<any>>(pathResolve: PR) {
-  type PT = Parameters<PR>[0];
+  type PT = PartialDeep<Parameters<PR>[0]>;
 
   const create = <T extends object>({
     filter,
@@ -18,7 +18,7 @@ function createTypeResolver<PR extends PathResolver<any>>(pathResolve: PR) {
   }: {
     filter: string;
     locations: (
-      doc: PR extends never ? any : PT & T,
+      doc: PT & PartialDeep<T>,
       resolvePath: PR
     ) => {
       title: string;
@@ -26,7 +26,7 @@ function createTypeResolver<PR extends PathResolver<any>>(pathResolve: PR) {
     }[];
   }) => {
     return {
-      locations: (doc: PR extends never ? any : PT & T) => {
+      locations: (doc: PT & PartialDeep<T>) => {
         const items = locations(doc, pathResolve);
         if (!items.length) return null;
         return items;
@@ -59,22 +59,23 @@ function createSlugTypeResolver<
     };
   }>,
 >(pathResolve: PR, type: string, index: Path) {
-  return createTypeResolver(pathResolve)<{ name?: string; title?: string }>({
+  return createTypeResolver(pathResolve)<{ name: string; title: string }>({
     filter: `_type == "${type}" && slug.current == $slug.current`,
     locations: (doc, resolvePath) => {
-      return (
-        (doc?.slug && [
+      if (doc.slug && doc.slug.current) {
+        const slug = { current: doc.slug.current };
+        return [
           {
-            title: doc?.name || doc?.title || 'Untitled',
-            href: resolvePath(doc),
+            title: doc.name || doc.title || 'Untitled',
+            href: resolvePath({ ...doc, slug }),
           },
           {
             title: `${titleCase(capitalCase(index))} index`,
             href: `${index}`,
           },
-        ]) ||
-        []
-      );
+        ];
+      }
+      return [];
     },
   });
 }
