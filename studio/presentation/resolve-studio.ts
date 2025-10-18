@@ -4,7 +4,7 @@ import { mapKeys } from 'lodash-es';
 import { titleCase } from 'title-case';
 import { SetOptional } from 'type-fest';
 
-import { resolve as pathResolve } from './resolve';
+import { resolve } from './resolve';
 import { Path, PathResolver } from './resolver';
 
 export type TypeResolver = ReturnType<ReturnType<typeof createTypeResolver>>;
@@ -81,7 +81,7 @@ function createSlugTypeResolver<
 
 const resolveStudio: Record<string, SetOptional<TypeResolver, 'document'>> = {};
 
-for (const [type, pathsOrPath] of Object.entries(pathResolve)) {
+for (const [type, pathsOrPath] of Object.entries(resolve)) {
   if ('detail' in pathsOrPath) {
     const paths = pathsOrPath;
     resolveStudio[type] = createSlugTypeResolver(
