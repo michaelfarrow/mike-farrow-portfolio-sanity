@@ -4,6 +4,7 @@ import { createPage } from '@app/lib/page';
 import { getCV } from '@app/lib/sanity/queries/cv';
 import { MaybeLink } from '@app/components/content/maybe-link';
 import { Conditional } from '@app/components/general/conditional';
+import { Container } from '@app/components/page/container';
 
 type Skill = Awaited<ReturnType<typeof getCV>>['skills'][number];
 type SkillFlat = Omit<Skill, 'subSkills'> & {
@@ -31,7 +32,7 @@ const cv = createPage('cv', getCV, {
   }),
   render: ({ experience, education, skills }) => {
     return (
-      <div>
+      <Container>
         <section>
           <h2>Experience</h2>
           <ul>
@@ -67,7 +68,7 @@ const cv = createPage('cv', getCV, {
           <h2>Skills</h2>
           {renderSkills(skills)}
         </section>
-      </div>
+      </Container>
     );
   },
 });

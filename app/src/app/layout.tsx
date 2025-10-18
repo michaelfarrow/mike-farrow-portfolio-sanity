@@ -10,7 +10,9 @@ import '@app/styles/globals.css';
 
 import React from 'react';
 
-import Logo from '@app/components/logo';
+import { Logo } from '@app/components/global/logo';
+import { Navigation } from '@app/components/global/navigation';
+import { Container } from '@app/components/page/container';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -36,7 +38,10 @@ export default async function RootLayout({
     <html lang='en' className={(draftModeEnabled && 'draft-mode') || undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header>
-          <Logo />
+          <Container>
+            <Logo />
+            <Navigation />
+          </Container>
         </header>
         {children}
         <DraftMode enabled={draftModeEnabled} />

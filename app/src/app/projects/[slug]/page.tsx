@@ -6,8 +6,8 @@ import { getProject, getProjects } from '@app/lib/sanity/queries/project';
 import { ContentMarkdown } from '@app/components/content/markdown';
 import { Container } from '@app/components/page/container';
 // import { Figure } from '@app/components/general/figure';
-import { ProjectAttributions } from '@app/components/project/attributions';
-import { ProjectContent } from '@app/components/project/content';
+import { ProjectAttributions } from '@app/components/page/project/attributions';
+import { ProjectContent } from '@app/components/page/project/content';
 import { SanityImage } from '@app/components/sanity/image';
 
 const project = createPage('project', getProject, {
@@ -33,7 +33,7 @@ const project = createPage('project', getProject, {
     return (
       <Container>
         <div>
-          <Link href='/'>← Back to projects</Link>
+          <Link href='/projects'>← Back to projects</Link>
         </div>
         <div>{name ? <h1>{name}</h1> : null}</div>
         <div>{description ? <p>{description}</p> : null}</div>

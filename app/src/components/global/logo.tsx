@@ -7,7 +7,7 @@ import {
   useSelectedLayoutSegments,
 } from 'next/navigation';
 
-export default function Logo() {
+export function Logo() {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
   const segments = useSelectedLayoutSegments();
