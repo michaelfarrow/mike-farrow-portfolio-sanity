@@ -3,17 +3,13 @@ import { googleMapsInput } from '@sanity/google-maps-input';
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { markdownSchema } from 'sanity-plugin-markdown';
-import {
-  defineDocuments,
-  defineLocations,
-  presentationTool,
-} from 'sanity/presentation';
+import { defineDocuments, presentationTool } from 'sanity/presentation';
 import { structureTool } from 'sanity/structure';
 
 import { Logo } from '@studio/components/logo';
 import { config } from '@studio/lib/config';
 import { resolveDynamic } from '@studio/presentation/resolve-dynamic';
-import { resolve } from '@studio/presentation/resolve-studio';
+import { resolveStudio } from '@studio/presentation/resolve-studio';
 import { schemas, schemasFlat } from '@studio/schemas';
 
 import '@studio/styles/global.css';
@@ -61,14 +57,15 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       resolve: {
-        locations: resolveDynamic(resolve, { link: { deep: true } }),
+        locations: resolveDynamic(resolveStudio, { link: { deep: true } }),
         mainDocuments: defineDocuments(
-          Object.values(resolve)
+          Object.values(resolveStudio)
             .filter(
               (
                 item
-              ): item is Required<(typeof resolve)[keyof typeof resolve]> =>
-                'document' in item
+              ): item is Required<
+                (typeof resolveStudio)[keyof typeof resolveStudio]
+              > => 'document' in item
             )
             .map((item) => item.document)
         ),
