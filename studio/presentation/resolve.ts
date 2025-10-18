@@ -14,20 +14,23 @@ export type PathToObject<
   ? { [K in Head]: PathToObject<Tail, V> }
   : { [K in T]: V };
 
-function createPathResolver<P extends `/${string}`>(path: P) {
-  const create = <
-    T extends P extends any
-      ? any
-      : {
-          [K in KeysFromPath<P> as K extends `${infer Head extends string}.${string}`
-            ? Head
-            : K]: K extends `${string}.${infer Tail extends string}`
-            ? PathToObject<Tail, PathPartType>
-            : PathPartType;
-        },
-  >(
-    doc: T
-  ) => {
+export type Path = `/${string}`;
+
+export type PathResolver<T> = {
+  (doc: T): string;
+  path: Path;
+};
+
+export function createPathResolver<P extends Path>(path: P) {
+  type T = {
+    [K in KeysFromPath<P> as K extends `${infer Head extends string}.${string}`
+      ? Head
+      : K]: K extends `${string}.${infer Tail extends string}`
+      ? PathToObject<Tail, PathPartType>
+      : PathPartType;
+  };
+
+  const create = <TC extends T>(doc: TC) => {
     let p: string = path;
     const flat = flatten<T, Record<string, PathPartType | undefined | null>>(
       doc
@@ -41,16 +44,35 @@ function createPathResolver<P extends `/${string}`>(path: P) {
 
   create.path = path;
 
-  return create;
+  return create satisfies PathResolver<T>;
 }
 
-export type PathWithSlug = {
-  slug: { current: string };
-};
+export function createStaticResolver<P extends Path>(path: P, title?: string) {
+  const pathF = () => path;
+  pathF.title = title;
+  return pathF;
+}
 
-export type PathResolver = ReturnType<typeof createPathResolver>;
+const cvResolver = createStaticResolver('/cv', 'CV');
 
 export const resolve = {
-  project: createPathResolver('/projects/[slug.current]')<PathWithSlug>,
-  album: createPathResolver('/albums/[slug.current]')<PathWithSlug>,
-};
+  project: {
+    index: createStaticResolver('/projects'),
+    detail: createPathResolver('/projects/[slug.current]'),
+  },
+  album: {
+    index: createStaticResolver('/albums'),
+    detail: createPathResolver('/albums/[slug.current]'),
+  },
+  cv: cvResolver,
+  skill: cvResolver,
+  experience: cvResolver,
+  education: cvResolver,
+} satisfies Record<
+  string,
+  | ReturnType<typeof createStaticResolver>
+  | {
+      index: ReturnType<typeof createStaticResolver>;
+      detail: ReturnType<typeof createPathResolver>;
+    }
+>;

@@ -1,4 +1,4 @@
-import { uniqBy } from 'lodash-es';
+import { sortBy, uniqBy } from 'lodash-es';
 import { map, Observable } from 'rxjs';
 
 import { type ClientReturn } from '@sanity/client';
@@ -35,9 +35,7 @@ export function resolveDynamic(
 
     return doc$.pipe(
       map((res) => {
-        const mainLocations =
-          (res.document?.slug?.current && resolver?.locations(res.document)) ||
-          [];
+        const mainLocations = resolver?.locations(res.document) || [];
 
         const refs = [...res.directRefs, ...res.indirectRefs];
 
@@ -52,9 +50,12 @@ export function resolveDynamic(
           })
           .filter((item) => !!item);
 
-        const locations = uniqBy(
-          [...mainLocations, ...references],
-          (location) => location.href
+        const locations = sortBy(
+          uniqBy(
+            [...mainLocations, ...references],
+            (location) => location.href
+          ),
+          'href'
         );
 
         if (!locations.length) return null;

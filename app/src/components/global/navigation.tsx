@@ -4,11 +4,13 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
+import { resolve } from '@studio/presentation/resolve';
+
 const links = [
-  { href: 'albums', title: 'Albums' },
-  { href: 'projects', title: 'Projects' },
-  { href: 'cv', title: 'CV' },
-];
+  { href: resolve.album.index(), title: 'Albums' },
+  { href: resolve.project.index(), title: 'Projects' },
+  { href: resolve.cv(), title: 'CV' },
+] satisfies { href: string; title: string }[];
 
 export function Navigation() {
   const segment = useSelectedLayoutSegment();
@@ -18,10 +20,7 @@ export function Navigation() {
       <ul>
         {links.map(({ href, title }, i) => (
           <li key={i}>
-            <Link
-              className={clsx(segment === href && 'font-bold')}
-              href={`/${href}`}
-            >
+            <Link className={clsx(segment === href && 'font-bold')} href={href}>
               {title}
             </Link>
           </li>

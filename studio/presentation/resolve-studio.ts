@@ -2,12 +2,13 @@ import { capitalCase } from 'change-case';
 import { unflatten } from 'flat';
 import { mapKeys } from 'lodash-es';
 import { titleCase } from 'title-case';
+import { SetOptional } from 'type-fest';
 
-import { resolve as pathResolve, PathResolver } from './resolve';
+import { Path, resolve as pathResolve, PathResolver } from './resolve';
 
 export type TypeResolver = ReturnType<ReturnType<typeof createTypeResolver>>;
 
-function createTypeResolver<PR extends PathResolver>(pathResolve: PR) {
+function createTypeResolver<PR extends PathResolver<any>>(pathResolve: PR) {
   type PT = Parameters<PR>[0];
 
   const create = <T extends object>({
@@ -50,12 +51,14 @@ function createTypeResolver<PR extends PathResolver>(pathResolve: PR) {
   return create;
 }
 
-function createSlugTypeResolver<PR extends PathResolver, T extends string>(
-  pathResolve: PR,
-  type: T,
-  index?: string
-) {
-  return createTypeResolver(pathResolve)<{ name?: string }>({
+function createSlugTypeResolver<
+  PR extends PathResolver<{
+    slug: {
+      current: string;
+    };
+  }>,
+>(pathResolve: PR, type: string, index: Path) {
+  return createTypeResolver(pathResolve)<{ name?: string; title?: string }>({
     filter: `_type == "${type}" && slug.current == $slug.current`,
     locations: (doc, resolvePath) => {
       return (
@@ -64,14 +67,10 @@ function createSlugTypeResolver<PR extends PathResolver, T extends string>(
             title: doc?.name || doc?.title || 'Untitled',
             href: resolvePath(doc),
           },
-          ...(index !== undefined
-            ? [
-                {
-                  title: `${titleCase(capitalCase(type))} index`,
-                  href: `/${index}`,
-                },
-              ]
-            : []),
+          {
+            title: `${titleCase(capitalCase(index))} index`,
+            href: `${index}`,
+          },
         ]) ||
         []
       );
@@ -79,7 +78,23 @@ function createSlugTypeResolver<PR extends PathResolver, T extends string>(
   });
 }
 
-export const resolve = {
-  project: createSlugTypeResolver(pathResolve.project, 'project', ''),
-  album: createSlugTypeResolver(pathResolve.album, 'album', 'albums'),
-};
+const resolve: Record<
+  string,
+  SetOptional<ReturnType<typeof createSlugTypeResolver>, 'document'>
+> = {};
+
+for (const [type, pathsOrPath] of Object.entries(pathResolve)) {
+  if ('detail' in pathsOrPath) {
+    const paths = pathsOrPath;
+    resolve[type] = createSlugTypeResolver(paths.detail, type, paths.index());
+  }
+
+  if (typeof pathsOrPath === 'function') {
+    const path = pathsOrPath;
+    resolve[type] = {
+      locations: () => [{ href: path(), title: path.title || 'Unknown' }],
+    };
+  }
+}
+
+export { resolve };

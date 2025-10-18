@@ -19,7 +19,9 @@ const projects = createPage('projects', getProjects, {
             if (!hasSlug(project)) return null;
             return (
               <li key={project._id}>
-                <Link href={resolve.project(project)}>{project.name}</Link>
+                <Link href={resolve.project.detail(project)}>
+                  {project.name}
+                </Link>
               </li>
             );
           })}

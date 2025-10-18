@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { resolve } from '@studio/presentation/resolve';
+
 // import { getExifData } from '@app/lib/image';
 import { createPage } from '@app/lib/page';
 import { getProject, getProjects } from '@app/lib/sanity/queries/project';
@@ -33,7 +35,7 @@ const project = createPage('project', getProject, {
     return (
       <Container>
         <div>
-          <Link href='/projects'>← Back to projects</Link>
+          <Link href={resolve.project.index()}>← Back to projects</Link>
         </div>
         <div>{name ? <h1>{name}</h1> : null}</div>
         <div>{description ? <p>{description}</p> : null}</div>

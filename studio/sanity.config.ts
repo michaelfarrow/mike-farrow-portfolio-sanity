@@ -3,7 +3,11 @@ import { googleMapsInput } from '@sanity/google-maps-input';
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { markdownSchema } from 'sanity-plugin-markdown';
-import { defineDocuments, presentationTool } from 'sanity/presentation';
+import {
+  defineDocuments,
+  defineLocations,
+  presentationTool,
+} from 'sanity/presentation';
 import { structureTool } from 'sanity/structure';
 
 import { Logo } from '@studio/components/logo';
@@ -59,7 +63,14 @@ export default defineConfig({
       resolve: {
         locations: resolveDynamic(resolve, { link: { deep: true } }),
         mainDocuments: defineDocuments(
-          Object.values(resolve).map((item) => item.document)
+          Object.values(resolve)
+            .filter(
+              (
+                item
+              ): item is Required<(typeof resolve)[keyof typeof resolve]> =>
+                'document' in item
+            )
+            .map((item) => item.document)
         ),
       },
       previewUrl: {

@@ -18,7 +18,7 @@ const albums = createPage('albums', getAlbums, {
             if (!hasSlug(album)) return null;
             return (
               <li key={album._id}>
-                <Link href={resolve.album(album)}>{album.name}</Link>
+                <Link href={resolve.album.detail(album)}>{album.name}</Link>
               </li>
             );
           })}
