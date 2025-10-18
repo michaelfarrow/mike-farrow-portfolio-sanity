@@ -10,6 +10,8 @@ import '@app/styles/globals.css';
 
 import React from 'react';
 
+import Logo from '@app/components/logo';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -30,10 +32,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const draftModeEnabled = (await draftMode()).isEnabled;
-
   return (
     <html lang='en' className={(draftModeEnabled && 'draft-mode') || undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <header>
+          <Logo />
+        </header>
         {children}
         <DraftMode enabled={draftModeEnabled} />
       </body>

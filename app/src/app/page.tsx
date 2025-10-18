@@ -5,6 +5,7 @@ import { resolve } from '@studio/presentation/resolve';
 import { hasSlug } from '@app/lib/document';
 import { createPage } from '@app/lib/page';
 import { getProjects } from '@app/lib/sanity/queries/project';
+import { Container } from '@app/components/page/container';
 
 const projects = createPage('projects', getProjects, {
   metadata: () => ({
@@ -12,7 +13,7 @@ const projects = createPage('projects', getProjects, {
   }),
   render: (projects) => {
     return (
-      <div>
+      <Container>
         <ul>
           {projects.map((project) => {
             if (!hasSlug(project)) return null;
@@ -23,7 +24,7 @@ const projects = createPage('projects', getProjects, {
             );
           })}
         </ul>
-      </div>
+      </Container>
     );
   },
 });

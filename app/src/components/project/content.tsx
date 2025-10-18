@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { stegaClean } from 'next-sanity';
 
 import { getProject } from '@app/lib//sanity/queries/project';
-import { breakpointSizes } from '@app/lib/responsive';
+import { BREAKPOINTS_MIN, breakpointSizes } from '@app/lib/responsive';
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
 import { Markdown } from '@app/components/content/markdown';
@@ -13,6 +13,8 @@ import {
   Array,
   conditionalComponent as cc,
 } from '@app/components/sanity/array';
+
+const CONTAINER_MAX = BREAKPOINTS_MIN['2xl'].width;
 
 export function ProjectContent({
   project,
@@ -27,7 +29,7 @@ export function ProjectContent({
         const full = stegaClean(item.span) === 'full';
 
         const sizes = breakpointSizes(
-          { min: 1500, size: 1500 / (full ? 1 : 2) },
+          { min: CONTAINER_MAX, size: CONTAINER_MAX / (full ? 1 : 2) },
           { min: 'md', size: full ? '100vw' : '50vw' },
           '100vw'
         );

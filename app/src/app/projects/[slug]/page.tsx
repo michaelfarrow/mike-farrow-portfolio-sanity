@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { createPage } from '@app/lib/page';
 import { getProject, getProjects } from '@app/lib/sanity/queries/project';
 import { Markdown } from '@app/components/content/markdown';
+import { Container } from '@app/components/page/container';
 // import { Figure } from '@app/components/general/figure';
 import { ProjectAttributions } from '@app/components/project/attributions';
 import { ProjectContent } from '@app/components/project/content';
@@ -30,7 +31,7 @@ const project = createPage('project', getProject, {
     //   exif?.settings && Object.values(exif.settings).filter((v) => !!v);
 
     return (
-      <div style={{ maxWidth: 1500, margin: 'auto' }}>
+      <Container>
         <div>
           <Link href='/'>← Back to projects</Link>
         </div>
@@ -54,7 +55,7 @@ const project = createPage('project', getProject, {
         ) : null}
         <ProjectContent project={project} />
         <ProjectAttributions project={project} />
-      </div>
+      </Container>
     );
   },
 });

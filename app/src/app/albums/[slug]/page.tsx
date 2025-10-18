@@ -2,6 +2,7 @@ import { getExifData } from '@app/lib/image';
 import { createPage } from '@app/lib/page';
 import { getAlbum, getAlbums } from '@app/lib/sanity/queries/album';
 import { ContentImage } from '@app/components/content/image';
+import { Container } from '@app/components/page/container';
 
 const album = createPage('album', getAlbum, {
   params: async () => {
@@ -17,7 +18,7 @@ const album = createPage('album', getAlbum, {
   }),
   render: ({ name, photos }) => {
     return (
-      <div style={{ maxWidth: 1500, margin: 'auto' }}>
+      <Container>
         <h1>{name}</h1>
         <ul>
           {photos?.map((photo) => {
@@ -34,7 +35,7 @@ const album = createPage('album', getAlbum, {
             );
           })}
         </ul>
-      </div>
+      </Container>
     );
   },
 });
