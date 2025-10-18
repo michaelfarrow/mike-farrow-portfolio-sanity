@@ -3,7 +3,7 @@ import Link from 'next/link';
 // import { getExifData } from '@app/lib/image';
 import { createPage } from '@app/lib/page';
 import { getProject, getProjects } from '@app/lib/sanity/queries/project';
-import { Markdown } from '@app/components/content/markdown';
+import { ContentMarkdown } from '@app/components/content/markdown';
 import { Container } from '@app/components/page/container';
 // import { Figure } from '@app/components/general/figure';
 import { ProjectAttributions } from '@app/components/project/attributions';
@@ -38,7 +38,7 @@ const project = createPage('project', getProject, {
         <div>{name ? <h1>{name}</h1> : null}</div>
         <div>{description ? <p>{description}</p> : null}</div>
         <div>
-          {descriptionLong ? <Markdown value={descriptionLong} /> : null}
+          {descriptionLong ? <ContentMarkdown value={descriptionLong} /> : null}
         </div>
         {thumbnail ? (
           <SanityImage

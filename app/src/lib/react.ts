@@ -1,5 +1,5 @@
 import { isEqual as deepEqual, mapValues, omitBy } from 'lodash-es';
-import { FunctionComponent, memo as reactMemo } from 'react';
+import { FunctionComponent, isValidElement, memo as reactMemo } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function is(x: any, y: any) {
@@ -68,4 +68,21 @@ export function memo<P>(
     if (!options?.deep) return shallowEqual(_prev, _next);
     return deepEqual(_prev, _next);
   });
+}
+
+export function nodeToString(reactNode: React.ReactNode): string {
+  let string = '';
+  if (typeof reactNode === 'string') {
+    string = reactNode;
+  } else if (typeof reactNode === 'number') {
+    string = reactNode.toString();
+  } else if (reactNode instanceof Array) {
+    reactNode.forEach(function (child) {
+      string += nodeToString(child);
+    });
+  } else if (isValidElement(reactNode)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    string += nodeToString((reactNode as any).props.children);
+  }
+  return string;
 }

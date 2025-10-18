@@ -9,7 +9,7 @@ import { memo } from '@app/lib/react';
 import { /* BREAKPOINT_MAX, */ breakpointSizes } from '@app/lib/responsive';
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
-import { Markdown } from '@app/components/content/markdown';
+import { ContentMarkdown } from '@app/components/content/markdown';
 import { ContentPicture } from '@app/components/content/picture';
 import { ContentQuote } from '@app/components/content/quote';
 import { ContentVideo } from '@app/components/content/video';
@@ -33,7 +33,8 @@ const ProjectContentItem = memo(
     block,
     SortableChild,
     className,
-    full: _full,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    full,
     ...rest
   }: React.ComponentPropsWithoutRef<'div'> & {
     block: ContentItem;
@@ -66,7 +67,7 @@ const ProjectContentItem = memo(
                   md: (block) =>
                     cc(
                       block.content?.length,
-                      <Markdown value={block.content} />
+                      <ContentMarkdown value={block.content} />
                     ),
                   responsiveImage: (block) =>
                     cc(

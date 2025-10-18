@@ -1,6 +1,6 @@
 import { mapValues } from 'lodash-es';
 
-import breakpoints from '../common/config/breakpoints';
+import breakpoints from '../common/config/breakpoints.json';
 
 /** @type {import('tailwindcss').Config} */
 const config = {

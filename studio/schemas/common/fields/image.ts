@@ -1,5 +1,4 @@
-import breakpoints from '@common/config/breakpoints';
-import { titleCase } from 'title-case';
+import breakpoints from '@common/config/breakpoints.json';
 
 import {
   defineArrayMember,

@@ -1,4 +1,4 @@
-import breakpoints from '@common/config/breakpoints';
+import breakpoints from '@common/config/breakpoints.json';
 
 export const BREAKPOINTS_MIN = breakpoints;
 

@@ -5,7 +5,7 @@ import { getProject } from '@app/lib//sanity/queries/project';
 import { BREAKPOINTS_MIN, breakpointSizes } from '@app/lib/responsive';
 import { ContentCode } from '@app/components/content/code';
 import { ContentImage } from '@app/components/content/image';
-import { Markdown } from '@app/components/content/markdown';
+import { ContentMarkdown } from '@app/components/content/markdown';
 import { ContentPicture } from '@app/components/content/picture';
 import { ContentQuote } from '@app/components/content/quote';
 import { ContentVideo } from '@app/components/content/video';
@@ -51,7 +51,7 @@ export function ProjectContent({
                   md: (block) =>
                     cc(
                       block.content?.length,
-                      <Markdown value={block.content} />
+                      <ContentMarkdown value={block.content} />
                     ),
                   responsiveImage: (block) =>
                     cc(
